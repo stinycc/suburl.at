@@ -1,8 +1,8 @@
 //For browsers that doesn't support replaceAll function (Samsung browser)
-//!! prioritized to use .split().join() because this function doesn't work on FUCKIN IE !!
+//!! Prioritized to use .split().join() because this function doesn't work on FUCKIN IE !!
 String.prototype.replaceAll = function replaceAlltext(search, replace) { return this.split(search).join(replace); }
 
-//also for IE... why IE... why...
+//Also for IE. Why IE... Why...
 function setStyle(elementId, declaration) {
   var filtered, k, value, splitted;
   declaration = declaration.split(' ').join('')
@@ -24,7 +24,7 @@ function setStyle(elementId, declaration) {
   for (var i=0; i < splitted.length; i++) {
      k = splitted[i].split(':')[0];
      value = splitted[i].split(':')[1];
-     eval(elementId + ".style." + k + "='" + value + "'");
+     eval(id(elementId) + ".style." + k + "='" + value + "'");
 
   }
 }
