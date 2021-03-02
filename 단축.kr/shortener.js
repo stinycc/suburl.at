@@ -60,7 +60,7 @@ id('urlInput').addEventListener('focus', function() {
 })
 id('urlInput').addEventListener('input', function() {
     resetEraseInput()
-    id('urlInput').value = id('urlInput').value.replaceAll(' ', '')
+    id('urlInput').value = id('urlInput').value.split(' ').join('')
 })
 function resetEraseInput() {
     if (id('urlInput').value != '') {
@@ -312,7 +312,7 @@ function validCheck(url) {
 }
 
 function processLink(url) {
-    url = url.replaceAll(' ', '')
+    url = url.split(' ').join('')
     if (url.indexOf('//') === -1) {
         url = 'http://' + url
     }
