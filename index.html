@@ -35,7 +35,7 @@
         location.href = '/단축.kr'
     }
     function longLinkLoaded(longLink){
-        longLink = longLink.replaceAll('%27', "'")
+        longLink = longLink.split('%27').join("'")
         window.open(longLink)
         location.href = '/단축.kr/?report=' + encodeURIComponent(longLink)
     }
