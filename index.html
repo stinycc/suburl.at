@@ -31,6 +31,8 @@
         }else{
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/getURL?shortCode=' + urlAnchor)
         }
+    }else{
+        location.href = '/단축.kr'
     }
     function longLinkLoaded(longLink){
         longLink = longLink.replaceAll('%27', "'")
