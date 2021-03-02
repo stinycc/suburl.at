@@ -102,7 +102,7 @@ function elementFadeOut(elementId) {
     },500)
 }
 
-elementFadeIOAnimation = `
+/*elementFadeIOAnimation = `
 <style>
   @keyframes fadeIn {
     0% {
@@ -114,6 +114,4 @@ elementFadeIOAnimation = `
   }
 </style>
 `
-window.addEventListener('DOMContentLoaded',function(){
-    document.head.innerHTML += elementFadeIOAnimation
-})
+document.head.innerHTML += elementFadeIOAnimation*/
