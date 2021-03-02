@@ -21,7 +21,7 @@ function setStyle(elementId, declaration) {
     declaration = declaration.slice(1);
   }
   splitted = declaration.split(';');
-  for (var i=0, len=splitted.length; i &lt; len; i++) {
+  for (var i=0, i < splitted.length; i++) {
      k = splitted[i].split(':')[0];
      value = splitted[i].split(':')[1];
      eval(elementId + ".style." + k + "='" + value + "'");
