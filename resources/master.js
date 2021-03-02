@@ -83,7 +83,7 @@ function animation(element,animationStyle){
 }
 
 function id(elementId){
-    return getElementById(elementId)
+    return document.getElementById(elementId)
 }
 
 function pickRandom(array) {
