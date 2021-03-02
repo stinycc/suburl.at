@@ -82,6 +82,10 @@ function animation(element,animationStyle){
     targetElement.style.animation = animationStyle
 }
 
+function id(elementId){
+    return document.getElementById(elementId)
+}
+
 function pickRandom(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
