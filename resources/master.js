@@ -3,7 +3,7 @@
 String.prototype.replaceAll = function replaceAlltext(search, replace) { return this.split(search).join(replace); }
 
 //Also for IE. Why IE... Why...
-function setStyle(elementId, declaration) {
+function setStyle(element, declaration) {
   var filtered, k, value, splitted;
   declaration = declaration.split(' ').join('')
   filtersemicolon()
@@ -24,8 +24,7 @@ function setStyle(elementId, declaration) {
   for (var i=0; i < splitted.length; i++) {
      k = splitted[i].split(':')[0];
      value = splitted[i].split(':')[1];
-     eval(id(elementId) + ".style." + k + "='" + value + "'");
-
+     eval(element + ".style." + k + "='" + value + "'");
   }
 }
 
