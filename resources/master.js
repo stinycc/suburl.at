@@ -1,3 +1,34 @@
+//For browsers that doesn't support replaceAll function (Samsung browser)
+//!! prioritized to use .split().join() because this function doesn't work on FUCKIN IE !!
+String.prototype.replaceAll = function replaceAlltext(search, replace) { return this.split(search).join(replace); }
+
+//also for IE... why IE... why...
+function setStyle(elementId, declaration) {
+  var filtered, k, value, splitted;
+  declaration = declaration.split(' ').join('')
+  filtersemicolon()
+  function filtersemicolon(){
+    filtered = declaration.split(';;').join(';')
+    if(filtered != declaration){
+      declaration = filtered
+      filtersemicolon()
+    }
+  }
+  if (declaration.charAt(declaration.length-1)==';'){
+    declaration = declaration.slice(0, -1);
+  }
+  if (declaration.charAt(0)==';'){
+    declaration = declaration.slice(1);
+  }
+  splitted = declaration.split(';');
+  for (var i=0, len=splitted.length; i &lt; len; i++) {
+     k = splitted[i].split(':')[0];
+     value = splitted[i].split(':')[1];
+     eval(elementId + ".style." + k + "='" + value + "'");
+
+  }
+}
+
 function resizeResponsiveElements(){
     var everyElementOnPage,elementBeingChecked,responsiveStyle,parentWidth,parentHeight,parentShort,parentLong
     everyElementOnPage = document.getElementsByTagName('*')
@@ -10,7 +41,13 @@ function resizeResponsiveElements(){
             if(parentWidth < parentHeight){parentShort = parentWidth}else{parentShort = parentHeight}
             if(parentWidth > parentHeight){parentLong = parentWidth}else{parentLong = parentHeight}
             responsiveStyle = ';' + responsiveStyle + ';'
-            elementBeingChecked.style = elementBeingChecked.style.cssText + responsiveStyle.replaceAll('w(', 'calc(' + parentWidth + 'px*').replaceAll('h(', 'calc(' + parentHeight + 'px*').replaceAll('s(', 'calc(' + parentShort + 'px*').replaceAll('l(', 'calc(' + parentLong + 'px*')
+            var wReplaced, hReplaced, sReplaced, lReplaced, everythingReplaced
+            wReplaced = responsiveStyle.split('w(').join('calc(' + parentWidth + 'px*')
+            hReplaced = wReplaced.split('h(').join('calc(' + parentHeight + 'px*')
+            sReplaced = hReplaced.split('s(').join('calc(' + parentShort + 'px*')
+            lReplaced = sReplaced.split('l(').join('calc(' + parentLong + 'px*')
+            everythingReplaced = lReplaced
+            setStyle(elementBeingChecked, everythingReplaced)
         }
     }
 }
@@ -89,9 +126,6 @@ function id(elementId){
 function pickRandom(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
-
-//For browsers that doesn't support replaceAll function
-String.prototype.replaceAll = function replaceAlltext(search, replace) { return this.split(search).join(replace); }
 
 function elementFadeIn(elementId) {
     animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
