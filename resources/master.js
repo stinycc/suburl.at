@@ -24,7 +24,7 @@ function setStyle(elementNumber, declaration) {
   for (var i=0; i < splitted.length; i++) {
      styleName = splitted[i].split(':')[0];
      value = splitted[i].split(':')[1];
-     eval("document.getElementsByTagName('*')[" + elementNumber + "'].style." + styleName + "='" + value + "'");
+     eval("document.getElementsByTagName('*')[" + elementNumber + "].style." + styleName + "='" + value + "'");
   }
 }
 
