@@ -4,9 +4,9 @@ window.addEventListener("resize", function() {
 })
 function horizontalVerticalSetting() {
     if (document.body.offsetWidth > document.body.offsetHeight && document.body.offsetHeight < 450) {
-        document.id('shortenerFrame').setAttribute('R', 'height:h(90)')
+        id('shortenerFrame').setAttribute('R', 'height:h(90)')
     } else {
-        document.id('shortenerFrame').setAttribute('R', 'height:h(50)')
+        id('shortenerFrame').setAttribute('R', 'height:h(50)')
     }
     resizeResponsiveElements()
 }
@@ -16,7 +16,7 @@ function uniqueButtonTextAnimation() {
     setInterval(function() {
         animation('uniqueButtonText', 'textOut 0.15s cubic-bezier(0.250, 0.460, 0.450, 0.940) both')
         setTimeout(function() {
-            document.id('uniqueButtonText').innerHTML = pickRandom(domainList)
+            id('uniqueButtonText').innerHTML = pickRandom(domainList)
             animation('uniqueButtonText', 'textIn 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both')
         }, 150)
     }, 3500)
@@ -55,40 +55,40 @@ domainList = [].concat(Kor, Eng, Chi, Jap, Ara, Hin)
 
 //-----------------------------------------------------------------------------------------------------------------
 
-document.id('urlInput').addEventListener('focus', function() {
+id('urlInput').addEventListener('focus', function() {
     resetEraseInput()
 })
-document.id('urlInput').addEventListener('input', function() {
+id('urlInput').addEventListener('input', function() {
     resetEraseInput()
-    document.id('urlInput').value = document.id('urlInput').value.replaceAll(' ', '')
+    id('urlInput').value = id('urlInput').value.replaceAll(' ', '')
 })
 function resetEraseInput() {
-    if (document.id('urlInput').value != '') {
-        document.id('eraseInput').style.display = 'flex'
+    if (id('urlInput').value != '') {
+        id('eraseInput').style.display = 'flex'
     } else {
-        document.id('eraseInput').style.display = 'none'
+        id('eraseInput').style.display = 'none'
     }
 }
 
-document.id('eraseInput').addEventListener('click', function() {
-    document.id('urlInput').value = ''
-    document.id('urlInput').focus()
-    document.id('eraseInput').style.display = 'none'
+id('eraseInput').addEventListener('click', function() {
+    id('urlInput').value = ''
+    id('urlInput').focus()
+    id('eraseInput').style.display = 'none'
 })
 
 //-----------------------------------------------------------------------------------------------------------------
 
-document.id('urlInput').addEventListener('focus', function() {
+id('urlInput').addEventListener('focus', function() {
     clearAnimations()
     inputFocusedTimer = setTimeout(function() {
         inputFocusedAnimation()
     }, 250)
 })
-document.id('buttonDescriptionBlur').style.animation = 'fadeOut 0s reverse'
+id('buttonDescriptionBlur').style.animation = 'fadeOut 0s reverse'
 function inputFocusedAnimation() {
-    if(document.id('buttonDescriptionBlur').style.animation.indexOf('reverse') != -1){
+    if(id('buttonDescriptionBlur').style.animation.indexOf('reverse') != -1){
         elementFadeIn('buttonDescriptionBlur')
-        document.id('buttonDescriptionImg').style.display = 'block'
+        id('buttonDescriptionImg').style.display = 'block'
         animation('buttonDescriptionImg', 'descriptionImgEnter .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
         setTimeout(function() {
             animation('buttonDescriptionImg', 'upNdown 2s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both')
@@ -96,18 +96,18 @@ function inputFocusedAnimation() {
     }
 }
 
-document.id('urlInput').addEventListener('blur', function() {
+id('urlInput').addEventListener('blur', function() {
     clearAnimations()
     inputBlurredTimer = setTimeout(function() {
         inputBlurredAnimation()
     }, 200)
 })
 function inputBlurredAnimation() {
-    if(document.id('buttonDescriptionBlur').style.animation.indexOf('reverse') == -1){
+    if(id('buttonDescriptionBlur').style.animation.indexOf('reverse') == -1){
         elementFadeOut('buttonDescriptionBlur')
         animation('buttonDescriptionImg', 'descriptionImgEnter .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) reverse both')
         setTimeout(function() {
-            document.id('buttonDescriptionImg').style.display = 'none'
+            id('buttonDescriptionImg').style.display = 'none'
         }, 500)
     }
 }
@@ -146,15 +146,15 @@ document.head.innerHTML += descriptionImgAnimation*/
 //-----------------------------------------------------------------------------------------------------------------
 
 if (localStorage.getItem('subUrlCheckbox') == 'checked') {
-    document.id('subUrlCheckbox').checked = true;
+    id('subUrlCheckbox').checked = true;
 } else {
-    document.id('subUrlCheckbox').checked = false;
+    id('subUrlCheckbox').checked = false;
 }
 
-document.id('subUrlCheckboxText').addEventListener('click', function() {
+id('subUrlCheckboxText').addEventListener('click', function() {
     subUrlPopupAnimation()
 })
-document.id('subUrlHelpButton').addEventListener('click', function() {
+id('subUrlHelpButton').addEventListener('click', function() {
     subUrlPopupAnimation()
 })
 function subUrlPopupAnimation() {
@@ -162,13 +162,13 @@ function subUrlPopupAnimation() {
     elementFadeIn('subUrlHelpPopup')
 }
 
-document.id('subUrlOkButton').addEventListener('click', function() {
+id('subUrlOkButton').addEventListener('click', function() {
     subUrlCloseAnimation()
-    document.id('subUrlCheckbox').checked = true;
+    id('subUrlCheckbox').checked = true;
 })
-document.id('subUrlNoButton').addEventListener('click', function() {
+id('subUrlNoButton').addEventListener('click', function() {
     subUrlCloseAnimation()
-    document.id('subUrlCheckbox').checked = false;
+    id('subUrlCheckbox').checked = false;
 })
 function subUrlCloseAnimation() {
     elementFadeOut('overlayFrame')
@@ -178,14 +178,14 @@ function subUrlCloseAnimation() {
 //-----------------------------------------------------------------------------------------------------------------
 
 //Simple Button
-document.id('simpleButton').addEventListener('click', function() {
+id('simpleButton').addEventListener('click', function() {
     if (sessionStorage.getItem('shortCode')) {
         simpleShortenSuccess(sessionStorage.getItem('shortCode'))
         sessionStorage.removeItem('shortCode')
         clearAnimations()
         inputBlurredAnimation()
     } else {
-        savedUrl = document.id('urlInput').value
+        savedUrl = id('urlInput').value
         if (validCheck(savedUrl) == 'valid') {
             loadingAnimation()
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=simpleShortenSuccess')
@@ -194,14 +194,14 @@ document.id('simpleButton').addEventListener('click', function() {
 
 })
 //Unique Button
-document.id('uniqueButton').addEventListener('click', function() {
+id('uniqueButton').addEventListener('click', function() {
     if (sessionStorage.getItem('shortCode')) {
         uniqueShortenSuccess(sessionStorage.getItem('shortCode'))
         sessionStorage.removeItem('shortCode')
         clearAnimations()
         inputBlurredAnimation()
     } else {
-        savedUrl = document.id('urlInput').value
+        savedUrl = id('urlInput').value
         if (validCheck(savedUrl) == 'valid') {
             loadingAnimation()
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=uniqueShortenSuccess')
@@ -209,10 +209,10 @@ document.id('uniqueButton').addEventListener('click', function() {
     }
 })
 //Instant (Enter)
-document.id('urlInput').addEventListener('keydown', function() {
+id('urlInput').addEventListener('keydown', function() {
     if (event.keyCode == 13) {
-        document.id('urlInput').blur()
-        savedUrl = document.id('urlInput').value
+        id('urlInput').blur()
+        savedUrl = id('urlInput').value
         if (validCheck(savedUrl) == 'valid') {
             loadingAnimation()
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=instantShortenSuccess')
@@ -231,7 +231,7 @@ if (getParameter('instantShorten')) {
 function simpleShortenSuccess(shortCode) {
     var shortenedUrl, copyCount
     animation('urlInput', 'GreenWindow 4s linear both')
-    if (document.id('subUrlCheckbox').checked == true) {
+    if (id('subUrlCheckbox').checked == true) {
         shortenedUrl = '단축.kr' + '/' + shortCode + ' (SubURL.at/#' + shortCode + ')'
         localStorage.setItem('subUrlCheckbox', 'checked')
     } else {
@@ -239,10 +239,10 @@ function simpleShortenSuccess(shortCode) {
         localStorage.setItem('subUrlCheckbox', 'unchecked')
     }
     editUrlInput(shortenedUrl)
-    document.id('urlInput').select()
+    id('urlInput').select()
     document.execCommand("copy");
-    document.id('urlInput').blur()
-    document.id('eraseInput').style.display = 'none'
+    id('urlInput').blur()
+    id('eraseInput').style.display = 'none'
     copyCount = 3
     copiedMessage()
 
@@ -255,7 +255,7 @@ function simpleShortenSuccess(shortCode) {
             }, 1000)
         } else {
             editUrlInput(shortenedUrl)
-            document.id('eraseInput').style.display = 'flex'
+            id('eraseInput').style.display = 'flex'
         }
     }
 }
@@ -320,27 +320,27 @@ function processLink(url) {
 }
 
 function editUrlInput(editText) {
-    document.id('urlInput').value = editText
+    id('urlInput').value = editText
 }
 
 function errorAnimation() {
-    if(document.id('buttonDescriptionBlur').style.animation.indexOf('reverse') == -1){
-        document.id('hiddenInput').focus()
+    if(id('buttonDescriptionBlur').style.animation.indexOf('reverse') == -1){
+        id('hiddenInput').focus()
     }
     inputBlurredAnimation()
     animation('urlInput', 'RedWindow 1.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both')
     editUrlInput('Wrong URL format')
-    document.id('eraseInput').style.display = 'none'
+    id('eraseInput').style.display = 'none'
     setTimeout(function() {
         editUrlInput(savedUrl)
-        document.id('urlInput').focus()
+        id('urlInput').focus()
     }, 1500)
 }
 
 function loadingAnimation() {
     animation('urlInput', 'YellowWindow 1.5s linear 10')
     editUrlInput('Loading....')
-    document.id('eraseInput').style.display = 'none'
+    id('eraseInput').style.display = 'none'
 }
 /*buttonFunctionAnimation = `
 <style>
@@ -447,10 +447,10 @@ document.head.innerHTML += buttonFunctionAnimation*/
 //-----------------------------------------------------------------------------------------------------------------
 
 if(getParameter('report')){
-    document.id('fullUrlText').innerHTML = decodeURIComponent(getParameter('report'))
-    document.id('fullUrlText').href = decodeURIComponent(getParameter('report'))
+    id('fullUrlText').innerHTML = decodeURIComponent(getParameter('report'))
+    id('fullUrlText').href = decodeURIComponent(getParameter('report'))
     //closeButton
-    document.id('closeText').addEventListener('click', function (){
+    id('closeText').addEventListener('click', function (){
         elementFadeOut('overlayFrame')
         elementFadeOut('reportFrame')
     })
