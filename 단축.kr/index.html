@@ -18,21 +18,21 @@
           <span id='logoText'>테스트중사용금지</span>
         </div>
       </div>
-      <div class='bottomCenterAlign noDrag' R='height:h(100*3/9)' style='z-index:10;'>
+      <div class='bottomCenterAlign' R='height:h(100*3/9)' style='z-index:10;'>
         <div R='width:h(260); height:h(100*1/2)'>
           <input id='urlInput' type='text' placeholder='단축할 링크를 입력해주세요 :)' autocomplete='off' R='width:w(90); margin:h(11) w(0); padding:h(21) w(10) h(20) w(5); border-radius:h(20); font-size:h(30);' style='background:whitesmoke; border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4);'>
           </input>
-          <img id='eraseInput' src='https://i.imgur.com/1GpPstZ.png' alt='입력지우기' R='transform:translate(w(44),h(1)); height:h(45); width:auto;' style='position:absolute; display:none; cursor:pointer;'>
+          <img id='eraseInput' src='https://i.imgur.com/1GpPstZ.png' alt='입력지우기' class='button' R='transform:translate(w(44),h(1)); height:h(45); width:auto;' style='position:absolute; display:none;'>
           </img>
         </div>
         <div R='height:h(100*1/2)' style='font-family:GmarketSansLight;'>
-          <div id='simpleButton' R='width:h(155); height:h(70); border-radius:h(70)' style='background:rgba(255,255,255,0.7); box-shadow:4px 4px 4px rgba(0,0,0,0.4); overflow:hidden; white-space:nowrap; cursor:pointer;'>
+          <div id='simpleButton' class='button' R='width:h(155); height:h(70); border-radius:h(70)' style='background:rgba(255,255,255,0.7); box-shadow:4px 4px 4px rgba(0,0,0,0.4); overflow:hidden; white-space:nowrap;'>
             <span id='simpleButtonText' R='font-size:h(33);' style='color:black;'>
             단축.kr
             </span>
           </div>
           <div R='width:h(30); height:h(70); margin:h(5); font-size:h(20);' style='color:white'>or</div>
-          <div id='uniqueButton' R='width:h(315); height:h(70); border-radius:h(70)' style='background:rgba(0,0,0,0.7); box-shadow:4px 4px 4px rgba(0,0,0,0.4); overflow:hidden; white-space:nowrap; cursor:pointer;'>
+          <div id='uniqueButton' class='button' R='width:h(315); height:h(70); border-radius:h(70)' style='background:rgba(0,0,0,0.7); box-shadow:4px 4px 4px rgba(0,0,0,0.4); overflow:hidden; white-space:nowrap;'>
             <span id='uniqueButtonText' R='font-size:h(33);' style='color:white;'>
             직접.작명하는.단축.kr
             </span>
@@ -40,13 +40,13 @@
         </div>
       </div>
       <div R='height:h(100*4/9); letter-spacing:h(-0.1)' style='color:white; text-align:center; font-family:GmarketSansLight;'>
-        <div class='noDrag' R='height:h(27.5);'>
+        <div R='height:h(27.5);'>
           <input id='subUrlCheckbox' type='checkbox' R='height:h(40); width:h(40);' checked>
           </input>
-          <b id='subUrlCheckboxText' R='font-size:h(35);' style='cursor:pointer;'>
+          <b id='subUrlCheckboxText' class='button' R='font-size:h(35);''>
             &nbsp;트위터용 subURL 함께 복사하기&nbsp;
           </b>
-          <img id='subUrlHelpButton' src='/resources/images/helpButton.svg' alt='트위터용 subURL 도움말' R='height:h(40); width:h(40);' style='cursor:pointer;'>
+          <img id='subUrlHelpButton' src='/resources/images/helpButton.svg' alt='트위터용 subURL 도움말' class='button' R='height:h(40); width:h(40);'>
           </img>
         </div>
         <div R='height:h(72.5)' class='bottomCenterAlign'>
@@ -83,12 +83,12 @@
         </b>
       </div>
       <div id='subUrlButtonFrame' R='height:h(100*2/10);' style='color:white;'>
-        <div id='subUrlOkButton' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d; cursor:pointer;'>
+        <div id='subUrlOkButton' class='button' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d;'>
           <b id='subUrlOkButtonText' R='font-size:h(30)'>
             네
           </b>
         </div>
-        <div id='subUrlNoButton' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d; cursor:pointer;'>
+        <div id='subUrlNoButton' class='button' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d;'>
           <b id='subUrlNoButtonText' R='font-size:h(30)'>
             아니오
           </b>
@@ -99,7 +99,7 @@
     <div id='reportFrame' R='width:h(50); height:h(80); max-width:w(100); max-height:w(160); border-radius:s(5)' style='display:none; position:absolute; z-index:15; background:rgba(255,255,255,0.7); font-family:GmarketSanslight;'>
       <div id='reportHeaderFrame' class='bottomCenterAlign' R='height:h(100*1.5/10);'>
         <b id='reportText' R='font-size:w(6);'>문제가 있는 사이트였나요?</b>
-        <span id='reportDescriptionText' onclick="window.open('https://open.kakao.com/o/spRmC1Rc')" R='margin:h(5); font-size:w(4);' style='cursor:pointer; text-decoration:underline;'>여기를 눌러 신고해주세요. 확인 후 차단하겠습니다!</span>
+        <span id='reportDescriptionText' onclick="window.open('https://open.kakao.com/o/spRmC1Rc')" class='button' R='margin:h(5); font-size:w(4);' style='text-decoration:underline;'>여기를 눌러 신고해주세요. 확인 후 차단하겠습니다!</span>
       </div>
       <div id='adFrame' R='height:h(100*5.5/10)'>
         <img src='/resources/images/adPlace.svg' alt='단축.kr logo' R='width:s(90); height:s(90);'></img>
@@ -113,7 +113,7 @@
         </div>
       </div>
       <div id='closeFrame' R='height:h(100*1/10)'>
-        <b id='closeText' class='noDrag' R='font-size:w(4);' style='cursor:pointer; text-decoration:underline;'>나만의 단축 링크 만들기</b>
+        <b id='closeText' class='button' R='font-size:w(4);' style='text-decoration:underline;'>나만의 단축 링크 만들기</b>
       </div>
     </div>
 
