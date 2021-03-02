@@ -440,7 +440,7 @@ function loadingAnimation() {
       color:#DF7401;
     }
   }
-</style>
+</style>a
 `
 document.head.innerHTML += buttonFunctionAnimation*/
 
