@@ -22,7 +22,7 @@ function setTranslations(){
         elementBeingChecked = everyElementOnPage[i]
         hasTranslation = elementBeingChecked.getAttribute('translateOf')
         if(hasTranslation){
-            document.getElementById(hasTranslation).innerHTML = elementBeingChecked.innerHTML
+            id(hasTranslation).innerHTML = elementBeingChecked.innerHTML
             elementBeingChecked.innerHTML = ''
             elementBeingChecked.removeAttribute('translateOf')
         }
@@ -34,12 +34,12 @@ function importHTML(frameId,htmlSource) {
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4) {
-            document.getElementById(frameId).style.display = 'flex'
+            id(frameId).style.display = 'flex'
             if (this.status == 200) {
-                document.getElementById(frameId).innerHTML += this.responseText;
+                id(frameId).innerHTML += this.responseText;
             }
             if (this.status == 404) {
-                document.getElementById(frameId).innerHTML = "Page not found.";
+                id(frameId).innerHTML = "Page not found.";
             }
         }
     };
@@ -76,14 +76,14 @@ function getParameter(name) {
 }
 
 function animation(element,animationStyle){
-    targetElement = document.getElementById(element)
+    targetElement = id(element)
     targetElement.style.animation = ''
     void targetElement.offsetWidth;
     targetElement.style.animation = animationStyle
 }
 
 function id(elementId){
-    return document.getElementById(elementId)
+    return getElementById(elementId)
 }
 
 function pickRandom(array) {
@@ -95,14 +95,14 @@ String.prototype.replaceAll = function replaceAlltext(search, replace) { return 
 
 function elementFadeIn(elementId) {
     animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
-    document.getElementById(elementId).style.display = 'flex'
+    id(elementId).style.display = 'flex'
     resizeResponsiveElements()
 }
 
 function elementFadeOut(elementId) {
     animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) reverse both')
     setTimeout(function(){
-        document.getElementById(elementId).style.display = 'none'
+        id(elementId).style.display = 'none'
     },500)
 }
 
