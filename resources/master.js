@@ -4,28 +4,34 @@ String.prototype.replaceAll = function replaceAlltext(search, replace) { return 
 
 //Also for IE. Why IE... Why...
 function setStyle(elementNumber, declaration) {
-  var filtered, styleName, value, splitted;
-  declaration = declaration.split(' ').join('')
-  filtersemicolon()
-  function filtersemicolon(){
-    filtered = declaration.split(';;').join(';')
-    if(filtered != declaration){
-      declaration = filtered
-      filtersemicolon()
+    var filtered, styleName, value, splitted;
+    declaration = declaration.split(' ').join('')
+    filtersemicolon()
+    function filtersemicolon(){
+        filtered = declaration.split(';;').join(';')
+        if(filtered != declaration){
+            declaration = filtered
+            filtersemicolon()
+        }
     }
-  }
-  if (declaration.charAt(declaration.length-1)==';'){
-    declaration = declaration.slice(0, -1);
-  }
-  if (declaration.charAt(0)==';'){
-    declaration = declaration.slice(1);
-  }
-  splitted = declaration.split(';');
-  for (var i=0; i < splitted.length; i++) {
-     styleName = splitted[i].split(':')[0];
-     value = splitted[i].split(':')[1];
-     eval("document.getElementsByTagName('*')[" + elementNumber + "].style." + styleName + "='" + value + "'");
-  }
+    if (declaration.charAt(declaration.length-1)==';'){
+        declaration = declaration.slice(0, -1);
+    }
+    if (declaration.charAt(0)==';'){
+        declaration = declaration.slice(1);
+    }
+    splitted = declaration.split(';');
+    for (var i=0; i < splitted.length; i++) {
+        styleName = splitted[i].split(':')[0];
+        value = splitted[i].split(':')[1];
+        eval("document.getElementsByTagName('*')[" + elementNumber + "].style." + styleRename(styleName) + "='" + value + "'");
+    }
+    function styleRename(s){
+        for(var exp=/-([a-z])/; 
+            exp.test(s); 
+            s=s.replace(exp,RegExp.$1.toUpperCase()));
+        return s;
+    }
 }
 
 function resizeResponsiveElements(){
