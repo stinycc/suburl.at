@@ -11,9 +11,90 @@
     <script src='master.js'></script>
   </head>
   <body>
-    <div id='shortenerImportFrame' style='display:none; position:absolute;'></div>
-    <div id='overlayFrame' style='display:none; position:absolute; z-index:10; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'></div>
-    <script src='index.js'></script>
+    <div style='position:absolute; background:linear-gradient(135deg,#39a86c,#3284bf);'>
+    </div>
+    <div style='position:absolute;'>
+      <div R='height:h(100*2/9);'>
+        <div class='topCenterAlign noDrag' R='font-size:h(50);' style='color:white; font-family:GmarketSansBold; text-shadow:2px 2px 4px rgba(0,0,0,0.4);'>
+          <span id='logoText'>테스트중사용금지</span>
+        </div>
+      </div>
+      <div class='bottomCenterAlign noDrag' R='height:h(100*3/9)' style='z-index:10;'>
+        <div R='width:h(260); height:h(100*1/2)'>
+          <input id='urlInput' type='text' placeholder='단축할 링크를 입력해주세요 :)' autocomplete='off' R='width:w(90); margin:h(11) w(0); padding:h(21) w(10) h(20) w(5); border-radius:h(20); font-size:h(30);' style='background:whitesmoke; border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4);'>
+          </input>
+          <img id='eraseInput' src='https://i.imgur.com/1GpPstZ.png' alt='입력지우기' R='transform:translate(w(44),h(1)); height:h(45); width:auto;' style='position:absolute; display:none; cursor:pointer;'>
+          </img>
+        </div>
+        <div R='height:h(100*1/2)' style='font-family:GmarketSansLight;'>
+          <div id='simpleButton' R='width:h(155); height:h(70); border-radius:h(70)' style='background:rgba(255,255,255,0.7); box-shadow:4px 4px 4px rgba(0,0,0,0.4); overflow:hidden; white-space:nowrap; cursor:pointer;'>
+            <span id='simpleButtonText' R='font-size:h(33);' style='color:black;'>
+            단축.kr
+            </span>
+          </div>
+          <div R='width:h(30); height:h(70); margin:h(5); font-size:h(20);' style='color:white'>or</div>
+          <div id='uniqueButton' R='width:h(315); height:h(70); border-radius:h(70)' style='background:rgba(0,0,0,0.7); box-shadow:4px 4px 4px rgba(0,0,0,0.4); overflow:hidden; white-space:nowrap; cursor:pointer;'>
+            <span id='uniqueButtonText' R='font-size:h(33);' style='color:white;'>
+            직접.작명하는.단축.kr
+            </span>
+          </div>
+        </div>
+      </div>
+      <div R='height:h(100*4/9); letter-spacing:h(-0.1)' style='color:white; text-align:center; font-family:GmarketSansLight;'>
+        <div class='noDrag' R='height:h(27.5);'>
+          <input id='subUrlCheckbox' type='checkbox' R='height:h(40); width:h(40);' checked>
+          </input>
+          <b id='subUrlCheckboxText' R='font-size:h(35);' style='cursor:pointer;'>
+            &nbsp;트위터용 subURL 함께 복사하기&nbsp;
+          </b>
+          <img id='subUrlHelpButton' src='/resources/images/helpButton.svg' alt='트위터용 subURL 도움말' R='height:h(40); width:h(40);' style='cursor:pointer;'>
+          </img>
+        </div>
+        <div R='height:h(72.5)' class='bottomCenterAlign'>
+          <div R='height:h(20);'>
+            <b id='clickForTipsText' R='font-size:h(50)'>
+            ↓ 즉석 단축방법 ↓
+            </b>
+          </div>
+          <div id='tipsTextFrame' R='height:h(20);'>
+            <span R='font-size:h(75)' style='font-family:GmarketSansBold'>단축.kr/</span>
+            <span R='font-size:h(50)'>(https://)www.LongLink.com/Example</span>
+          </div>
+        </div>
+        <img id='buttonDescriptionImg' src='/resources/images/buttonDescriptionKorean.svg' alt="깔끔하게 '단축.kr'을 사용하거나 개성있는 링크를 작명하세요" class='noDrag' R='height:h(31); top:0;' style='display:none; position:absolute; z-index:10;'>
+        </img>
+      </div>
+    </div>
+    <div id='buttonDescriptionBlur' style='display:none; position:absolute; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
+    </div>
+    <div id='subUrlHelpPopup' R='width:s(90); height:s(90); max-width:h(45); max-height:h(45); border-radius:s(4);' style='display:none; position:absolute; z-index:15; background:rgba(255,255,255,0.7); font-family:GmarketSansLight;'>
+      <div id='subUrlTextFrame' R='height:h(100*6.5/10);'>
+        <div id='subUrlHelpTextFrame' R='width:w(85); font-size:h(6.5);'>
+          <span id='subUrlHelpText'>
+            한글로 표현된 '단축.kr'은 상대에게 단축링크임을 확실하게 전달할 수 있다는 점에서 큰 의의를 갖습니다.
+            하지만 안타깝게도 트위터를 포함한 극소수의 플랫폼에서 영어 링크만을 할 수 있게 설정해놓은 경우가 있어 주의가 필요합니다.
+            따라서 트위터에서는 영어로 되어있는 서브링크를 함께 발급받아 같이 게시하거나 단축링크를 영어로 작명하여 사용하는 것을 추천드립니다.
+          </span>
+        </div>
+      </div>
+      <div id='subUrlAskTextFrame' R='height:h(100*1.5/10);'>
+        <b id='subUrlAskText' R='font-size:h(40)'>
+          서브링크를 함께 발급해드릴까요?
+        </b>
+      </div>
+      <div id='subUrlButtonFrame' R='height:h(100*2/10);' style='color:white;'>
+        <div id='subUrlOkButton' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d; cursor:pointer;'>
+          <b id='subUrlOkButtonText' R='font-size:h(30)'>
+            네
+          </b>
+        </div>
+        <div id='subUrlNoButton' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d; cursor:pointer;'>
+          <b id='subUrlNoButtonText' R='font-size:h(30)'>
+            아니오
+          </b>
+        </div>
+      </div>
+    </div>
   </body>
   <footer>
   </footer>
