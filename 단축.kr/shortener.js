@@ -441,6 +441,7 @@ function loadingAnimation() {
 </style>
 `
 document.head.innerHTML += buttonFunctionAnimation*/
+//-----------------------------------------------------------------------------------------------------------------
 
 document.getElementById('fullUrlText').innerHTML = decodeURIComponent(getParameter('report'))
 document.getElementById('fullUrlText').href = decodeURIComponent(getParameter('report'))
