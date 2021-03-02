@@ -3,7 +3,7 @@
 String.prototype.replaceAll = function replaceAlltext(search, replace) { return this.split(search).join(replace); }
 
 //Also for IE. Why IE... Why...
-function setStyle(elementId, declaration) {
+function setStyle(elementNumber, declaration) {
   var filtered, styleName, value, splitted;
   declaration = declaration.split(' ').join('')
   filtersemicolon()
@@ -24,7 +24,7 @@ function setStyle(elementId, declaration) {
   for (var i=0; i < splitted.length; i++) {
      styleName = splitted[i].split(':')[0];
      value = splitted[i].split(':')[1];
-     eval("document.getElementById('" + elementId + "').style." + styleName + "='" + value + "'");
+     eval("document.getElementsByTagName('*')[" + elementNumber + "'].style." + styleName + "='" + value + "'");
   }
 }
 
@@ -46,7 +46,7 @@ function resizeResponsiveElements(){
             sReplaced = hReplaced.split('s(').join('calc(' + parentShort + 'px*')
             lReplaced = sReplaced.split('l(').join('calc(' + parentLong + 'px*')
             everythingReplaced = lReplaced
-            setStyle(elementBeingChecked.id, everythingReplaced)
+            setStyle(i, everythingReplaced)
         }
     }
 }
