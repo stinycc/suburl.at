@@ -449,11 +449,6 @@ if(getParameter('report')){
     elementFadeIn('overlayFrame')
     elementFadeIn('reportFrame')
     id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report'))
-    setTimeout(function(){
-        if(id('fullLinkText').scrollWidth >  id('fullLinkText').offsetWidth){
-            id('fullLinkText').innerHTML = (decodeURIComponent(getParameter('report')).split('//'))[1]
-        }
-    },100)
     id('fullLinkButton').addEventListener('click', function (){
         window.open(decodeURIComponent(getParameter('report')))
     })
@@ -461,6 +456,23 @@ if(getParameter('report')){
         elementFadeOut('overlayFrame')
         elementFadeOut('reportFrame')
     })
+    setTimeout(function(){
+        if(id('fullLinkText').scrollWidth >  id('fullLinkText').offsetWidth){
+            animation('fullLinkText','fullLinkSlide ' + id('fullLinkText').scrollWidth/id('fullLinkText').offsetWidth*2 + 's infinite')
+        }
+    },100)
+`
+<style>
+  @keyframes fullLinkSlide {
+    0%{
+      transform:translateX(0%)
+    }
+    100%{
+      transform:translateX(-100%)
+    }
+  }
+</style>
+`
 }
 
 //-----------------------------------------------------------------------------------------------------------------
