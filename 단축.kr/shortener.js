@@ -449,9 +449,11 @@ if(getParameter('report')){
     elementFadeIn('overlayFrame')
     elementFadeIn('reportFrame')
     id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report'))
-    if(id('fullLinkText').scrollWidth >  id('fullLinkText').offsetWidth){
-        id('fullLinkText').innerHTML = (decodeURIComponent(getParameter('report')).split('//'))[1]
-    }
+    setTimeout(function(){
+        if(id('fullLinkText').scrollWidth >  id('fullLinkText').offsetWidth){
+            id('fullLinkText').innerHTML = (decodeURIComponent(getParameter('report')).split('//'))[1]
+        }
+    },100)
     id('fullLinkButton').addEventListener('click', function (){
         window.open(decodeURIComponent(getParameter('report')))
     })
