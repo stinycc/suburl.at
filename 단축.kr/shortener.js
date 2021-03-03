@@ -479,7 +479,7 @@ if(getParameter('report')){
         }
     },250)
     function fullLinkAnimation(){
-        alert('11')
+        animation('fullLinkText','fullLinkSlide 0s reverse')
         setTimeout(function(){
             animation('fullLinkText','fullLinkSlide ' + (id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth)/100 + 's linear both')
         },1000)
