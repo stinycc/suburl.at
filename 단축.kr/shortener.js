@@ -459,7 +459,7 @@ if(getParameter('report')){
     setTimeout(function(){
         if(id('fullLinkTextFrame').scrollWidth > id('fullLinkTextFrame').offsetWidth){
             id('fullLinkTextFrame').className = 'leftCenterAlign'
-            animation('fullLinkText','fullLinkSlide ' + (id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth)/2/80*100 + 's linear infinite')  
+            animation('fullLinkText','fullLinkSlide ' + (id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth)/100/80*100 + 's linear infinite')  
         }
         fullLinkTextAnimation = `
         <style>
