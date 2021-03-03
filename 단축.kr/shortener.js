@@ -460,7 +460,7 @@ if(getParameter('report')){
         if(id('fullLinkTextFrame').scrollWidth > id('fullLinkTextFrame').offsetWidth){
             id('fullLinkTextFrame').className = 'leftCenterAlign'
             fullLinkAnimation()
-            setInterval(function{
+            setInterval(function(){
                 fullLinkAnimation()
             },(id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
             fullLinkTextAnimation = `
@@ -479,7 +479,7 @@ if(getParameter('report')){
         }
     },250)
     function fullLinkAnimation(){
-        setTimeout(function{
+        setTimeout(function(){
             animation('fullLinkText','fullLinkSlide ' + (id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth)/100 + 's linear both')
         },1000)
     }
