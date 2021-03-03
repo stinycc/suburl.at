@@ -66,18 +66,9 @@
                       longLink += '.' + splitedUrl[i]
                   }
               }
-              location.href = '/단축kr/?instantShorten=' + encodeURIComponent(longLink)
+              location.href = '/단축.kr/?instantShorten=' + encodeURIComponent(longLink)
           }else{
               getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/getURL?shortCode=' + urlAnchor)
-          }
-      }else if(getParameter('report')){
-          importHTML('shortenerImportFrame','/shortener/shortener.html')
-          function shortenerLoaded(){
-              importHTML('overlayFrame','/report/report.html')
-          }
-          function reportLoaded(){
-              importJS('/shortener/shortener.js')
-              importJS('/report/report.js')
           }
       }else{
           //temporarily moved up front
