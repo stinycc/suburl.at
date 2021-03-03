@@ -461,20 +461,20 @@ if(getParameter('report')){
             id('fullLinkTextFrame').className = 'leftCenterAlign'
             animation('fullLinkText','fullLinkSlide ' + (id('fullLinkTextFrame').scrollWidth / id('fullLinkTextFrame').offsetWidth * 7) + 's linear infinite')  
         }
+        fullLinkTextAnimation = `
+        <style>
+          @keyframes fullLinkSlide {
+            0%,5%{
+              transform:translateX(0%)
+            }
+            95%,100%{
+              transform:translateX(-` + String(id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth) + `px)
+            }
+          }
+        </style>
+        `
+        document.head.innerHTML += fullLinkTextAnimation
     },100)
-fullLinkTextAnimation = `
-<style>
-  @keyframes fullLinkSlide {
-    0%,5%{
-      transform:translateX(0%)
-    }
-    95%,100%{
-      transform:translateX(-` + String(id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth) + `px)
-    }
-  }
-</style>
-`
-document.head.innerHTML += fullLinkTextAnimation
 }
 
 //-----------------------------------------------------------------------------------------------------------------
