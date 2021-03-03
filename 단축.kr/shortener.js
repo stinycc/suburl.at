@@ -21,7 +21,7 @@ function uniqueButtonTextAnimation() {
         }, 150)
     }, 3500)
 }
-/*TextAnimation = `
+TextAnimation = `
 <style>
   @keyframes textIn {
     0% {
@@ -44,7 +44,7 @@ function uniqueButtonTextAnimation() {
   }
 <style>
 `
-document.head.innerHTML += TextAnimation*/
+document.head.innerHTML += TextAnimation
 Kor = ['널향한.내맘을.단축.kr','에쿱이만의.단축.kr','Got7.sTiny.link','JB.sTiny.link','셔누만의.단축.kr','투바투의.단축.kr','ITZY.sTiny.link','더보이즈만의.단축.kr','아스트로의.단축.kr','UP10TION.sTiny.link','캐럿만의.단축.kr','Carat.sTiny.link','아미만의.단축.kr','MonstaX.sTiny.link','몬스타엑스의.단축.kr','IU.sTiny.link','지은이의.단축.kr','아이유.단축.kr','엑소.단축.kr','Jungkookie.sTiny.link','버논만의.단축.kr','방탄.사진용.단축.kr','내가.작명한.단축.kr'];
 Eng = []
 Chi = []
@@ -117,7 +117,7 @@ function clearAnimations() {
     clearTimeout(inputBlurredTimer)
     clearTimeout(inputFocusedTimer)
 }
-/*descriptionImgAnimation = `
+descriptionImgAnimation = `
 <style>
   @keyframes descriptionImgEnter {
     0% {
@@ -141,7 +141,7 @@ function clearAnimations() {
   }
 </style>
 `
-document.head.innerHTML += descriptionImgAnimation*/
+document.head.innerHTML += descriptionImgAnimation
 
 //-----------------------------------------------------------------------------------------------------------------
 
@@ -342,7 +342,7 @@ function loadingAnimation() {
     editUrlInput('Loading....')
     id('eraseInput').style.display = 'none'
 }
-/*buttonFunctionAnimation = `
+buttonFunctionAnimation = `
 <style>
   @keyframes GreenWindow {
     0%{
@@ -442,7 +442,7 @@ function loadingAnimation() {
   }
 </style>a
 `
-document.head.innerHTML += buttonFunctionAnimation*/
+document.head.innerHTML += buttonFunctionAnimation
 
 //-----------------------------------------------------------------------------------------------------------------
 
