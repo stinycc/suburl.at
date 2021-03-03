@@ -450,7 +450,7 @@ if(getParameter('report')){
     elementFadeIn('reportFrame')
     id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report'))
     id('fullLinkButton').addEventListener('click', function (){
-        window.open = decodeURIComponent(getParameter('report'))
+        window.open(decodeURIComponent(getParameter('report')))
     })
     //closeButton
     id('closeText').addEventListener('click', function (){
