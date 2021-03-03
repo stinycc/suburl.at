@@ -459,7 +459,7 @@ if(getParameter('report')){
     setTimeout(function(){
         if(id('fullLinkTextFrame').scrollWidth >  id('fullLinkTextFrame').offsetWidth){
             id('fullLinkTextFrame').class = 'leftCenterAlign'
-            animation('fullLinkText','fullLinkSlide ' + id('fullLinkText').scrollWidth/id('fullLinkText').offsetWidth*5 + 's infinite')  
+            animation('fullLinkText','fullLinkSlide ' + (id('fullLinkText').scrollWidth-id('fullLinkText').offsetWidth)/id('fullLinkText').offsetWidth*5 + 's infinite')  
         }
     },100)
 fullLinkTextAnimation = `
