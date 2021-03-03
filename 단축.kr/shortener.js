@@ -260,7 +260,7 @@ function simpleShortenSuccess(shortCode) {
 }
 
 function uniqueShortenSuccess(shortCode) {
-    location.href = '/단축kr/library?shortCode=' + shortCode
+    location.href = '/단축.kr/library?shortCode=' + shortCode
 }
 
 function instantShortenSuccess(shortCode) {
