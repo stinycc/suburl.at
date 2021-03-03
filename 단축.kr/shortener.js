@@ -464,10 +464,10 @@ if(getParameter('report')){
         fullLinkTextAnimation = `
         <style>
           @keyframes fullLinkSlide {
-            0%,5%{
+            0%,10%{
               transform:translateX(0%)
             }
-            95%,100%{
+            90%,100%{
               transform:translateX(-` + String(id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth) + `px)
             }
           }
