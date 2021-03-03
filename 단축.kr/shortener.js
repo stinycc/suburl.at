@@ -469,7 +469,7 @@ fullLinkTextAnimation = `
       transform:translateX(0%)
     }
     95%,100%{
-      transform:translateX(-` + (id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth * 10)) / id('fullLinkTextFrame').offsetWidth * 10) + `%)
+      transform:translateX(-` + id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth + `%)
     }
   }
 </style>
