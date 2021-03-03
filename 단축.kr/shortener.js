@@ -457,11 +457,11 @@ if(getParameter('report')){
         elementFadeOut('reportFrame')
     })
     setTimeout(function(){
-        if(id('fullLinkText').scrollWidth >  id('fullLinkText').offsetWidth){
+        if(id('fullLinkTextFrame').scrollWidth >  id('fullLinkTextFrame').offsetWidth){
             animation('fullLinkText','fullLinkSlide ' + id('fullLinkText').scrollWidth/id('fullLinkText').offsetWidth*2 + 's infinite')
         }
     },100)
-`
+fullLinkTextAnimation = `
 <style>
   @keyframes fullLinkSlide {
     0%{
@@ -473,6 +473,7 @@ if(getParameter('report')){
   }
 </style>
 `
+document.head.innerHTML += fullLinkTextAnimation
 }
 
 //-----------------------------------------------------------------------------------------------------------------
