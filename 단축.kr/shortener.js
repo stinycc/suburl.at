@@ -448,8 +448,10 @@ document.head.innerHTML += buttonFunctionAnimation
 if(getParameter('report')){
     elementFadeIn('overlayFrame')
     elementFadeIn('reportFrame')
-    id('fullUrlText').innerHTML = decodeURIComponent(getParameter('report'))
-    id('fullUrlText').href = decodeURIComponent(getParameter('report'))
+    id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report'))
+    id('fullLinkButton').addEventListener('click', function (){
+        window.open = decodeURIComponent(getParameter('report'))
+    })
     //closeButton
     id('closeText').addEventListener('click', function (){
         elementFadeOut('overlayFrame')
