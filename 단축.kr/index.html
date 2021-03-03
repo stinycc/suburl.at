@@ -7,7 +7,7 @@
     <meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0'> 
     <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
   </head>
-  <body>
+  <body style='font-family:GmarketSansLight;'>
     <link href='/resources/master.css' rel='stylesheet' type='text/css'>
     <script src='/resources/master.js'></script>
     <script>
@@ -76,7 +76,7 @@
           <input id='urlInput' type='text' placeholder='단축할 링크를 입력해주세요 :)' autocomplete='off' R='width:w(90); margin:h(11) w(0); padding:h(21) w(10) h(20) w(5); border-radius:h(20); font-size:h(30);' style='background:whitesmoke; border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4);'>
           <img id='eraseInput' src='/resources/images/trashIcon.svg' alt='입력지우기' class='button' R='transform:translate(w(44),h(1)); height:h(45); width:auto;' style='position:absolute; display:none;'>
         </div>
-        <div R='height:h(100*1/2)' style='font-family:GmarketSansLight;'>
+        <div R='height:h(100*1/2)'>
           <div id='simpleButton' class='button' R='width:h(155); height:h(70); border-radius:h(70)' style='background:rgba(255,255,255,0.7); box-shadow:4px 4px 4px rgba(0,0,0,0.4); overflow:hidden; white-space:nowrap;'>
             <span id='simpleButtonText' R='font-size:h(33);' style='color:black;'>
             단축.kr
@@ -90,7 +90,7 @@
           </div>
         </div>
       </div>
-      <div R='height:h(100*4/9); letter-spacing:h(-0.1)' style='color:white; text-align:center; font-family:GmarketSansLight;'>
+      <div R='height:h(100*4/9); letter-spacing:h(-0.1)' style='color:white; text-align:center;'>
         <div R='height:h(27.5);'>
           <input id='subUrlCheckbox' type='checkbox' R='height:h(40); width:h(40);'>
           <b id='subUrlCheckboxText' class='button' R='font-size:h(35);'>
@@ -118,7 +118,7 @@
     <div id='overlayFrame' style='display:none; position:absolute; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
     </div>
 
-    <div id='subUrlHelpPopup' R='width:s(90); height:s(90); max-width:h(45); max-height:h(45); border-radius:s(4);' style='display:none; position:absolute; z-index:15; background:rgba(255,255,255,0.9); font-family:GmarketSansLight;'>
+    <div id='subUrlHelpPopup' R='width:s(90); height:s(90); max-width:h(45); max-height:h(45); border-radius:s(4);' style='display:none; position:absolute; z-index:15; background:rgba(255,255,255,0.9);'>
       <div R='height:h(100*7/10);'>
         <div R='width:w(85); font-size:h(6.5);'>
           <span id='subUrlHelpText' R='padding-top:h(3);'>
@@ -147,7 +147,7 @@
       </div>
     </div>
 
-    <div id='reportFrame' R='width:h(50); height:h(80); max-width:w(100); max-height:w(160); border-radius:s(5)' style='display:none; position:absolute; z-index:15; background:rgba(255,255,255,0.9); font-family:GmarketSanslight;'>
+    <div id='reportFrame' R='width:h(50); height:h(80); max-width:w(100); max-height:w(160); border-radius:s(5)' style='display:none; position:absolute; z-index:15; background:rgba(255,255,255,0.9);'>
       <div class='bottomCenterAlign' R='height:h(100*1.5/10);'>
         <b id='reportText' R='font-size:w(6);'>문제가 있는 사이트였나요?</b>
         <span id='reportDescriptionText' onclick="window.open('https://open.kakao.com/o/spRmC1Rc')" class='button' R='margin:h(5); font-size:w(4);' style='text-decoration:underline;'>여기를 눌러 신고해주세요. 확인 후 차단하겠습니다!</span>
