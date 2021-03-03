@@ -446,9 +446,9 @@ document.head.innerHTML += buttonFunctionAnimation
 //-----------------------------------------------------------------------------------------------------------------
 
 if(getParameter('report')){
+    id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report'))
     elementFadeIn('overlayFrame')
     elementFadeIn('reportFrame')
-    id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report'))
     id('fullLinkButton').addEventListener('click', function (){
         window.open(decodeURIComponent(getParameter('report')))
     })
@@ -459,22 +459,30 @@ if(getParameter('report')){
     setTimeout(function(){
         if(id('fullLinkTextFrame').scrollWidth > id('fullLinkTextFrame').offsetWidth){
             id('fullLinkTextFrame').className = 'leftCenterAlign'
-            animation('fullLinkText','fullLinkSlide ' + (id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth)/100/80*100 + 's linear infinite')  
+            fullLinkAnimation()
+            setInterval(function{
+                fullLinkAnimation()
+            },(id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
+            fullLinkTextAnimation = `
+            <style>
+              @keyframes fullLinkSlide {
+                0%{
+                  transform:translateX(0%)
+                }
+                100%{
+                  transform:translateX(-` + String(id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth) + `px)
+                }
+              }
+            </style>
+            `
+            document.head.innerHTML += fullLinkTextAnimation
         }
-        fullLinkTextAnimation = `
-        <style>
-          @keyframes fullLinkSlide {
-            0%,5%{
-              transform:translateX(0%)
-            }
-            85%,100%{
-              transform:translateX(-` + String(id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth) + `px)
-            }
-          }
-        </style>
-        `
-        document.head.innerHTML += fullLinkTextAnimation
     },250)
+    function fullLinkAnimation(){
+        setTimeout(function{
+            animation('fullLinkText','fullLinkSlide ' + (id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth)/100 + 's linear both')
+        },1000)
+    }
 }
 
 //-----------------------------------------------------------------------------------------------------------------
