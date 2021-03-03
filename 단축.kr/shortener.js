@@ -457,12 +457,12 @@ if(getParameter('report')){
         elementFadeOut('reportFrame')
     })
     setTimeout(function(){
-        if(id('fullLinkTextFrame').scrollWidth > id('fullLinkTextFrame').offsetWidth){
+        if(id('fullLinkText').offsetWidth > id('fullLinkTextFrame').offsetWidth){
             id('fullLinkTextFrame').className = 'leftCenterAlign'
             fullLinkAnimation()
             setInterval(function(){
                 fullLinkAnimation()
-            },(id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
+            },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
             fullLinkTextAnimation = `
             <style>
               @keyframes fullLinkSlide {
@@ -470,7 +470,7 @@ if(getParameter('report')){
                   transform:translateX(0%)
                 }
                 100%{
-                  transform:translateX(-` + String(id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth) + `px)
+                  transform:translateX(-` + String(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) + `px)
                 }
               }
             </style>
@@ -480,7 +480,7 @@ if(getParameter('report')){
     },250)
     function fullLinkAnimation(){
         setTimeout(function(){
-            animation('fullLinkText','fullLinkSlide ' + (id('fullLinkTextFrame').scrollWidth - id('fullLinkTextFrame').offsetWidth)/100 + 's linear both')
+            animation('fullLinkText','fullLinkSlide ' + (id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth)/100 + 's linear both')
         },1000)
     }
 }
