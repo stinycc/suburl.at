@@ -191,7 +191,6 @@ id('simpleButton').addEventListener('click', function() {
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=simpleShortenSuccess')
         }
     }
-
 })
 //Unique Button
 id('uniqueButton').addEventListener('click', function() {
