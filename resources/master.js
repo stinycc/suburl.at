@@ -1,39 +1,3 @@
-//For browsers that doesn't support replaceAll function (Samsung browser)
-//!! Prioritized to use .split().join() because this function doesn't work on FUCKIN IE !!
-String.prototype.replaceAll = function replaceAlltext(search, replace) { return this.split(search).join(replace); }
-
-//Also for IE. Why IE... Why...
-function setStyle(elementNumber, declaration) {
-    var filtered, styleName, value, splitted;
-    declaration = declaration.split(' ').join('')
-    filtersemicolon()
-    function filtersemicolon(){
-        filtered = declaration.split(';;').join(';')
-        if(filtered != declaration){
-            declaration = filtered
-            filtersemicolon()
-        }
-    }
-    if (declaration.charAt(declaration.length-1)==';'){
-        declaration = declaration.slice(0, -1);
-    }
-    if (declaration.charAt(0)==';'){
-        declaration = declaration.slice(1);
-    }
-    splitted = declaration.split(';');
-    for (var i=0; i < splitted.length; i++) {
-        styleName = splitted[i].split(':')[0];
-        value = splitted[i].split(':')[1];
-        eval("document.getElementsByTagName('*')[" + elementNumber + "].style." + styleRename(styleName) + "='" + value + "'");
-    }
-    function styleRename(s){
-        for(var exp=/-([a-z])/; 
-            exp.test(s); 
-            s=s.replace(exp,RegExp.$1.toUpperCase()));
-        return s;
-    }
-}
-
 function resizeResponsiveElements(){
     var everyElementOnPage,elementBeingChecked,responsiveStyle,parentWidth,parentHeight,parentShort,parentLong
     everyElementOnPage = document.getElementsByTagName('*')
@@ -46,13 +10,7 @@ function resizeResponsiveElements(){
             if(parentWidth < parentHeight){parentShort = parentWidth}else{parentShort = parentHeight}
             if(parentWidth > parentHeight){parentLong = parentWidth}else{parentLong = parentHeight}
             responsiveStyle = ';' + responsiveStyle + ';'
-            var wReplaced, hReplaced, sReplaced, lReplaced, everythingReplaced
-            wReplaced = responsiveStyle.split('w(').join('calc(' + parentWidth + 'px*')
-            hReplaced = wReplaced.split('h(').join('calc(' + parentHeight + 'px*')
-            sReplaced = hReplaced.split('s(').join('calc(' + parentShort + 'px*')
-            lReplaced = sReplaced.split('l(').join('calc(' + parentLong + 'px*')
-            everythingReplaced = lReplaced
-            setStyle(i, everythingReplaced)
+            elementBeingChecked.style = elementBeingChecked.style.cssText + responsiveStyle.replaceAll('w(', 'calc(' + parentWidth + 'px*').replaceAll('h(', 'calc(' + parentHeight + 'px*').replaceAll('s(', 'calc(' + parentShort + 'px*').replaceAll('l(', 'calc(' + parentLong + 'px*')
         }
     }
 }
@@ -131,6 +89,9 @@ function id(elementId){
 function pickRandom(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
+
+//For browsers that doesn't support replaceAll function
+String.prototype.replaceAll = function replaceAlltext(search, replace) { return this.split(search).join(replace); }
 
 function elementFadeIn(elementId) {
     animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
