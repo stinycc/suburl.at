@@ -457,8 +457,8 @@ if(getParameter('report')){
         elementFadeOut('reportFrame')
     })
     setTimeout(function(){
-        if(id('fullLinkTextFrame').scrollWidth >  id('fullLinkTextFrame').offsetWidth){
-            id('fullLinkTextFrame').class = 'leftCenterAlign'
+        if(id('fullLinkTextFrame').scrollWidth > id('fullLinkTextFrame').offsetWidth){
+            id('fullLinkTextFrame').className = 'leftCenterAlign'
             animation('fullLinkText','fullLinkSlide ' + (id('fullLinkTextFrame').scrollWidth / id('fullLinkTextFrame').offsetWidth * 10) + 's linear infinite')  
         }
     },100)
