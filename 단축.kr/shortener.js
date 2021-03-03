@@ -455,7 +455,6 @@ if(getParameter('report')){
     id('fullLinkButton').addEventListener('click', function (){
         window.open(decodeURIComponent(getParameter('report')))
     })
-    //closeButton
     id('closeText').addEventListener('click', function (){
         elementFadeOut('overlayFrame')
         elementFadeOut('reportFrame')
