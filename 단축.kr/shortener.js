@@ -449,7 +449,7 @@ if(getParameter('report')){
     elementFadeIn('overlayFrame')
     elementFadeIn('reportFrame')
     id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report'))
-    if(id('fullLinkText').scrollwidth >=  id('fullLinkText').offsetWidth){
+    if(id('fullLinkText').scrollWidth >=  id('fullLinkText').offsetWidth){
         id('fullLinkText').innerHTML = (decodeURIComponent(getParameter('report')).split('//'))[1]
     }
     id('fullLinkButton').addEventListener('click', function (){
