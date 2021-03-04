@@ -451,7 +451,6 @@ if(getParameter('report')){
     }else{
         id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report')).replaceAll(' ','+').slice(0,123) + '...'
     }
-    alert(decodeURIComponent(getParameter('report')).replaceAll(' ','+'))
     elementFadeIn('overlayFrame')
     elementFadeIn('reportFrame')
     id('fullLinkButton').addEventListener('click', function (){
