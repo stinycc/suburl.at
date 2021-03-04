@@ -466,21 +466,9 @@ if(getParameter('report')){
             id('fullLinkTextFrame').className = 'leftCenterAlign'
             fullLinkAnimation()
             fullLinkInterval = setInterval(function(){
+                clearTimeout(fullLinkTimer)
                 fullLinkAnimation()
             },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
-            fullLinkTextAnimation = `
-            <style>
-              @keyframes fullLinkSlide {
-                0%{
-                  transform:translateX(0%)
-                }
-                100%{
-                  transform:translateX(-` + String(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) + `px)
-                }
-              }
-            </style>
-            `
-            document.head.innerHTML += fullLinkTextAnimation
         }
     },250)
     function fullLinkAnimation(){
@@ -498,5 +486,18 @@ if(getParameter('report')){
         },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
     })
 }
+fullLinkTextAnimation = `
+<style>
+  @keyframes fullLinkSlide {
+    0%{
+      transform:translateX(0%)
+    }
+    100%{
+      transform:translateX(-` + String(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) + `px)
+    }
+  }
+</style>
+`
+document.head.innerHTML += fullLinkTextAnimation
 
 //-----------------------------------------------------------------------------------------------------------------
