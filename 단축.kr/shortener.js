@@ -446,7 +446,8 @@ document.head.innerHTML += buttonFunctionAnimation
 //-----------------------------------------------------------------------------------------------------------------
 
 if(getParameter('report')){
-    id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report'))
+    id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report')).replaceAll(' ','+')
+    alert(decodeURIComponent(getParameter('report')).replaceAll(' ','+'))
     elementFadeIn('overlayFrame')
     elementFadeIn('reportFrame')
     id('fullLinkButton').addEventListener('click', function (){
