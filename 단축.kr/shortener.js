@@ -461,29 +461,31 @@ if(getParameter('report')){
         elementFadeOut('reportFrame')
     })
     var fullLinkInterval, fullLinkTimer
-    setTimeout(function(){
-        if(id('fullLinkText').offsetWidth > id('fullLinkTextFrame').offsetWidth){
-            id('fullLinkTextFrame').className = 'leftCenterAlign'
-            fullLinkAnimation()
-            fullLinkInterval = setInterval(function(){
-                clearTimeout(fullLinkTimer)
+    function setfullLinkTextAnimation(){
+        setTimeout(function(){
+            if(id('fullLinkText').offsetWidth > id('fullLinkTextFrame').offsetWidth){
+                id('fullLinkTextFrame').className = 'leftCenterAlign'
                 fullLinkAnimation()
-            },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
-        }
-        fullLinkTextAnimation = `
-        <style>
-          @keyframes fullLinkSlide {
-            0%{
-              transform:translateX(0%)
+                fullLinkInterval = setInterval(function(){
+                    clearTimeout(fullLinkTimer)
+                    fullLinkAnimation()
+                },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
             }
-            100%{
-              transform:translateX(-` + String(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) + `px)
-            }
-          }
-        </style>
-        `
-        document.head.innerHTML += fullLinkTextAnimation
-    },250)
+            fullLinkTextAnimation = `
+            <style>
+              @keyframes fullLinkSlide {
+                0%{
+                  transform:translateX(0%)
+                }
+                100%{
+                  transform:translateX(-` + String(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) + `px)
+                }
+              }
+            </style>
+            `
+            document.head.innerHTML += fullLinkTextAnimation
+        },250)
+    }
     function fullLinkAnimation(){
         animation('fullLinkText','fullLinkSlide 0s reverse')
         fullLinkTimer = setTimeout(function(){
@@ -498,6 +500,11 @@ if(getParameter('report')){
             clearTimeout(fullLinkTimer)
             fullLinkAnimation()
         },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
+    })
+    window.addEventListener('resize', function (){
+        clearInterval(fullLinkInterval)
+        clearTimeout(fullLinkTimer)
+        setfullLinkTextAnimation()
     })
 }
 
