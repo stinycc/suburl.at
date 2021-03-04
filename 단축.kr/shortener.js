@@ -460,36 +460,43 @@ if(getParameter('report')){
         elementFadeOut('overlayFrame')
         elementFadeOut('reportFrame')
     })
-    window.addEventListener('focus', function (){
-        setTimeout(function(){
-            if(id('fullLinkText').offsetWidth > id('fullLinkTextFrame').offsetWidth){
-                id('fullLinkTextFrame').className = 'leftCenterAlign'
+    var fullLinkInterval, fullLinkTimer
+    setTimeout(function(){
+        if(id('fullLinkText').offsetWidth > id('fullLinkTextFrame').offsetWidth){
+            id('fullLinkTextFrame').className = 'leftCenterAlign'
+            fullLinkAnimation()
+            fullLinkInterval = setInterval(function(){
                 fullLinkAnimation()
-                setInterval(function(){
-                    fullLinkAnimation()
-                },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
-                fullLinkTextAnimation = `
-                <style>
-                  @keyframes fullLinkSlide {
-                    0%{
-                      transform:translateX(0%)
-                    }
-                    100%{
-                      transform:translateX(-` + String(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) + `px)
-                    }
-                  }
-                </style>
-                `
-                document.head.innerHTML += fullLinkTextAnimation
-            }
-        },250)
-    })
+            },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
+            fullLinkTextAnimation = `
+            <style>
+              @keyframes fullLinkSlide {
+                0%{
+                  transform:translateX(0%)
+                }
+                100%{
+                  transform:translateX(-` + String(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) + `px)
+                }
+              }
+            </style>
+            `
+            document.head.innerHTML += fullLinkTextAnimation
+        }
+    },250)
     function fullLinkAnimation(){
         animation('fullLinkText','fullLinkSlide 0s reverse')
-        setTimeout(function(){
+        fullLinkTimer = setTimeout(function(){
             animation('fullLinkText','fullLinkSlide ' + (id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth)/100 + 's linear both')
         },1000)
     }
+    window.addEventListener('focus', function (){
+        clearInterval(fullLinkInterval)
+        clearTimeout(fullLinkTimer)
+        fullLinkAnimation()
+        fullLinkInterval = setInterval(function(){
+            fullLinkAnimation()
+        },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
+    })
 }
 
 //-----------------------------------------------------------------------------------------------------------------
