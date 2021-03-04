@@ -461,6 +461,7 @@ if(getParameter('report')){
         elementFadeOut('reportFrame')
     })
     var fullLinkInterval, fullLinkTimer
+    setfullLinkTextAnimation()
     function setfullLinkTextAnimation(){
         setTimeout(function(){
             if(id('fullLinkText').offsetWidth > id('fullLinkTextFrame').offsetWidth){
