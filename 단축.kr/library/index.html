@@ -1,2 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>단축.kr - 라이브러리</title>
+    <meta name='description' content="단축링크를 작명할 수 있는 공간입니다. 나 또는 나의 커뮤니티를 대표할 수 있는 단축링크를 만들어보세요!">
+    <meta name='theme-color' content='#151515'>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0'> 
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <link href='/master.css' rel='stylesheet' type='text/css'>
+    <script src='/master.js'></script>
+  </head>
+  <body>
+    <div R='max-width:s(100);'>
+      <div R='height:h(25); font-size:w(2.5);'>
+        <div class='bottomCenterAlign' R='height:h(20); text-align:right;'>
+          <b class='noDrag' style='cursor:pointer'>← 뒤로가기</b>
+        </div>
+        <div R='height:h(80); font-size:w(2.25);'>
+          <span>
+            <b>베타 서비스</b> 기간이라 UI가 이쁘게 디자인되어 있지 못한점 양해부탁드립니다. 🙏😉<br/><br/>
+            1. 영어, 한글뿐만 아니라 특수문자 이모티콘등 다양한 기호들을 사용해보세요.<br/>
+            2. 하나로길게이어작명하는것보다는 점으로.분리하는.게.가독성이.더.좋습니다<br/>
+            3. 트위터에서는 영어링크만 클릭해 이동할 수 있습니다. 따라서 영어링크를 추천드려요
+          </span>
+        </div>
+      </div>
+      <div R='height:h(20); font-size:w(2.5);'>
+        <div R='height:h(50)'>
+          <input id='단축krInput' type='text' placeholder="'길동이만의.단축.kr'로 작명해보세요!" R='width:w(60); height:h(90); padding:0; margin:0; font-size:w(3); text-align:right;'>
+          </input>
+          <span R='width:w(30)' style='text-align:center'>
+            .단축.kr/3x4MP1e
+          </span>
+        </div>
+        <div R='height:h(50)'>
+          <div id='단축krButton' class='noDrag' R='width:w(90)' style='background:dimgray; color:white; cursor:pointer'>
+            발급받기
+          </div>
+        </div>
+      </div>
+      <div R='height:h(20); font-size:w(2.5);'>
+        <div R='height:h(50)'>
+          <input id='sTinyLinkInput' type='text' placeholder="'GilDong.sTiny.link'로 작명해보세요!" R='width:w(60); height:h(90); padding:0; margin:0; font-size:w(3); text-align:right;'>
+          </input>
+          <span R='width:w(30)' style='text-align:center'>
+            .sTiny.link/3x4MP1e
+          </span>
+        </div>
+        <div R='height:h(50)'>
+          <div id='sTinyLinkButton' class='noDrag' R='width:w(90)' style='background:dimgray; color:white; cursor:pointer'>
+            발급받기
+          </div>
+        </div>
+      </div>
+      <div R='height:h(30); width:w(90); font-size:w(2.5); margin:h(2.5) w(5)'>
+        <div R='height:h(33); font-size:w(2.5);'>
+          <input id='result' type='text' placeholder="결과물이 이곳에 출력됩니다" R='width:w(99); height:h(100); padding:0; margin:0; border:0; font-size:w(4); text-align:center;' style='background:whitesmoke'>
+          </input>
+        </div>
+        <div id='testLink' class='noDrag' R='width:w(99); height:h(33);' style='background:#555555; color:white; cursor:pointer'>
+          <b R='font-size:w(3.5);'>위의 링크로 테스트 이동해보기</b>
+          <span R='font-size:w(2.5);'>('/'를 포함한 몇 문자는 사용이 불가합니다 잘 작동하는지 테스트해보세요!)</span>
+        </div>
+        <div class='noDrag' R='height:h(33); font-size:w(3.5);' style='color:white'>
+          <div id='onlyMain' R='width:w(33);' style='background:dimgray; cursor:pointer'>
+            메인링크만 복사
+          </div>
+          <div id='withSub' R='width:w(33);' style='background:gray; cursor:pointer'>
+            서브링크 함께복사
+          </div>
+          <div id='tweet' R='width:w(33);' style='background:dimgray; cursor:pointer'>
+            트위터로 이동
+          </div>
+        </div>
+      </div>
+    </div>
+<script>
+  resizeResponsiveElements()
+  window.addEventListener("resize", function() {
+    resizeResponsiveElements()
+  })
+  if(getParameter('shortCode')){
+    shortCode = getParameter('shortCode')
+    addSubUrl = ' (subURL.at/#' + shortCode + ')'
+  }else{
+    alert('단축할 링크에 대한 기록이 존재하지 않습니다. 메인페이지로 이동할게요! 뾰로롱~')
+    location.href = '/단축kr'
+  }
+  document.getElementById('단축krInput').addEventListener("input", function() {
+    document.getElementById('단축krInput').value = document.getElementById('단축krInput').value.replaceAll(' ','.')
+    document.getElementById('단축krInput').value = document.getElementById('단축krInput').value.replaceAll('..','.')
+  })
+  document.getElementById('sTinyLinkInput').addEventListener("input", function() {
+    document.getElementById('sTinyLinkInput').value = document.getElementById('sTinyLinkInput').value.replaceAll(' ','.')
+    document.getElementById('sTinyLinkInput').value = document.getElementById('sTinyLinkInput').value.replaceAll('..','.')
+  })
+  document.getElementById('단축krButton').addEventListener("click", function() {
+    if(document.getElementById('단축krInput').value){
+      document.getElementById('result').value = (document.getElementById('단축krInput').value + '.단축.kr/' + shortCode).replaceAll('..','.')
+    }else{
+      document.getElementById('result').value = '단축.kr/' + shortCode
+    }
+  })
+  document.getElementById('sTinyLinkButton').addEventListener("click", function() {
+    if(document.getElementById('sTinyLinkInput').value){
+      document.getElementById('result').value = (document.getElementById('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.')
+    }else{
+      document.getElementById('result').value = 'sTiny.link/' + shortCode
+    }
+  })
+  document.getElementById('testLink').addEventListener("click", function() {
+    window.open('http://' + document.getElementById('result').value.replaceAll(addSubUrl,''))
+  })
+  document.getElementById('onlyMain').addEventListener("click", function() {
+    if(document.getElementById('result').value){
+      document.getElementById('result').value = document.getElementById('result').value.replaceAll(addSubUrl,'')
+      document.getElementById('result').select()
+      document.execCommand("copy");
+      document.getElementById('result').blur()
+      alert('복사됐어요!')
+    }else{
+      alert('발급된 단축링크가 없습니다.')
+    }
+  })
+  document.getElementById('withSub').addEventListener("click", function() {
+    if(document.getElementById('result').value){
+      document.getElementById('result').value = document.getElementById('result').value.replaceAll(addSubUrl,'')
+      document.getElementById('result').value += addSubUrl
+      document.getElementById('result').select()
+      document.execCommand("copy");
+      document.getElementById('result').blur()
+      alert('복사됐어요!')
+    }else{
+      alert('발급된 단축링크가 없습니다.')
+    }
+  })
+  document.getElementById('tweet').addEventListener("click", function() {
+    if(document.getElementById('result').value){
+      document.getElementById('result').select()
+      document.execCommand("copy");
+      document.getElementById('result').blur()
+      window.open('https://twitter.com/intent/tweet?text=%F0%9F%93%8E ' + document.getElementById('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
+    }else{
+      alert('발급된 단축링크가 없습니다.')
+    }
+  })
+</script>
 
-hello
+  </body>
+  <footer>
+  </footer>
+  <style>
+    @font-face {
+      font-family: 'GmarketSansLight';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      transform: translateY(100%);
+    }
+    @font-face {
+      font-family: 'GmarketSansBold';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+</html>
