@@ -446,7 +446,11 @@ document.head.innerHTML += buttonFunctionAnimation
 //-----------------------------------------------------------------------------------------------------------------
 
 if(getParameter('report')){
-    id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report')).replaceAll(' ','+')
+    if(decodeURIComponent(getParameter('report')).length < 125){
+        id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report')).replaceAll(' ','+')
+    }else{
+        id('fullLinkText').innerHTML = decodeURIComponent(getParameter('report')).replaceAll(' ','+').slice(0,123) + '...'
+    }
     alert(decodeURIComponent(getParameter('report')).replaceAll(' ','+'))
     elementFadeIn('overlayFrame')
     elementFadeIn('reportFrame')
