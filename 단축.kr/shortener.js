@@ -456,25 +456,26 @@ if(getParameter('report')){
     id('fullLinkButton').addEventListener('click', function (){
         window.open(decodeURIComponent(getParameter('report')))
     })
-    id('closeText').addEventListener('click', function (){
-        elementFadeOut('overlayFrame')
-        elementFadeOut('reportFrame')
-    })
+
     var fullLinkInterval, fullLinkTimer1, fullLinkTimer2
     setTimeout(function(){
         setfullLinkTextAnimation()
     },500)
     window.addEventListener('focus', function (){
-        clearTimeout(fullLinkTimer1)
-        clearInterval(fullLinkInterval)
-        clearTimeout(fullLinkTimer2)
-        setfullLinkTextAnimation()
+        if(id('reportFrame').style.display != 'none'){
+            clearTimeout(fullLinkTimer1)
+            clearInterval(fullLinkInterval)
+            clearTimeout(fullLinkTimer2)
+            setfullLinkTextAnimation()
+        }
     })
     window.addEventListener('resize', function (){
-        clearTimeout(fullLinkTimer1)
-        clearInterval(fullLinkInterval)
-        clearTimeout(fullLinkTimer2)
-        setfullLinkTextAnimation()
+        if(id('reportFrame').style.display != 'none'){
+            clearTimeout(fullLinkTimer1)
+            clearInterval(fullLinkInterval)
+            clearTimeout(fullLinkTimer2)
+            setfullLinkTextAnimation()
+        }
     })
     function setfullLinkTextAnimation(){
         if(id('fullLinkText').offsetWidth > id('fullLinkTextFrame').offsetWidth){
@@ -505,6 +506,14 @@ if(getParameter('report')){
             animation('fullLinkText','fullLinkSlide ' + (id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth)/100 + 's linear both')
         },1000)
     }
+    
+    id('closeText').addEventListener('click', function (){
+        elementFadeOut('overlayFrame')
+        elementFadeOut('reportFrame')
+        clearTimeout(fullLinkTimer1)
+        clearInterval(fullLinkInterval)
+        clearTimeout(fullLinkTimer2)
+    })
 }
 
 //-----------------------------------------------------------------------------------------------------------------
