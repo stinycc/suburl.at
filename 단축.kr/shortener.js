@@ -495,6 +495,7 @@ if(getParameter('report')){
         clearTimeout(fullLinkTimer)
         fullLinkAnimation()
         fullLinkInterval = setInterval(function(){
+            clearTimeout(fullLinkTimer)
             fullLinkAnimation()
         },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
     })
