@@ -496,11 +496,7 @@ if(getParameter('report')){
     window.addEventListener('focus', function (){
         clearInterval(fullLinkInterval)
         clearTimeout(fullLinkTimer)
-        fullLinkAnimation()
-        fullLinkInterval = setInterval(function(){
-            clearTimeout(fullLinkTimer)
-            fullLinkAnimation()
-        },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
+        setfullLinkTextAnimation()
     })
     window.addEventListener('resize', function (){
         clearInterval(fullLinkInterval)
