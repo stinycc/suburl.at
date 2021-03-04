@@ -460,28 +460,30 @@ if(getParameter('report')){
         elementFadeOut('overlayFrame')
         elementFadeOut('reportFrame')
     })
-    setTimeout(function(){
-        if(id('fullLinkText').offsetWidth > id('fullLinkTextFrame').offsetWidth){
-            id('fullLinkTextFrame').className = 'leftCenterAlign'
-            fullLinkAnimation()
-            setInterval(function(){
+    window.addEventListener('focus', function (){
+        setTimeout(function(){
+            if(id('fullLinkText').offsetWidth > id('fullLinkTextFrame').offsetWidth){
+                id('fullLinkTextFrame').className = 'leftCenterAlign'
                 fullLinkAnimation()
-            },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
-            fullLinkTextAnimation = `
-            <style>
-              @keyframes fullLinkSlide {
-                0%{
-                  transform:translateX(0%)
-                }
-                100%{
-                  transform:translateX(-` + String(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) + `px)
-                }
-              }
-            </style>
-            `
-            document.head.innerHTML += fullLinkTextAnimation
-        }
-    },250)
+                setInterval(function(){
+                    fullLinkAnimation()
+                },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
+                fullLinkTextAnimation = `
+                <style>
+                  @keyframes fullLinkSlide {
+                    0%{
+                      transform:translateX(0%)
+                    }
+                    100%{
+                      transform:translateX(-` + String(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) + `px)
+                    }
+                  }
+                </style>
+                `
+                document.head.innerHTML += fullLinkTextAnimation
+            }
+        },250)
+    })
     function fullLinkAnimation(){
         animation('fullLinkText','fullLinkSlide 0s reverse')
         setTimeout(function(){
