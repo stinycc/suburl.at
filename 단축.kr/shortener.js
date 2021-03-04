@@ -5,6 +5,11 @@ window.addEventListener("resize", function() {
 function horizontalVerticalSetting() {
     if (document.body.offsetWidth > document.body.offsetHeight && document.body.offsetHeight < 450) {
         id('shortenerFrame').setAttribute('R', 'height:h(90)')
+        if(document.body.offsetHeight < 320){
+           id('shortenerFrame').setAttribute('R', 'height:h(100)')
+           document.body.setAttribute('class', 'topCenterAlign')
+           document.html.setAttribute('class', 'topCenterAlign')
+        }
     } else {
         id('shortenerFrame').setAttribute('R', 'height:h(50)')
     }
