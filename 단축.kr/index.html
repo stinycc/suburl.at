@@ -120,6 +120,7 @@
       </div>
       <div class='bottomCenterAlign' R='height:h(100*3/9)' style='z-index:10;'>
         <div R='width:h(260); height:h(100*1/2)'>
+          <input id='hiddenInput' type='text' R='z-index:-5; font-size:0.001px; padding:0; margin:0;' style='position:absolute; opacity:0;'>
           <input id='urlInput' type='text' placeholder='단축할 링크를 입력해주세요 :)' autocomplete='off' R='width:w(90); margin:h(11) w(0); padding:h(21) w(10) h(20) w(5); border-radius:h(20); font-size:h(30);' style='background:whitesmoke; border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4);'>
           <img id='eraseInput' src='/resources/images/trashIcon.svg' alt='입력지우기' class='button' R='transform:translate(w(44),h(1)); height:h(45); width:auto;' style='position:absolute; display:none;'>
         </div>
@@ -214,8 +215,6 @@
         <b id='closeText' R='font-size:h(25);' style='text-decoration:underline;'>나만의 단축링크 만들기</b>
       </div>
     </div>
-
-    <input id='hiddenInput' type='text' R='z-index:-5; font-size:0.001px; padding:0; margin:0;' style='opacity:0;'>
     
     <script src='shortener.js'></script>
   </body>
