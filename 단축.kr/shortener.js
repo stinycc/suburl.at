@@ -461,38 +461,9 @@ if(getParameter('report')){
         elementFadeOut('reportFrame')
     })
     var fullLinkInterval, fullLinkTimer1, fullLinkTimer2
-    setfullLinkTextAnimation()
-    function setfullLinkTextAnimation(){
-        fullLinkTimer1 = setTimeout(function(){
-            if(id('fullLinkText').offsetWidth > id('fullLinkTextFrame').offsetWidth){
-                id('fullLinkTextFrame').className = 'leftCenterAlign'
-                fullLinkAnimation()
-                fullLinkInterval = setInterval(function(){
-                    clearTimeout(fullLinkTimer2)
-                    fullLinkAnimation()
-                },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
-            }
-            fullLinkTextAnimation = `
-            <style>
-              @keyframes fullLinkSlide {
-                0%{
-                  transform:translateX(0%)
-                }
-                100%{
-                  transform:translateX(-` + String(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) + `px)
-                }
-              }
-            </style>
-            `
-            document.head.innerHTML += fullLinkTextAnimation
-        },250)
-    }
-    function fullLinkAnimation(){
-        animation('fullLinkText','fullLinkSlide 0s reverse')
-        fullLinkTimer2 = setTimeout(function(){
-            animation('fullLinkText','fullLinkSlide ' + (id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth)/100 + 's linear both')
-        },1000)
-    }
+    setTimeout(function(){
+        setfullLinkTextAnimation()
+    },500)
     window.addEventListener('focus', function (){
         clearTimeout(fullLinkTimer1)
         clearInterval(fullLinkInterval)
@@ -505,6 +476,35 @@ if(getParameter('report')){
         clearTimeout(fullLinkTimer2)
         setfullLinkTextAnimation()
     })
+    function setfullLinkTextAnimation(){
+        if(id('fullLinkText').offsetWidth > id('fullLinkTextFrame').offsetWidth){
+            id('fullLinkTextFrame').className = 'leftCenterAlign'
+            fullLinkAnimation()
+            fullLinkInterval = setInterval(function(){
+                clearTimeout(fullLinkTimer2)
+                fullLinkAnimation()
+            },(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) * 10 + 3000)
+        }
+        fullLinkTextAnimation = `
+        <style>
+          @keyframes fullLinkSlide {
+            0%{
+              transform:translateX(0%)
+            }
+            100%{
+              transform:translateX(-` + String(id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth) + `px)
+            }
+          }
+        </style>
+        `
+        document.head.innerHTML += fullLinkTextAnimation
+    }
+    function fullLinkAnimation(){
+        animation('fullLinkText','fullLinkSlide 0s reverse')
+        fullLinkTimer2 = setTimeout(function(){
+            animation('fullLinkText','fullLinkSlide ' + (id('fullLinkText').offsetWidth - id('fullLinkTextFrame').offsetWidth)/100 + 's linear both')
+        },1000)
+    }
 }
 
 //-----------------------------------------------------------------------------------------------------------------
