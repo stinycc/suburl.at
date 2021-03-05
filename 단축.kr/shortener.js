@@ -449,7 +449,7 @@ buttonFunctionAnimation = `
       color:#DF7401;
     }
   }
-</style>a
+</style>
 `
 document.head.innerHTML += buttonFunctionAnimation
 
