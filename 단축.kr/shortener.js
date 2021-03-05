@@ -51,7 +51,7 @@ TextAnimation = `
 <style>
 `
 document.head.innerHTML += TextAnimation
-Kor = ['레베럽의.단축.kr','손스윗.단축.kr','지은이만의.단축.kr','아미만의.단축.kr','정꾸기.단축.kr','스밍.총공용.단축.kr','사진.공유용.단축.kr','내.맘대로.단축.kr'];
+Kor = ['캐럿만의.단축.kr','원스의.단축.kr','레베럽의.단축.kr','손스윗.단축.kr','지은이만의.단축.kr','아미만의.단축.kr','정꾸기.단축.kr','스밍.총공용.단축.kr','사진.공유용.단축.kr','내.맘대로.단축.kr'];
 Eng = ['EXO-L.sTiny.link','ATINY.sTiny.link','MooMoo.sTiny.link','STAY.sTiny.link','NCTzen.sTiny.link','MIDZY.sTiny.link','M.O.A.sTiny.link','iGOT7.sTiny.link''Monbebe.sTiny.link','BLINK.sTiny.link','ONCE.sTiny.link','Carat.sTiny.link''Dino.sTiny.link','Vernon.sTiny.link','Mr.Boo.sTiny.link''Myungho.sTiny.link','Gyu.sTiny.link','DK.sTiny.link','Woozi.sTiny.link','Wonwoo.sTiny.link','Hoshi.sTiny.link','MoonJun.sTiny.link','Shua.sTiny.link','Hannie.sTiny.link','Asparagus.sTiny.link''Binnie.sTiny.link','KAIKAI.sTiny.link','Yeonjunie.sTiny.link','Hyunie.sTiny.link','Beomie.sTiny.link','ReVeluv.sTiny.link','Yeriana.sTiny.link','Malgeumi.sTiny.link','Wen-laf.sTiny.link','Kkangseul.sTiny.link','Baechu.sTiny.link','IU.sTiny.link','ARMY.sTiny.link','BTS.sTiny.link','Junkookie.sTiny.link','moonchild.sTiny.link','Hobi.sTiny.link','ChimChim.sTiny.link','TaeTae.sTiny.link','WWHandsome.sTiny.link','lilMeowMeow.sTiny.link']
 Chi = []
 Jap = []
