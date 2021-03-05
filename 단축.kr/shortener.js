@@ -282,11 +282,13 @@ function validCheck(url) {
     //empty?
     if (url == '') {
         errorAnimation()
+        alert('1')
         return
     }
     //valid host name?
     if (url.split('.').length == 1) {
         errorAnimation()
+        alert('2')
         return
     }
     
@@ -303,6 +305,7 @@ function validCheck(url) {
     if (urlHostname.indexOf('단축.kr') != -1) {
         alert('이미 단축된 링크같습니다!')
         errorAnimation()
+        alert('3')
         return
     }
     //valid characters?
@@ -310,6 +313,7 @@ function validCheck(url) {
     for (var i = 0; i < unvalidCharacter.length; i++) {
         if (urlHostname.indexOf(i) != -1) {
             errorAnimation()
+            alert('4')
             return
         }
     }
