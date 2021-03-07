@@ -192,8 +192,8 @@ id('simpleButton').addEventListener('click', function() {
         inputBlurredAnimation()
     } else {
         savedUrl = id('urlInput').value
-        if (OtherShorteningToolsCheck(savedUrl) != 'New'){
-            simpleShortenSuccess(OtherShorteningToolsCheck(savedUrl))
+        if (otherShorteningToolsCheck(savedUrl) != 'New'){
+            simpleShortenSuccess(otherShorteningToolsCheck(savedUrl))
         } else if (validCheck(savedUrl) == 'valid') {
             loadingAnimation()
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=simpleShortenSuccess')
@@ -209,8 +209,8 @@ id('uniqueButton').addEventListener('click', function() {
         inputBlurredAnimation()
     } else {
         savedUrl = id('urlInput').value
-        if (OtherShorteningToolsCheck(savedUrl) != 'New'){
-            uniqueShortenSuccess(OtherShorteningToolsCheck(savedUrl))
+        if (otherShorteningToolsCheck(savedUrl) != 'New'){
+            uniqueShortenSuccess(otherShorteningToolsCheck(savedUrl))
         } else if (validCheck(savedUrl) == 'valid') {
             loadingAnimation()
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=uniqueShortenSuccess')
@@ -222,8 +222,8 @@ id('urlInput').addEventListener('keydown', function() {
     if (event.keyCode == 13) {
         id('urlInput').blur()
         savedUrl = id('urlInput').value
-        if (OtherShorteningToolsCheck(savedUrl) != 'New'){
-            instantShortenSuccess(OtherShorteningToolsCheck(savedUrl))
+        if (otherShorteningToolsCheck(savedUrl) != 'New'){
+            instantShortenSuccess(otherShorteningToolsCheck(savedUrl))
         } else if (validCheck(savedUrl) == 'valid') {
             loadingAnimation()
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=instantShortenSuccess')
@@ -233,8 +233,8 @@ id('urlInput').addEventListener('keydown', function() {
 //Instant (Parameter)
 if (getParameter('instantShorten')) {
     savedUrl = decodeURIComponent(getParameter('instantShorten'))
-    if (OtherShorteningToolsCheck(savedUrl) != 'New'){
-        instantShortenSuccess(OtherShorteningToolsCheck(savedUrl))
+    if (otherShorteningToolsCheck(savedUrl) != 'New'){
+        instantShortenSuccess(otherShorteningToolsCheck(savedUrl))
     } else if (validCheck(savedUrl) == 'valid') {
         loadingAnimation()
         getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=instantShortenSuccess')
@@ -285,17 +285,16 @@ function instantShortenSuccess(shortCode) {
     inputFocusedAnimation()
 }
 
-function OtherShorteningToolsCheck(url) {
+function otherShorteningToolsCheck(url) {
     var protocolRemoved
     if (url.indexOf('://') != -1){
         protocolRemoved = (url.split('://'))[1]
     } else {
         protocolRemoved = url
     }
-    alert(protocolRemoved.indexOf(caseInsensitive('bit.ly/')))
-    if (protocolRemoved.indexOf(caseInsensitive('bit.ly/')) == 0) {
+    if (protocolRemoved.toLowerCase().indexOf('bit.ly/') == 0) {
         return protocolRemoved.replace(caseInsensitive('bit.ly/'),'b:')
-    } else if (protocolRemoved.indexOf(caseInsensitive('cutt.ly/')) == 0) {
+    } else if (protocolRemoved.toLowerCase().indexOf('cutt.ly/') == 0) {
         return protocolRemoved.replace(caseInsensitive('cutt.ly/'),'c:')
     } else {
         return 'New'
