@@ -292,6 +292,7 @@ function OtherShorteningToolsCheck(url) {
     } else {
         protocolRemoved = url
     }
+    alert(protocolRemoved.indexOf(caseInsensitive('bit.ly/')))
     if (protocolRemoved.indexOf(caseInsensitive('bit.ly/')) == 0) {
         return protocolRemoved.replace(caseInsensitive('bit.ly/'),'b:')
     } else if (protocolRemoved.indexOf(caseInsensitive('cutt.ly/')) == 0) {
