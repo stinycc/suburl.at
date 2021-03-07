@@ -294,7 +294,7 @@ function OtherShorteningToolsCheck(url) {
     }
     if (protocolRemoved.indexOf(caseInsensitive('bit.ly') == 0)) {
         protocolRemoved.replace(caseInsensitive('bit.ly'),'b:')
-    } else if (protocolRemoved.indexOf(caseInsensitive('cutt.ly')) == 0) {
+    } else if (protocolRemoved.indexOf(caseInsensitive('cutt.ly') == 0)) {
         protocolRemoved.replace(caseInsensitive('cutt.ly'),'c:')
     }
     function caseInsensitive(string) {
