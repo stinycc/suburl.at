@@ -192,7 +192,9 @@ id('simpleButton').addEventListener('click', function() {
         inputBlurredAnimation()
     } else {
         savedUrl = id('urlInput').value
-        if (validCheck(savedUrl) == 'valid') {
+        if (OtherShorteningToolsCheck(savedUrl) != 'New'){
+            simpleShortenSuccess(OtherShorteningToolsCheck(savedUrl))
+        } else if (validCheck(savedUrl) == 'valid') {
             loadingAnimation()
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=simpleShortenSuccess')
         }
@@ -207,7 +209,9 @@ id('uniqueButton').addEventListener('click', function() {
         inputBlurredAnimation()
     } else {
         savedUrl = id('urlInput').value
-        if (validCheck(savedUrl) == 'valid') {
+        if (OtherShorteningToolsCheck(savedUrl) != 'New'){
+            uniqueShortenSuccess(OtherShorteningToolsCheck(savedUrl))
+        } else if (validCheck(savedUrl) == 'valid') {
             loadingAnimation()
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=uniqueShortenSuccess')
         }
@@ -218,7 +222,9 @@ id('urlInput').addEventListener('keydown', function() {
     if (event.keyCode == 13) {
         id('urlInput').blur()
         savedUrl = id('urlInput').value
-        if (validCheck(savedUrl) == 'valid') {
+        if (OtherShorteningToolsCheck(savedUrl) != 'New'){
+            instantShortenSuccess(OtherShorteningToolsCheck(savedUrl))
+        } else if (validCheck(savedUrl) == 'valid') {
             loadingAnimation()
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=instantShortenSuccess')
         }
@@ -227,7 +233,9 @@ id('urlInput').addEventListener('keydown', function() {
 //Instant (Parameter)
 if (getParameter('instantShorten')) {
     savedUrl = decodeURIComponent(getParameter('instantShorten'))
-    if (validCheck(savedUrl) == 'valid') {
+    if (OtherShorteningToolsCheck(savedUrl) != 'New'){
+        instantShortenSuccess(OtherShorteningToolsCheck(savedUrl))
+    } else if (validCheck(savedUrl) == 'valid') {
         loadingAnimation()
         getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/setURL?longLink=' + processLink(savedUrl) + '&func=instantShortenSuccess')
     }
@@ -275,6 +283,15 @@ function instantShortenSuccess(shortCode) {
     editUrlInput('버튼을 선택해주세요')
     clearAnimations()
     inputFocusedAnimation()
+}
+
+function OtherShorteningToolsCheck(url) {
+    var protocolRemoved = (url.split('//'))[1].toLowerCase()
+    if (protocolRemoved.indexOf('bit.ly') == 0) {
+        protocolRemoved.replace('bitly','b:')
+    } else if (protocolRemoved.indexOf('cutt.ly') == 0) {
+        protocolRemoved.replace('cutt.ly','c:')
+    }
 }
 
 function validCheck(url) {
