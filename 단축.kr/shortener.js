@@ -286,11 +286,19 @@ function instantShortenSuccess(shortCode) {
 }
 
 function OtherShorteningToolsCheck(url) {
-    var protocolRemoved = (url.split('//'))[1].toLowerCase()
-    if (protocolRemoved.indexOf('bit.ly') == 0) {
-        protocolRemoved.replace('bitly','b:')
-    } else if (protocolRemoved.indexOf('cutt.ly') == 0) {
-        protocolRemoved.replace('cutt.ly','c:')
+    var protocolRemoved
+    if (url.indexOf('://') != -1){
+        protocolRemoved = (url.split('://'))[1]
+    } else {
+        protocolRemoved = url
+    }
+    if (protocolRemoved.indexOf(caseInsensitive('bit.ly') == 0) {
+        protocolRemoved.replace(caseInsensitive('bit.ly'),'b:')
+    } else if (protocolRemoved.indexOf(caseInsensitive('cutt.ly') == 0) {
+        protocolRemoved.replace(caseInsensitive('cutt.ly'),'c:')
+    }
+    function caseInsensitive(string) {
+        return RegExp(string,'ig')
     }
 }
 
@@ -335,7 +343,7 @@ function validCheck(url) {
 
 function processLink(url) {
     url = url.split(' ').join('')
-    if (url.indexOf('//') === -1) {
+    if (url.indexOf('://') == -1) {
         url = 'http://' + url
     }
     return encodeURIComponent(url)
