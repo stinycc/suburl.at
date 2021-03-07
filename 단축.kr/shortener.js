@@ -292,10 +292,10 @@ function OtherShorteningToolsCheck(url) {
     } else {
         protocolRemoved = url
     }
-    if (protocolRemoved.indexOf(caseInsensitive('bit.ly') == 0)) {
-        return protocolRemoved.replace(caseInsensitive('bit.ly'),'b:')
-    } else if (protocolRemoved.indexOf(caseInsensitive('cutt.ly') == 0)) {
-        return protocolRemoved.replace(caseInsensitive('cutt.ly'),'c:')
+    if (protocolRemoved.indexOf(caseInsensitive('bit.ly/') == 0)) {
+        return protocolRemoved.replace(caseInsensitive('bit.ly/'),'b:')
+    } else if (protocolRemoved.indexOf(caseInsensitive('cutt.ly/') == 0)) {
+        return protocolRemoved.replace(caseInsensitive('cutt.ly/'),'c:')
     } else {
         return 'New'
     }
