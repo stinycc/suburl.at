@@ -16,11 +16,11 @@
       urlAnchor = (location.href.split('#'))[1]
       if(urlAnchor){
           if((urlAnchor.split('b:'))[0] == ''){
-              longLink = urlAnchor.replace('b:','bit.ly/')
+              longLink = 'https://' + urlAnchor.replace('b:','bit.ly/')
               window.open(longLink)
               location.href = '?report=' + encodeURIComponent(longLink)
           }else if((urlAnchor.split('c:'))[0] == ''){
-              longLink = urlAnchor.replace('c:','cutt.ly/')
+              longLink = 'https://' + urlAnchor.replace('c:','cutt.ly/')
               window.open(longLink)
               location.href = '?report=' + encodeURIComponent(longLink)
           }else if(urlAnchor.indexOf('.') != -1){
