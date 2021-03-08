@@ -151,38 +151,6 @@ document.head.innerHTML += descriptionImgAnimation
 
 //-----------------------------------------------------------------------------------------------------------------
 
-if (localStorage.getItem('subUrlCheckbox') == 'checked') {
-    id('subUrlCheckbox').checked = true;
-} else {
-    id('subUrlCheckbox').checked = false;
-}
-
-id('subUrlCheckboxText').addEventListener('click', function() {
-    subUrlPopupAnimation()
-})
-id('subUrlHelpButton').addEventListener('click', function() {
-    subUrlPopupAnimation()
-})
-function subUrlPopupAnimation() {
-    elementFadeIn('overlayFrame')
-    elementFadeIn('subUrlHelpPopup')
-}
-
-id('subUrlOkButton').addEventListener('click', function() {
-    subUrlCloseAnimation()
-    id('subUrlCheckbox').checked = true;
-})
-id('subUrlNoButton').addEventListener('click', function() {
-    subUrlCloseAnimation()
-    id('subUrlCheckbox').checked = false;
-})
-function subUrlCloseAnimation() {
-    elementFadeOut('overlayFrame')
-    elementFadeOut('subUrlHelpPopup')
-}
-
-//-----------------------------------------------------------------------------------------------------------------
-
 //Simple Button
 id('simpleButton').addEventListener('click', function() {
     if (sessionStorage.getItem('shortCode')) {
