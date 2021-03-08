@@ -245,10 +245,10 @@ function simpleShortenSuccess(shortCode) {
     var shortenedUrl, copyCount
     animation('urlInput', 'GreenWindow 4s linear both')
     if (id('subUrlCheckbox').checked == true) {
-        shortenedUrl = '단축.kr' + '/' + shortCode + ' (SubURL.at/#' + shortCode + ')'
+        shortenedUrl = 'littl.cc' + '/' + shortCode + ' (SubURL.at/#' + shortCode + ')'
         localStorage.setItem('subUrlCheckbox', 'checked')
     } else {
-        shortenedUrl = '단축.kr' + '/' + shortCode
+        shortenedUrl = 'littl.cc' + '/' + shortCode
         localStorage.setItem('subUrlCheckbox', 'unchecked')
     }
     editUrlInput(shortenedUrl)
@@ -260,7 +260,7 @@ function simpleShortenSuccess(shortCode) {
     copiedMessage()
 
     function copiedMessage() {
-        editUrlInput('클립보드에 자동 복사됨 ' + copyCount)
+        editUrlInput('Copied to clipboard ' + copyCount)
         if (copyCount != 0) {
             copyCount -= 1
             setTimeout(function() {
@@ -280,7 +280,7 @@ function uniqueShortenSuccess(shortCode) {
 function instantShortenSuccess(shortCode) {
     animation('urlInput','pickAButton 5s infinite both')
     sessionStorage.setItem('shortCode', shortCode)
-    editUrlInput('버튼을 선택해주세요')
+    editUrlInput('Select a button!')
     clearAnimations()
     inputFocusedAnimation()
 }
@@ -327,8 +327,8 @@ function validCheck(url) {
         urlHostname = (url.split('.'))[0]
     } 
     //already shortened?
-    if (urlHostname.indexOf('단축.kr') != -1) {
-        alert('이미 단축된 링크같습니다!')
+    if (urlHostname.indexOf('littl.cc') != -1) {
+        alert('It looks like it already has been shortened!')
         errorAnimation()
         return
     }
