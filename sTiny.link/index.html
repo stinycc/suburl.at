@@ -2,203 +2,8 @@
 <html style='display:block; min-height:300px; font-family:GmarketSansLight;'>
   <head>
     <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico">
-    <title>단축.kr - 나만의 단축 링크만들기</title>
-    <meta name='description' content="깔끔하게 '단축.kr' 링크를 사용하거나 개성있게 '내가.정하는.단축.kr' 형식으로 링크를 작명하여 URL을 단축할 수 있습니다. 이외의 다양한 단축도메인을 제공합니다. 광고없는 깔끔한 환경에서 단축해보세요.">
-    <meta name='theme-color' content='#151515'>
-    <meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0'> 
-    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
-  </head>
-  <body>
-    <link href='/resources/master.css' rel='stylesheet' type='text/css'>
-    <script src='/resources/master.js'></script>
-    <script>
-      //temporarily moved up front
-          function detectIE() {
-              var ua = window.navigator.userAgent;
-              var msie = ua.indexOf('MSIE ');
-              if (msie > 0) {
-                // IE 10 or older => return version number
-                return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-              }
-              var trident = ua.indexOf('Trident/');
-              if (trident > 0) {
-                // IE 11 => return version number
-                var rv = ua.indexOf('rv:');
-                return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-              }
-              var edge = ua.indexOf('Edge/');
-              if (edge > 0) {
-                // Edge (IE 12+) => return version number
-                //return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
-                return false;
-              }
-              // other browser
-              return false;
-          }
-          if ( detectIE() ){
-            alert('😥 인터넷 익스플로러 브라우저에서는 이용할 수 없어요. 엣지 익스플로러 브라우저로 이동할게요!')
-            location.href = "microsoft-edge:" + location.href
-          }
-      
-      urlAnchor = (location.href.split('#'))[1]
-      if(urlAnchor){
-          if((urlAnchor.split('b:'))[0] == ''){
-              alert('bitly')
-          }else if((urlAnchor.split('c:'))[0] == ''){
-              alert('cuttly')
-          }else if(urlAnchor.indexOf('.') != -1){
-              var splitedUrl, splitedProtocol, protocol, longLink
-              splitedUrl = urlAnchor.split('.')
-              if(splitedUrl[0].indexOf('/') != -1){
-                  splitedProtocol = splitedUrl[0].split('/')
-                  for(i in splitedProtocol){
-                      if(i == 0){
-                          protocol = splitedProtocol[0] + '//'
-                      }else{
-                          protocol += splitedProtocol[i]
-                      }
-                  }
-                  splitedUrl[0] = protocol
-              }
-              for(i in splitedUrl){
-                  if(i == 0){
-                      longLink = splitedUrl[0]
-                  }else{
-                      longLink += '.' + splitedUrl[i]
-                  }
-              }
-              location.href = '/단축.kr/?instantShorten=' + encodeURIComponent(longLink)
-          }else{
-              getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/getURL?shortCode=' + urlAnchor)
-          }
-      }else{
-          //temporarily moved up front
-          /*function detectIE() {
-              var ua = window.navigator.userAgent;
-              var msie = ua.indexOf('MSIE ');
-              if (msie > 0) {
-                // IE 10 or older => return version number
-                return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-              }
-              var trident = ua.indexOf('Trident/');
-              if (trident > 0) {
-                // IE 11 => return version number
-                var rv = ua.indexOf('rv:');
-                return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-              }
-              var edge = ua.indexOf('Edge/');
-              if (edge > 0) {
-                // Edge (IE 12+) => return version number
-                //return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
-                return false;
-              }
-              // other browser
-              return false;
-          }
-          if ( detectIE() ){
-            alert('😥 인터넷 익스플로러 브라우저에서는 이용할 수 없어요. 엣지 익스플로러 브라우저로 이동할게요!')
-            location.href = "microsoft-edge:" + location.href
-          }*/
-    }
-      
-      function longLinkLoaded(longLink){
-          longLink = longLink.replaceAll('%27', "'")
-          window.open(longLink)
-          location.href = '?report=' + encodeURIComponent(longLink)
-      }
-      function noSuchCode(){
-          alert('😥 잘못된 코드를 받은 것 같아요. 링크 제공자에게 알려주세요!')
-          location.href = '/단축kr/'
-      }
-    </script>
-    <div R='height:h(100);' style='position:absolute; background:linear-gradient(135deg,#39a86c,#3284bf);'>
-    </div>
-    <div id='shortenerFrame' style='position:absolute;'>
-      <div R='height:h(100*2/9);'>
-        <div class='topCenterAlign noDrag' R='font-size:h(50);' style='color:white; font-family:GmarketSansBold; text-shadow:2px 2px 4px rgba(0,0,0,0.4);'>
-          <span id='logoText'>단축.kr</span>
-        </div>
-      </div>
-      <div class='bottomCenterAlign' R='height:h(100*3/9)' style='z-index:10;'>
-        <div R='width:h(260); height:h(100*1/2)'>
-          <input id='hiddenInput' type='text' R='z-index:-5; font-size:0.001px; padding:0; margin:0;' style='position:absolute; opacity:0;'>
-          <input id='urlInput' type='text' placeholder='단축할 링크를 입력해주세요 :)' autocomplete='off' R='width:w(90); margin:h(11) w(0); padding:h(21) w(10) h(20) w(5); border-radius:h(20); font-size:h(30);' style='background:whitesmoke; border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4);'>
-          <img id='eraseInput' src='/resources/images/trashIcon.svg' alt='입력지우기' class='button' R='transform:translate(w(44),h(1)); height:h(45); width:auto;' style='position:absolute; display:none;'>
-        </div>
-        <div R='height:h(100*1/2)'>
-          <div id='simpleButton' class='button' R='width:h(155); height:h(70); border-radius:h(70)' style='background:rgba(255,255,255,0.7); box-shadow:4px 4px 4px rgba(0,0,0,0.4); overflow:hidden; white-space:nowrap;'>
-            <span id='simpleButtonText' R='font-size:h(33);' style='color:black;'>
-              단축.kr
-            </span>
-          </div>
-          <div R='width:h(30); height:h(70); margin:h(5); font-size:h(20);' style='color:white'>or</div>
-          <div id='uniqueButton' class='button' R='width:h(315); height:h(70); border-radius:h(70)' style='background:rgba(0,0,0,0.7); box-shadow:4px 4px 4px rgba(0,0,0,0.4); overflow:hidden; white-space:nowrap;'>
-            <span id='uniqueButtonText' R='font-size:h(33);' style='color:white;'>
-              직접.작명하는.단축.kr
-            </span>
-          </div>
-        </div>
-      </div>
-      <div R='height:h(100*4/9); letter-spacing:h(-0.1)' style='color:white; text-align:center;'>
-        <div R='height:h(27.5);'>
-          <input id='subUrlCheckbox' type='checkbox' R='height:h(40); width:h(40);'>
-          <b id='subUrlCheckboxText' class='button' R='font-size:h(35);'>
-            &nbsp;트위터용 subURL 함께 복사하기&nbsp;
-          </b>
-          <img id='subUrlHelpButton' src='/resources/images/helpButton.svg' alt='트위터용 subURL 도움말' class='button' R='height:h(40); width:h(40);'>
-        </div>
-        <div R='height:h(72.5)' class='bottomCenterAlign'>
-          <div R='height:h(20);'>
-            <b id='clickForTipsText' R='font-size:h(50)'>
-              즉석 단축하기
-            </b>
-          </div>
-          <div id='tipsTextFrame' R='height:h(20);'>
-            <span R='font-size:h(75)' style='font-family:GmarketSansBold'>단축.kr/</span>
-            <span R='font-size:h(50)'>(https://)www.LongLink.com/Example</span>
-          </div>
-        </div>
-        <img id='buttonDescriptionImg' src='/resources/images/buttonDescriptionKorean.svg' alt="깔끔하게 '단축.kr'을 사용하거나 개성있는 링크를 작명하세요" class='noDrag' R='height:h(31); top:0;' style='display:none; position:absolute; z-index:10;'>
-      </div>
-    </div>
-    <div id='buttonDescriptionBlur' R='height:h(100);' style='display:none; position:absolute; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
-    </div>
-
-    <div id='overlayFrame' R='height:h(100);' style='display:none; position:absolute; z-index:15; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
-    </div>
-
-    <div id='subUrlHelpPopup' R='width:s(90); height:s(90); max-width:h(45); max-height:h(45); border-radius:s(4);' style='display:none; position:absolute; z-index:20; background:rgba(255,255,255,0.9);'>
-      <div R='height:h(100*7/10);'>
-        <div R='width:w(85); font-size:h(6.5);'>
-          <span id='subUrlHelpText' R='padding-top:h(3);'>
-            한글로 표현된 '단축.kr'은 상대에게 단축링크임을 확실하게 전달할 수 있다는 점에서 큰 의의를 갖습니다.
-            하지만 안타깝게도 트위터를 포함한 극소수의 플랫폼에서 영어 링크만을 할 수 있게 설정해놓은 경우가 있어 주의가 필요합니다.
-            따라서 트위터에서는 영어로 되어있는 서브링크를 함께 발급받아 같이 게시하거나 단축링크를 영어로 작명하여 사용하는 것을 추천드립니다.
-          </span>
-        </div>
-      </div>
-      <div class='topCenterAlign' R='height:h(100*1/10);'>
-        <b id='subUrlAskText' R='font-size:h(60)'>
-          서브링크를 함께 발급해드릴까요?
-        </b>
-      </div>
-      <div R='height:h(100*2/10);' style='color:white;'>
-        <div id='subUrlOkButton' class='button' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d;'>
-          <b id='subUrlOkButtonText' R='font-size:h(30)'>
-            네
-          </b>
-        </div>
-        <div id='subUrlNoButton' class='button' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d;'>
-          <b id='subUrlNoButtonText' R='font-size:h(30)'>
-            아니오
-          </b>
-        </div>
-<!DOCTYPE html>
-<html style='display:block; min-height:300px; font-family:GmarketSansLight;'>
-  <head>
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico">
-    <title>단축.kr - 나만의 단축 링크만들기</title>
-    <meta name='description' content="깔끔하게 '단축.kr' 링크를 사용하거나 개성있게 '내가.정하는.단축.kr' 형식으로 링크를 작명하여 URL을 단축할 수 있습니다. 이외의 다양한 단축도메인을 제공합니다. 광고없는 깔끔한 환경에서 단축해보세요.">
+    <title>sTiny.link - Create your own shortener domain</title>
+    <meta name='description' content="Use the neat 'little.cc' or customizable 'Somebody.sTiny.link' for a shortener domain">
     <meta name='theme-color' content='#151515'>
     <meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0'> 
     <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
@@ -239,7 +44,7 @@
                       longLink += '.' + splitedUrl[i]
                   }
               }
-              location.href = '/단축.kr/?instantShorten=' + encodeURIComponent(longLink)
+              location.href = '/sTiny.link/?instantShorten=' + encodeURIComponent(longLink)
           }else{
               getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/getURL?shortCode=' + urlAnchor)
           }
@@ -267,7 +72,7 @@
               return false;
           }
           if ( detectIE() ){
-            alert('😥 인터넷 익스플로러 브라우저에서는 이용할 수 없어요. 엣지 익스플로러 브라우저로 이동할게요!')
+            alert("😥 The service cannot be used in the Internet Explorer browser. We'll reopen this page from Edge Explorer browser!")
             location.href = "microsoft-edge:" + location.href
           }
     }
@@ -278,8 +83,8 @@
           location.href = '?report=' + encodeURIComponent(longLink)
       }
       function noSuchCode(){
-          alert('😥 잘못된 코드를 받은 것 같아요. 링크 제공자에게 알려주세요!')
-          location.href = '/단축kr/'
+          alert("😥 I think you've been provided with a wrong code. Please alert the link provider!")
+          location.href = '/sTiny.link/'
       }
     </script>
     <div R='height:h(100);' style='position:absolute; background:linear-gradient(135deg,#39a86c,#3284bf);'>
@@ -287,84 +92,51 @@
     <div id='shortenerFrame' style='position:absolute;'>
       <div R='height:h(100*2/9);'>
         <div class='topCenterAlign noDrag' R='font-size:h(50);' style='color:white; font-family:GmarketSansBold; text-shadow:2px 2px 4px rgba(0,0,0,0.4);'>
-          <span id='logoText'>단축.kr</span>
+          <span id='logoText'>sTiny.link</span>
         </div>
       </div>
       <div class='bottomCenterAlign' R='height:h(100*3/9)' style='z-index:10;'>
         <div R='width:h(260); height:h(100*1/2)'>
           <input id='hiddenInput' type='text' R='z-index:-5; font-size:0.001px; padding:0; margin:0;' style='position:absolute; opacity:0;'>
-          <input id='urlInput' type='text' placeholder='단축할 링크를 입력해주세요 :)' autocomplete='off' R='width:w(90); margin:h(11) w(0); padding:h(21) w(10) h(20) w(5); border-radius:h(20); font-size:h(30);' style='background:whitesmoke; border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4);'>
-          <img id='eraseInput' src='/resources/images/trashIcon.svg' alt='입력지우기' class='button' R='transform:translate(w(44),h(1)); height:h(45); width:auto;' style='position:absolute; display:none;'>
+          <input id='urlInput' type='text' placeholder='Enter a url to be shortened :)' autocomplete='off' R='width:w(90); margin:h(11) w(0); padding:h(21) w(10) h(20) w(5); border-radius:h(20); font-size:h(30);' style='background:whitesmoke; border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4);'>
+          <img id='eraseInput' src='/resources/images/trashIcon.svg' alt='Delete input' class='button' R='transform:translate(w(44),h(1)); height:h(45); width:auto;' style='position:absolute; display:none;'>
         </div>
         <div R='height:h(100*1/2)'>
           <div id='simpleButton' class='button' R='width:h(155); height:h(70); border-radius:h(70)' style='background:rgba(255,255,255,0.7); box-shadow:4px 4px 4px rgba(0,0,0,0.4); overflow:hidden; white-space:nowrap;'>
             <span id='simpleButtonText' R='font-size:h(33);' style='color:black;'>
-              단축.kr
+              littl.cc
             </span>
           </div>
           <div R='width:h(30); height:h(70); margin:h(5); font-size:h(20);' style='color:white'>or</div>
           <div id='uniqueButton' class='button' R='width:h(315); height:h(70); border-radius:h(70)' style='background:rgba(0,0,0,0.7); box-shadow:4px 4px 4px rgba(0,0,0,0.4); overflow:hidden; white-space:nowrap;'>
             <span id='uniqueButtonText' R='font-size:h(33);' style='color:white;'>
-              직접.작명하는.단축.kr
+              Somebody.sTiny.link
             </span>
           </div>
         </div>
       </div>
       <div R='height:h(100*4/9); letter-spacing:h(-0.1)' style='color:white; text-align:center;'>
         <div R='height:h(27.5);'>
-          <input id='subUrlCheckbox' type='checkbox' R='height:h(40); width:h(40);'>
-          <b id='subUrlCheckboxText' class='button' R='font-size:h(35);'>
-            &nbsp;트위터용 subURL 함께 복사하기&nbsp;
-          </b>
-          <img id='subUrlHelpButton' src='/resources/images/helpButton.svg' alt='트위터용 subURL 도움말' class='button' R='height:h(40); width:h(40);'>
+          
         </div>
         <div R='height:h(72.5)' class='bottomCenterAlign'>
           <div R='height:h(20);'>
             <b id='clickForTipsText' R='font-size:h(50)'>
-              즉석 단축하기
+              Instant shorten
             </b>
           </div>
           <div id='tipsTextFrame' R='height:h(20);'>
-            <span R='font-size:h(75)' style='font-family:GmarketSansBold'>단축.kr/</span>
+            <span R='font-size:h(75)' style='font-family:GmarketSansBold'>littl.cc/</span>
             <span R='font-size:h(50)'>(https://)www.LongLink.com/Example</span>
           </div>
         </div>
-        <img id='buttonDescriptionImg' src='/resources/images/buttonDescriptionKorean.svg' alt="깔끔하게 '단축.kr'을 사용하거나 개성있는 링크를 작명하세요" class='noDrag' R='height:h(31); top:0;' style='display:none; position:absolute; z-index:10;'>
+        <img id='buttonDescriptionImg' src='/resources/images/buttonDescriptionKorean.svg' alt="Use the neat 'little.cc' or customizable 'Somebody.sTiny.link' for a shortener domain" class='noDrag' R='height:h(31); top:0;' style='display:none; position:absolute; z-index:10;'>
       </div>
     </div>
     <div id='buttonDescriptionBlur' R='height:h(100);' style='display:none; position:absolute; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
     </div>
 
     <div id='overlayFrame' R='height:h(100);' style='display:none; position:absolute; z-index:15; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
-    </div>
-
-    <div id='subUrlHelpPopup' R='width:s(90); height:s(90); max-width:h(45); max-height:h(45); border-radius:s(4);' style='display:none; position:absolute; z-index:20; background:rgba(255,255,255,0.9);'>
-      <div R='height:h(100*7/10);'>
-        <div R='width:w(85); font-size:h(6.5);'>
-          <span id='subUrlHelpText' R='padding-top:h(3);'>
-            한글로 표현된 '단축.kr'은 상대에게 단축링크임을 확실하게 전달할 수 있다는 점에서 큰 의의를 갖습니다.
-            하지만 안타깝게도 트위터를 포함한 극소수의 플랫폼에서 영어 링크만을 할 수 있게 설정해놓은 경우가 있어 주의가 필요합니다.
-            따라서 트위터에서는 영어로 되어있는 서브링크를 함께 발급받아 같이 게시하거나 단축링크를 영어로 작명하여 사용하는 것을 추천드립니다.
-          </span>
-        </div>
-      </div>
-      <div class='topCenterAlign' R='height:h(100*1/10);'>
-        <b id='subUrlAskText' R='font-size:h(60)'>
-          서브링크를 함께 발급해드릴까요?
-        </b>
-      </div>
-      <div R='height:h(100*2/10);' style='color:white;'>
-        <div id='subUrlOkButton' class='button' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d;'>
-          <b id='subUrlOkButtonText' R='font-size:h(30)'>
-            네
-          </b>
-        </div>
-        <div id='subUrlNoButton' class='button' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d;'>
-          <b id='subUrlNoButtonText' R='font-size:h(30)'>
-            아니오
-          </b>
-        </div>
-      </div>
     </div>
 
     <div id='reportFrame' R='width:h(47); height:h(80); max-width:w(100); max-height:w(160); border-radius:s(2.5)' style='display:none; position:absolute; z-index:20; background:rgba(0,0,0,0.5); color:white;'>
@@ -377,14 +149,14 @@
           </span>
         </div>
         <span R='margin-top:h(5); font-size:h(16);'>
-          팝업차단으로 이동되지 않은 경우 클릭하세요
+          Click if you weren't redirected due to pop-up blocking
         </span>
       </div>
       <div R='height:h(100*1/5)'>
         <img src='/resources/images/playerDesign.svg' R='width:auto; height:s(85);'>
       </div>
       <div R='height:h(100*0.5/5)'>
-        <b id='closeText' class='button' R='font-size:h(25);' style='text-decoration:underline;'>나만의 단축링크 만들기</b>
+        <b id='closeText' class='button' R='font-size:h(25);' style='text-decoration:underline;'>Make your own shortened link</b>
       </div>
     </div>
     
