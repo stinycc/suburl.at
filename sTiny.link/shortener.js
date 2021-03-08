@@ -57,7 +57,7 @@ Chi = []
 Jap = []
 Ara = []
 Hin = []
-domainList = [].concat(Kor, Eng, Chi, Jap, Ara, Hin)
+domainList = [].concat(/*Kor,*/ Eng, Chi, Jap, Ara, Hin)
 
 //-----------------------------------------------------------------------------------------------------------------
 
