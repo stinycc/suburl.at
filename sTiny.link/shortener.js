@@ -210,16 +210,9 @@ if (getParameter('instantShorten')) {
 }
 
 function simpleShortenSuccess(shortCode) {
-    var shortenedUrl, copyCount
+    var copyCount
     animation('urlInput', 'GreenWindow 4s linear both')
-    if (id('subUrlCheckbox').checked == true) {
-        shortenedUrl = 'littl.cc' + '/' + shortCode + ' (SubURL.at/#' + shortCode + ')'
-        localStorage.setItem('subUrlCheckbox', 'checked')
-    } else {
-        shortenedUrl = 'littl.cc' + '/' + shortCode
-        localStorage.setItem('subUrlCheckbox', 'unchecked')
-    }
-    editUrlInput(shortenedUrl)
+    editUrlInput('littl.cc' + '/' + shortCode)
     id('urlInput').select()
     document.execCommand("copy");
     id('urlInput').blur()
