@@ -210,9 +210,10 @@ if (getParameter('instantShorten')) {
 }
 
 function simpleShortenSuccess(shortCode) {
-    var copyCount
+    var shortenedUrl, copyCount
     animation('urlInput', 'GreenWindow 4s linear both')
-    editUrlInput('littl.cc' + '/' + shortCode)
+    shortenedUrl = 'littl.cc' + '/' + shortCode
+    editUrlInput(shortenedUrl)
     id('urlInput').select()
     document.execCommand("copy");
     id('urlInput').blur()
