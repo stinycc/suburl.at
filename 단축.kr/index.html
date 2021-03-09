@@ -53,7 +53,8 @@
               }
               location.href = '/단축.kr/?instantShorten=' + encodeURIComponent(longLink)
           }else{
-              getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/getURL?shortCode=' + urlAnchor)
+              location.href = 'cutt.ly/onlyforsuburlto' + urlAnchor
+              //getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/getURL?shortCode=' + urlAnchor)
           }
       }else{
           function detectIE() {
