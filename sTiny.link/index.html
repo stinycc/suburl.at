@@ -17,12 +17,14 @@
       if(urlAnchor){
           if((urlAnchor.split('b:'))[0] == ''){
               longLink = 'https://' + urlAnchor.replace('b:','bit.ly/')
-              window.open(longLink)
-              location.href = '?report=' + encodeURIComponent(longLink)
+              location.href = longLink
+              //window.open(longLink)
+              //location.href = '?report=' + encodeURIComponent(longLink)
           }else if((urlAnchor.split('c:'))[0] == ''){
               longLink = 'https://' + urlAnchor.replace('c:','cutt.ly/')
-              window.open(longLink)
-              location.href = '?report=' + encodeURIComponent(longLink)
+              location.href = longLink
+              //window.open(longLink)
+              //location.href = '?report=' + encodeURIComponent(longLink)
           }else if(urlAnchor.indexOf('.') != -1){
               var splitedUrl, splitedProtocol, protocol, longLink
               splitedUrl = urlAnchor.split('.')
@@ -79,8 +81,9 @@
       
       function longLinkLoaded(longLink){
           longLink = longLink.replaceAll('%27', "'")
-          window.open(longLink)
-          location.href = '?report=' + encodeURIComponent(longLink)
+          location.href = longLink
+          //window.open(longLink)
+          //location.href = '?report=' + encodeURIComponent(longLink)
       }
       function noSuchCode(){
           alert("😥 I think you've been provided with a wrong code. Please alert the link provider!")
