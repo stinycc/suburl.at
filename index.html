@@ -1,14 +1,19 @@
 <script src='/resources/master.js'></script>
 <script>
     urlAnchor = (location.href.split('#'))[1]
-    if(urlAnchor){
+    if(sessionStorage.getItem('redirect') == 'complete'){
+        sessionStorage.removeItem('redirect')
+        location.href = '/sTiny.link/'
+    }else if(urlAnchor){
         if((urlAnchor.split('b:'))[0] == ''){
             longLink = 'https://' + urlAnchor.replace('b:','bit.ly/')
+            sessionStorage.setItem('redirect', 'complete')
             location.href = longLink
             //window.open(longLink)
             //location.href = '?report=' + encodeURIComponent(longLink)
         }else if((urlAnchor.split('c:'))[0] == ''){
             longLink = 'https://' + urlAnchor.replace('c:','cutt.ly/')
+            sessionStorage.setItem('redirect', 'complete')
             location.href = longLink
             //window.open(longLink)
             //location.href = '?report=' + encodeURIComponent(longLink)
@@ -42,6 +47,7 @@
     }
     function longLinkLoaded(longLink){
         longLink = longLink.split('%27').join("'")
+        sessionStorage.setItem('redirect', 'complete')
         location.href = longLink
         //window.open(longLink)
         //location.href = '/단축.kr/?report=' + encodeURIComponent(longLink)
