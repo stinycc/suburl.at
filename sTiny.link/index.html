@@ -14,19 +14,14 @@
     <script src='/resources/master.js'></script>
     <script>      
       urlAnchor = (location.href.split('#'))[1]
-      if(sessionStorage.getItem('redirect') == 'complete'){
-          sessionStorage.removeItem('redirect')
-          location.href = '/sTiny.link/'
-      }else if(urlAnchor){
+      if(urlAnchor){
           if((urlAnchor.split('b:'))[0] == ''){
               longLink = 'https://' + urlAnchor.replace('b:','bit.ly/')
-              sessionStorage.setItem('redirect', 'complete')
               location.href = longLink
               //window.open(longLink)
               //location.href = '?report=' + encodeURIComponent(longLink)
           }else if((urlAnchor.split('c:'))[0] == ''){
               longLink = 'https://' + urlAnchor.replace('c:','cutt.ly/')
-              sessionStorage.setItem('redirect', 'complete')
               location.href = longLink
               //window.open(longLink)
               //location.href = '?report=' + encodeURIComponent(longLink)
@@ -53,7 +48,8 @@
               }
               location.href = '/sTiny.link/?instantShorten=' + encodeURIComponent(longLink)
           }else{
-              getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/getURL?shortCode=' + urlAnchor)
+              location.href = 'cutt.ly/onlyforsuburlto' + urlAnchor
+              //getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/getURL?shortCode=' + urlAnchor)
           }
       }else{
           function detectIE() {
@@ -86,7 +82,6 @@
       
       function longLinkLoaded(longLink){
           longLink = longLink.replaceAll('%27', "'")
-          sessionStorage.setItem('redirect', 'complete')
           location.href = longLink
           //window.open(longLink)
           //location.href = '?report=' + encodeURIComponent(longLink)
