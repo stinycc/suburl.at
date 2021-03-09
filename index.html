@@ -4,12 +4,14 @@
     if(urlAnchor){
         if((urlAnchor.split('b:'))[0] == ''){
             longLink = 'https://' + urlAnchor.replace('b:','bit.ly/')
-            window.open(longLink)
-            location.href = '?report=' + encodeURIComponent(longLink)
+            location.href = longLink
+            //window.open(longLink)
+            //location.href = '?report=' + encodeURIComponent(longLink)
         }else if((urlAnchor.split('c:'))[0] == ''){
             longLink = 'https://' + urlAnchor.replace('c:','cutt.ly/')
-            window.open(longLink)
-            location.href = '?report=' + encodeURIComponent(longLink)
+            location.href = longLink
+            //window.open(longLink)
+            //location.href = '?report=' + encodeURIComponent(longLink)
         }else if(urlAnchor.indexOf('.') != -1){
             var splitedUrl, splitedProtocol, protocol, longLink
             splitedUrl = urlAnchor.split('.')
@@ -31,20 +33,21 @@
                     longLink += '.' + splitedUrl[i]
                 }
             }
-            location.href = '/단축.kr/?instantShorten=' + encodeURIComponent(longLink)
+            location.href = '/sTiny.link/?instantShorten=' + encodeURIComponent(longLink)
         }else{
             getJSONP('https://apiserver.wixsite.com/litn/_functions/eedo/getURL?shortCode=' + urlAnchor)
         }
     }else{
-        location.href = '/단축.kr'
+        location.href = '/sTiny.link'
     }
     function longLinkLoaded(longLink){
         longLink = longLink.split('%27').join("'")
-        window.open(longLink)
-        location.href = '/단축.kr/?report=' + encodeURIComponent(longLink)
+        location.href = longLink
+        //window.open(longLink)
+        //location.href = '/단축.kr/?report=' + encodeURIComponent(longLink)
     }
     function noSuchCode(){
-        alert('😥 잘못된 코드를 받은 것 같아요. 링크 제공자에게 알려주세요!')
-        location.href = '/단축.kr'
+        alert("😥 I think you've been provided with a wrong code. Please alert the link provider!")
+        location.href = '/sTiny.link'
     }
 </script>
