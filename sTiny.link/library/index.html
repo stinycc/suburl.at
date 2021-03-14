@@ -98,26 +98,35 @@
     document.getElementById('sTinyLinkInput').value = document.getElementById('sTinyLinkInput').value.replaceAll(' ','.')
     document.getElementById('sTinyLinkInput').value = document.getElementById('sTinyLinkInput').value.replaceAll('..','.')
   })
-  document.getElementById('othersButton').addEventListener("click", function() {
-    if(document.getElementById('othersInput').value){
-      document.getElementById('result').value = (document.getElementById('othersInput').value + '.littl.cc/' + shortCode).replaceAll('..','.')
-    }else{
-      document.getElementById('result').value = 'littl.cc/' + shortCode
-    }
-  })
   document.getElementById('sTinyLinkButton').addEventListener("click", function() {
+    sTinyCreate()
+  })
+  document.getElementById('sTinyTest').addEventListener("click", function() {
+    sTinyCreate()
+    window.open('http://' + document.getElementById('result').value)
+  })
+  function sTinyCreate(){
     if(document.getElementById('sTinyLinkInput').value){
       document.getElementById('result').value = (document.getElementById('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.')
     }else{
       document.getElementById('result').value = 'sTiny.link/' + shortCode
     }
-  })
-  document.getElementById('sTinyTest').addEventListener("click", function() {
-    window.open('http://' + (document.getElementById('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.'))
+  }
+  
+  document.getElementById('othersButton').addEventListener("click", function() {
+    othersCreate()
   })
   document.getElementById('othersTest').addEventListener("click", function() {
-    window.open('http://' + (document.getElementById('othersInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.'))
+    othersCreate()
+    window.open('http://' + document.getElementById('result').value)
   })
+  function othersCreate(){
+    if(document.getElementById('othersInput').value){
+      document.getElementById('result').value = (document.getElementById('othersInput').value + '.littl.cc/' + shortCode).replaceAll('..','.')
+    }else{
+      document.getElementById('result').value = 'littl.cc/' + shortCode
+    }
+  }
   document.getElementById('onlyMain').addEventListener("click", function() {
     if(document.getElementById('result').value){
       document.getElementById('result').value = document.getElementById('result').value.replaceAll(addSubUrl,'')
