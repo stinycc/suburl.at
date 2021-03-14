@@ -11,70 +11,73 @@
     <script src='/resources/master.js'></script>
   </head>
   <body>
-    <div R='max-width:s(100);'>
-      <div R='height:h(25); font-size:w(2.5);'>
-        <div class='bottomCenterAlign' R='height:h(20); text-align:right;'>
-          <a href='../'><b' class='noDrag'>← Go back</b></a>
-        </div>
-        <div R='height:h(80); font-size:w(2.25);'>
-          <span>
-            Sorry for the ugly UI. It is yet <b>beta service</b> period. 🙏😉<br/><br/>
-            1. Can use special character, emoticons, English, and any non-English characters.<br/>
-            2. It is better to Separate.the.letters.like.this than to CreateALongLinkLike.This<br/>
-            3. Twitter only allows non-English links. So we recommend English link for twitter use.
-          </span>
-        </div>
-      </div>
-      <div R='height:h(20); font-size:w(2.5);'>
-        <div R='height:h(50)'>
-          <input id='littlccInput' type='text' R='width:w(60); height:h(90); padding:0; margin:0; font-size:w(3); text-align:right;'>
-          </input>
-          <span R='width:w(30)' style='text-align:center'>
-            .littl.cc/3x4MP1e
-          </span>
-        </div>
-        <div R='height:h(50)'>
-          <div id='littlccButton' class='button' R='width:w(90)' style='background:dimgray; color:white;'>
-            Create!
-          </div>
+    
+<div style='position:absolute; background:linear-gradient(135deg,#39a86c,#3284bf);'>
+</div>
+<div R='height:h(100); width:h(100/2)' style='position:absolute;'>
+  <div class='bottomCenterAlign' R='height:h(20); font-size:h(5);' style='font-family:GmarketSansBold; text-shadow:2px 2px 4px rgba(0,0,0,0.4);'>
+    <span>sTiny.link</span>
+    <img src='https://suburl.at/resources/images/libraryDescription.png' R='width:w(90)'>
+  </div>
+  <div class='bottomCenterAlign' R='height:h(20)'>
+    <div R='width:w(90); height:h(80); border:white w(1) solid; border-radius:w(7.5);'>
+      <div R='height:h(45)'>
+        <input id='sTinyLinkInput' type='text' placeholder='John.Doe' autocomplete='off' R='width:w(65); height:h(75); padding:0 w(2) 0 0; border-radius:w(7.5); font-size:h(25);' style='border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4); text-align:right;'>
+        <div R='width:w(27.5); height:h(75); font-size:h(25);'>
+          .sTiny.link
         </div>
       </div>
-      <div R='height:h(20); font-size:w(2.5);'>
-        <div R='height:h(50)'>
-          <input id='sTinyLinkInput' type='text' R='width:w(60); height:h(90); padding:0; margin:0; font-size:w(3); text-align:right;'>
-          </input>
-          <span R='width:w(30)' style='text-align:center'>
-            .sTiny.link/3x4MP1e
-          </span>
+      <div R='height:h(45)'>
+        <div id='sTinyLinkButton' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(30);' style='color:black; background:rgba(255,255,255,0.7);'>
+          Create Link
         </div>
-        <div R='height:h(50)'>
-          <div id='sTinyLinkButton' class='button' R='width:w(90)' style='background:dimgray; color:white;'>
-            Create!
-          </div>
-        </div>
-      </div>
-      <div R='height:h(30); width:w(90); font-size:w(2.5); margin:h(2.5) w(5)'>
-        <div R='height:h(33); font-size:w(2.5);'>
-          <input id='result' type='text' placeholder="The result will be printed here" R='width:w(99); height:h(100); padding:0; margin:0; border:0; font-size:w(4); text-align:center;' style='background:whitesmoke'>
-          </input>
-        </div>
-        <div id='testLink' class='button' R='width:w(99); height:h(33);' style='background:#555555; color:white;'>
-          <b R='font-size:w(3.5);'>Go test the link above</b>
-          <span R='font-size:w(2.5);'>(Some characters including '/' cannot be used. Test it before sharing!)</span>
-        </div>
-        <div R='height:h(33); font-size:w(3.5);' style='color:white'>
-          <div id='onlyMain' class='button' R='width:w(33);' style='background:dimgray;'>
-            Copy the link
-          </div>
-          <div id='withSub' class='button' R='width:w(33);' style='background:gray;'>
-            Copy it with SubLink
-          </div>
-          <div id='tweet' class='button' R='width:w(33);' style='background:dimgray;'>
-            Go to Twitter
-          </div>
+        <div R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(30);' style='color:black; background:rgba(255,255,255,0.7);'>
+          Test it
         </div>
       </div>
     </div>
+  </div>
+  <div class='bottomCenterAlign' R='height:h(20)'>
+    <div R='width:w(90); height:h(80); border:white w(1) solid; border-radius:w(7.5);'>
+      <div R='height:h(45)'>
+        <input id='littlccInput' type='text' placeholder='John.Doe' autocomplete='off' R='width:w(65); height:h(75); padding:0 w(2) 0 0; border-radius:w(7.5); font-size:h(25);' style='border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4); text-align:right;'>
+        <div R='width:w(27.5); height:h(75); font-size:h(25);'>
+          .sTiny.link
+        </div>
+      </div>
+      <div R='height:h(45)'>
+        <div id='littlccButton' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(30);' style='color:black; background:rgba(255,255,255,0.7);'>
+          Create Link
+        </div>
+        <div R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(30);' style='color:black; background:rgba(255,255,255,0.7);'>
+          Test it
+        </div>
+      </div>
+    </div>
+  </div>
+  <div R='height:h(35)'>
+    <div class='bottomCenterAlign' R='height:h(15)'>
+      <img src='https://suburl.at/resources/images/result.png' R='width:w(70)'>
+    </div>
+    <div R='height:h(20)'>
+      <input id='result' type='text' placeholder='John.Doe.sTiny.link/3x4mP1e' autocomplete='off' R='width:w(85); height:h(75); border-radius:w(3); font-size:h(25);' style='border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4); text-align:center;'>
+    </div>
+    <div R='height:h(20)'>
+      <div id='onlyMain' R='width:w(85); height:h(75); border-radius:w(3); font-size:h(30);' style='background:rgba(0,0,0,0.7);'>
+        Copy link
+      </div>
+    </div>
+    <div R='height:h(20)'>
+      <div id='tweet' R='width:w(85); height:h(75); border-radius:w(3); font-size:h(30);' style='background:rgba(29,161,242,0.7);'>
+        Copy it to Twitter
+      </div>
+    </div>
+    <div R='height:h(25); font-size:h(5.5);'>
+      <b>← Go Back</b>
+    </div>
+  </div>
+</div>
+    
 <script>
   resizeResponsiveElements()
   window.addEventListener("resize", function() {
