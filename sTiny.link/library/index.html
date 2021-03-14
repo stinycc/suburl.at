@@ -112,8 +112,8 @@
       document.getElementById('result').value = 'sTiny.link/' + shortCode
     }
   })
-  document.getElementById('testLink').addEventListener("click", function() {
-    window.open('http://' + document.getElementById('result').value.replaceAll(addSubUrl,''))
+  document.getElementById('sTinyTest').addEventListener("click", function() {
+    window.open('http://' + (document.getElementById('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.'))
   })
   document.getElementById('onlyMain').addEventListener("click", function() {
     if(document.getElementById('result').value){
