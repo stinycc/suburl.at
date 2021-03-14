@@ -78,7 +78,7 @@
     
 <script>
   var domains = ['littl.cc', 'hello']
-  var optionPreset = '<option value=".placeNumb1/">.placeNumb2</option>'
+  var optionPreset = '<option value="placeNumb1/">.placeNumb2</option>'
   for ( i in domains){
     id('othersSelect').innerHTML += optionPreset.replace('placeNumb1',domains[i]).replace('placeNumb2',domains[i])
   }
@@ -125,9 +125,9 @@
   })
   function othersCreate(){
     if(document.getElementById('othersInput').value){
-      document.getElementById('result').value = (document.getElementById('othersInput').value + id('othersSelect').value + shortCode).replaceAll('..','.')
+      document.getElementById('result').value = (document.getElementById('othersInput').value + '.' + id('othersSelect').value + shortCode).replaceAll('..','.')
     }else{
-      document.getElementById('result').value = 'littl.cc/' + shortCode
+      document.getElementById('result').value = id('othersSelect').value + shortCode
     }
   }
   document.getElementById('onlyMain').addEventListener("click", function() {
