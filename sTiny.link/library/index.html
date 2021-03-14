@@ -16,7 +16,7 @@
 </div>
 <div R='height:h(100); width:h(100/2)' style='position:absolute;'>
   <div class='bottomCenterAlign' R='height:h(20); font-size:h(5);' style='font-family:GmarketSansBold; text-shadow:2px 2px 4px rgba(0,0,0,0.4);'>
-    <span>sTiny.link</span>
+    <span class='button' onclick="location.href = '../'">sTiny.link</span>
     <img src='https://suburl.at/resources/images/libraryDescription.png' R='width:w(90)'>
   </div>
   <div class='bottomCenterAlign' R='height:h(20)'>
@@ -28,10 +28,10 @@
         </div>
       </div>
       <div R='height:h(45)'>
-        <div id='sTinyLinkButton' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
+        <div id='sTinyLinkButton' class='button' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
           Create Link
         </div>
-        <div id='sTinyTest' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
+        <div id='sTinyTest' class='button' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
           Test it
         </div>
       </div>
@@ -44,10 +44,10 @@
         <select R='width:w(26); height:h(75); margin:0 0 0 w(1.5); border:white w(0.5) solid; border-radius:w(7.5); font-size:h(25);' style='color:white; background:rgba(0,0,0,0.1)'><option>.littl.cc<option></select>
       </div>
       <div R='height:h(45)'>
-        <div id='othersButton' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
+        <div id='othersButton' class='button' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
           Create Link
         </div>
-        <div id='othersTest' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
+        <div id='othersTest' class='button' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
           Test it
         </div>
       </div>
@@ -61,16 +61,16 @@
       <input id='result' type='text' placeholder='John.Doe.sTiny.link/3x4mP1e' autocomplete='off' R='width:w(90); height:h(75); border-radius:w(3); font-size:h(25);' style='border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4); text-align:center;'>
     </div>
     <div R='height:h(20)'>
-      <div id='onlyMain' R='width:w(90); height:h(75); border-radius:w(3); font-size:h(30);' style='background:rgba(0,0,0,0.7);'>
+      <div id='onlyMain' class='button' R='width:w(90); height:h(75); border-radius:w(3); font-size:h(30);' style='background:rgba(0,0,0,0.7);'>
         Copy link
       </div>
     </div>
     <div R='height:h(20)'>
-      <div id='tweet' R='width:w(90); height:h(75); border-radius:w(3); font-size:h(30);' style='background:rgba(29,161,242,0.7);'>
+      <div id='tweet' class='button' R='width:w(90); height:h(75); border-radius:w(3); font-size:h(30);' style='background:rgba(29,161,242,0.7);'>
         Copy it to Twitter
       </div>
     </div>
-    <div R='height:h(25); font-size:h(5.5);'>
+    <div class='button' R='height:h(25); font-size:h(5.5);'>
       <b>← Go Back</b>
     </div>
   </div>
