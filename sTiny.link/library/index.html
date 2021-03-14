@@ -162,7 +162,7 @@
       twitterAllowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890./'
       twitterCheck = document.getElementById('result').value
       for (i in twitterAllowed){
-        twitterCheck = twitterCheck.value.replaceAll(twitterAllowed[i],'')
+        twitterCheck = twitterCheck.replaceAll(twitterAllowed[i],'')
       }
       if (twitterCheck == ''){
         window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + document.getElementById('result').value.replaceAll(addSubUrl,''))
