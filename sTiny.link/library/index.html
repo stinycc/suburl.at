@@ -154,12 +154,11 @@
     }
   })*/
   document.getElementById('tweet').addEventListener("click", function() {
-    var twitterAllowed, twitterCheck
     if(document.getElementById('result').value){
       document.getElementById('result').select()
       document.execCommand("copy");
       document.getElementById('result').blur()
-      twitterAllowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890./'
+      var twitterAllowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890./'
       twitterCheck = document.getElementById('result').value
       for (i in twitterAllowed){
         twitterCheck = twitterCheck.replaceAll(twitterAllowed[i],'')
