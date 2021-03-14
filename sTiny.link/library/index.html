@@ -154,15 +154,21 @@
     }
   })*/
   document.getElementById('tweet').addEventListener("click", function() {
+    var twitterAllowed, twitterCheck
     if(document.getElementById('result').value){
       document.getElementById('result').select()
       document.execCommand("copy");
       document.getElementById('result').blur()
       twitterAllowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890./'
+      twitterCheck = document.getElementById('result').value
       for (i in twitterAllowed){
-        alert(twitterAllowed[i])
+        twitterCheck = twitterCheck.value.replaceAll(twitterAllowed[i],'')
       }
-      window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + document.getElementById('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
+      if (twitterCheck == ''){
+        window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + document.getElementById('result').value.replaceAll(addSubUrl,''))
+      }else{
+        window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + document.getElementById('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
+      }
     }else{
       alert('Create a link first!')
     }
