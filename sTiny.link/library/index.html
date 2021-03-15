@@ -155,7 +155,11 @@
   id('result').addEventListener("input", function() {
     id('result').value = resultValue
   })
-  
+  id('result').addEventListener("focus", function() {
+    if(id('result').value = ''){
+      id('result').blur()
+    }
+  })
   id('othersButton').addEventListener("click", function() {
     othersCreate()
   })
