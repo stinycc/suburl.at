@@ -183,7 +183,9 @@
             reject()
           }
         }).then(function(){
-          twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
+          setTimeout(function(){
+            twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
+          },100)
         })
       }
       function twitterGenerate(twt){
