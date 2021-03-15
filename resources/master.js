@@ -93,6 +93,10 @@ function ifNoApp(msg){
     }, deLay);
 }
 
+function mobileCheck() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 function animation(element,animationStyle){
     targetElement = id(element)
     targetElement.style.animation = ''
