@@ -139,7 +139,10 @@
       id('result').select()
       document.execCommand("copy");
       id('result').blur()
-      alert('Copied to Clipboard!')
+      id('onlyMain').innerHTML = 'Copied to Clipboard!'
+      setTimeout(function(){
+        id('onlyMain').innerHTML = 'Copy link'
+      },2000)
     }else{
       id('onlyMain').innerHTML = 'No link yet. Create one first!'
       setTimeout(function(){
