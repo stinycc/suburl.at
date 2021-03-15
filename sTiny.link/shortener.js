@@ -512,3 +512,11 @@ if(getParameter('report')){
 }
 
 //-----------------------------------------------------------------------------------------------------------------
+preferredDomain = `
+<a href='#' R='font-size:h(35)' style='color:white;'>
+  Use domainName domain
+</a>
+`
+if (getParameter('from')){
+    id('preferredDomainTextBox').innerHTML = preferredDomain.replace('domainName',getParameter('from'))
+}    
