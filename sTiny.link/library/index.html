@@ -168,7 +168,7 @@
       id('result').value = resultValue
     }
   }
-  id('onlyMain').addEventListener("click", function() {
+  /*id('onlyMain').addEventListener("click", function() {
     if(id('result').value){
       id('result').select()
       document.execCommand("copy");
@@ -184,7 +184,7 @@
       },2000)
     }
   })
-  /*id('tweet').addEventListener("click", function() {
+  id('tweet').addEventListener("click", function() {
     var twitterAllowed, twitterCheck
     if(id('result').value){
       twitterAllowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890./:'
@@ -204,7 +204,7 @@
         id('tweet').innerHTML = 'Copy it to Twitter'
       },2000)
     }
-  })*/
+  })
   id('subUrlOkButton').addEventListener("click", function() {
     twitterGenerate('%F0%9F%94%97 ' + id('result').value + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
     setTimeout(function(){
@@ -246,7 +246,7 @@
     }else{
       window.open('https://twitter.com/intent/tweet?text=' + twt)
     }
-  }
+  }*/
 </script>
 
   </body>
