@@ -80,7 +80,7 @@
     </div>
     <div id='subUrlHelpPopup' R='width:s(90); height:s(75); max-width:h(45); max-height:h(37); border-radius:s(4);' style='display:none; position:absolute; z-index:20; color:black; background:rgba(255,255,255,0.9);'>
       <div R='height:h(100*7/10);'>
-        <div R='width:w(85); font-size:h(6.5);'>
+        <div R='width:w(85); font-size:h(7);'>
           <span id='subUrlHelpText' R='padding-top:h(3);'>
             😢 Sadly Twitter does not allow non-English characters to be hyperlinked. We can add you an additional SubLink that does work on twitter OR you can rename your link.
           </span>
@@ -112,7 +112,7 @@
   })
   var domains = ['littl.cc']
   var optionPreset = '<option value="placeNumb1">.placeNumb2</option>'
-  for ( i in domains){
+  for (i in domains){
     id('othersSelect').innerHTML += optionPreset.replace('placeNumb1',domains[i]).replace('placeNumb2',domains[i])
   }
   if(getParameter('from')){
@@ -207,6 +207,12 @@
       }else{
         elementFadeIn('overlayFrame')
         elementFadeIn('subUrlHelpPopup')
+        id('othersButton').addEventListener("click", function() {
+          othersCreate()
+        })
+        id('othersButton').addEventListener("click", function() {
+          othersCreate()
+        })
       }
       function twitterGenerate(twt){
         if(mobileCheck()){
