@@ -171,7 +171,7 @@
         if(mobileCheck()){
           appCheck('twitter://post?message=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A',3000).then(function(result){
             if(result == false){
-              appCheck('googlechromes://navigate?url=www.naver.com',3000).then(function(result){
+              appCheck('googlechrome://www.google.com/',3000).then(function(result){
                 if(result == false){
                   window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A')
                 }
