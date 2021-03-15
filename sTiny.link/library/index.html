@@ -223,7 +223,7 @@
           }
           try{
             location.href = 'twitter://post?message=' + twt
-          } catch () {
+          } catch {
             window.open('https://twitter.com/intent/tweet?text=' + twt)
           }
         }else{
