@@ -60,9 +60,9 @@ Hin = []
 domainList = [].concat(/*Kor,*/ Eng, Chi, Jap, Ara, Hin)
 
 var preferredDomain = `
-<a href='#' R='font-size:h(35)' style='color:white; border-bottom:white 1px;'>
+<span R='border-bottom:white h(2); font-size:h(35);' style='color:white;'>
   Use domainName domain
-</a>
+</span>
 `
 if (getParameter('from')){
     id('preferredDomainTextBox').innerHTML = preferredDomain.replace('domainName',getParameter('from'))
