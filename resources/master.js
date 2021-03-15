@@ -75,6 +75,24 @@ function getParameter(name) {
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+function ifNoApp(msg){
+    function clearTimers(){
+        clearInterval(heartbeat);
+        clearTimeout(timer);
+    }
+
+    function intervalHeartbeat(){
+        if(document.webkitHidden || document.hidden){
+            clearTimers();
+        }
+    }
+    heartbeat = setInterval(intervalHeartbeat, 200);
+    var deLay = 1000;
+    timer = setTimeout(function() {
+        msg()
+    }, deLay);
+}
+
 function animation(element,animationStyle){
     targetElement = id(element)
     targetElement.style.animation = ''
