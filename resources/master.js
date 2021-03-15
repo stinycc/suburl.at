@@ -76,20 +76,22 @@ function getParameter(name) {
 }
 
 function appCheck(scheme,delay){
-    location.href = scheme
-    heartbeat = setInterval(function intervalHeartbeat(){
-        if(document.webkitHidden || document.hidden){
-            clearTimers();
-            return true
+    return new Promise(function(resolve, reject) {
+        location.href = scheme
+        heartbeat = setInterval(function intervalHeartbeat(){
+            if(document.webkitHidden || document.hidden){
+                clearTimers();
+                resolve(true)
+            }
+        }, 50);
+        timer = setTimeout(function() {
+            resolve(false)
+        }, delay);
+        function clearTimers(){
+            clearInterval(heartbeat);
+            clearTimeout(timer);
         }
-    }, 50);
-    timer = setTimeout(function() {
-        return false
-    }, delay);
-    function clearTimers(){
-        clearInterval(heartbeat);
-        clearTimeout(timer);
-    }
+    })
 }
 
 function mobileCheck() {
