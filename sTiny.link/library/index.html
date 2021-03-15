@@ -141,7 +141,10 @@
       id('result').blur()
       alert('Copied to Clipboard!')
     }else{
-      alert('No link to be Copied. Create one first!')
+      id('tweet').innerHTML = 'No link yet. Create one first!'
+      setTimeout(function(){
+        id('tweet').innerHTML = 'Copy link'
+      },2000)
     }
   })
   /*id('withSub').addEventListener("click", function() {
@@ -199,7 +202,10 @@
         window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
       }
     }else{
-      id('tweet').innerHTML = 'No link to be Copied. Create one first!'
+      id('tweet').innerHTML = 'No link yet. Create one first!'
+      setTimeout(function(){
+        id('tweet').innerHTML = 'Copy it to Twitter'
+      },2000)
     }
   })
 </script>
