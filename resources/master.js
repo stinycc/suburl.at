@@ -75,22 +75,21 @@ function getParameter(name) {
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-function ifNoApp(msg){
+function appCheck(scheme,delay){
+    location.href = scheme
+    heartbeat = setInterval(function intervalHeartbeat(){
+        if(document.webkitHidden || document.hidden){
+            clearTimers();
+            return true
+        }
+    }, 50);
+    timer = setTimeout(function() {
+        return false
+    }, delay);
     function clearTimers(){
         clearInterval(heartbeat);
         clearTimeout(timer);
     }
-
-    function intervalHeartbeat(){
-        if(document.webkitHidden || document.hidden){
-            clearTimers();
-        }
-    }
-    heartbeat = setInterval(intervalHeartbeat, 50);
-    var deLay = 1000;
-    timer = setTimeout(function() {
-        msg()
-    }, deLay);
 }
 
 function mobileCheck() {
