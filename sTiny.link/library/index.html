@@ -114,6 +114,7 @@
     resizeResponsiveElements()
   })
   id('sTinyLinkButton').addEventListener("click", function() {
+    shortCode = getParameter('shortCode')
     id('result').value = (id('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.')
   })
   /*var domains = ['littl.cc']
