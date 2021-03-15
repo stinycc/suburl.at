@@ -184,10 +184,6 @@
   id('tweet').addEventListener("click", function() {
     var twitterAllowed, twitterCheck
     if(id('result').value){
-      id('result').select()
-      document.execCommand("copy");
-      id('result').blur()
-      
       twitterAllowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890./:'
       twitterCheck = id('result').value
       for (i in twitterAllowed){
@@ -218,6 +214,9 @@
     elementFadeOut('subUrlHelpPopup')
   })
   function twitterGenerate(twt){
+    id('result').select()
+    document.execCommand("copy");
+    id('result').blur()
     if(mobileCheck()){
       twitterCount = 3
       id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
