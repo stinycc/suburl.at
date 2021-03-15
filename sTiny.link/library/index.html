@@ -81,13 +81,13 @@
     <div id='subUrlHelpPopup' R='width:s(90); height:s(60); max-width:h(45); max-height:h(30); border-radius:s(4);' style='display:none; position:absolute; z-index:20; color:black; background:rgba(255,255,255,0.9);'>
       <div R='height:h(100*7/10);'>
         <div R='width:w(85); font-size:h(7);'>
-          <span id='subUrlHelpText' R='padding-top:h(3);'>
+          <span R='padding-top:h(3);'>
             😢 Sadly Twitter does not allow non-English characters to be hyperlinked. We can add you an additional SubLink that does work on twitter OR you can rename your link.
           </span>
         </div>
       </div>
       <div class='topCenterAlign' R='height:h(100*1/10);'>
-        <b id='subUrlAskText' R='font-size:h(60)'>
+        <b R='font-size:h(60)'>
           Proceed to Twitter?
         </b>
       </div>
@@ -207,11 +207,14 @@
       }else{
         elementFadeIn('overlayFrame')
         elementFadeIn('subUrlHelpPopup')
-        id('othersButton').addEventListener("click", function() {
-          othersCreate()
+        id('subUrlOkButton').addEventListener("click", function() {
+          twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
+          elementFadeOut('overlayFrame')
+          elementFadeOut('subUrlHelpPopup')
         })
-        id('othersButton').addEventListener("click", function() {
-          othersCreate()
+        id('subUrlNoButton').addEventListener("click", function() {
+          elementFadeOut('overlayFrame')
+          elementFadeOut('subUrlHelpPopup')
         })
       }
       function twitterGenerate(twt){
