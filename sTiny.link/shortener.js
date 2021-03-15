@@ -66,7 +66,11 @@ var preferredDomain = `
 `
 if (getParameter('from')){
     id('preferredDomainTextBox').innerHTML = preferredDomain.replace('domainName',getParameter('from'))
-}    
+    id('preferredDomainText').addEventListener('click', function() {
+        alert("In order to use '" + getParameter('from') + "' as a shortener domain please enter the URL you want to shorten and then click the 'Unique.domain' button (the black button).")
+    })
+}
+
 //-----------------------------------------------------------------------------------------------------------------
 
 id('urlInput').addEventListener('focus', function() {
