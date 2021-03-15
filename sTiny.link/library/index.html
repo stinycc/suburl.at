@@ -198,18 +198,6 @@
       }else{
         elementFadeIn('overlayFrame')
         elementFadeIn('subUrlHelpPopup')
-        id('subUrlOkButton').addEventListener("click", function() {
-          twitterGenerate('%F0%9F%94%97 ' + id('result').value + '%0A')
-          //twitterGenerate('%F0%9F%94%97 ' + id('result').value + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
-          setTimeout(function(){
-            elementFadeOut('overlayFrame')
-            elementFadeOut('subUrlHelpPopup')
-          },500)
-        })
-        id('subUrlNoButton').addEventListener("click", function() {
-          elementFadeOut('overlayFrame')
-          elementFadeOut('subUrlHelpPopup')
-        })
       }
       function twitterGenerate(twt){
         if(mobileCheck()){
@@ -245,6 +233,17 @@
         id('tweet').innerHTML = 'Copy it to Twitter'
       },2000)
     }
+  })
+  id('subUrlOkButton').addEventListener("click", function() {
+    twitterGenerate('%F0%9F%94%97 ' + id('result').value + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
+    setTimeout(function(){
+      elementFadeOut('overlayFrame')
+      elementFadeOut('subUrlHelpPopup')
+    },500)
+  })
+  id('subUrlNoButton').addEventListener("click", function() {
+    elementFadeOut('overlayFrame')
+    elementFadeOut('subUrlHelpPopup')
   })
 </script>
 
