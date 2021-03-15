@@ -60,7 +60,7 @@ Hin = []
 domainList = [].concat(/*Kor,*/ Eng, Chi, Jap, Ara, Hin)
 
 var preferredDomain = `
-<span id='preferredDomainText' class='button' R='border-bottom:white h(3) solid; font-size:h(35);' style='color:white;'>
+<span id='preferredDomainText' class='button' R='border-bottom:white h(5) solid; font-size:h(35);' style='color:white;'>
   Use <b>domainName</b> domain
 </span>
 `
