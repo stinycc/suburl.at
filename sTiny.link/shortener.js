@@ -59,6 +59,14 @@ Ara = []
 Hin = []
 domainList = [].concat(/*Kor,*/ Eng, Chi, Jap, Ara, Hin)
 
+var preferredDomain = `
+<a href='#' R='font-size:h(35)' style='color:white; border-bottom:white 1px;'>
+  Use domainName domain
+</a>
+`
+if (getParameter('from')){
+    id('preferredDomainTextBox').innerHTML = preferredDomain.replace('domainName',getParameter('from'))
+}    
 //-----------------------------------------------------------------------------------------------------------------
 
 id('urlInput').addEventListener('focus', function() {
@@ -148,15 +156,6 @@ descriptionImgAnimation = `
 </style>
 `
 document.head.innerHTML += descriptionImgAnimation
-
-var preferredDomain = `
-<a href='#' R='font-size:h(35)' style='color:white;'>
-  Use domainName domain
-</a>
-`
-if (getParameter('from')){
-    id('preferredDomainTextBox').innerHTML = preferredDomain.replace('domainName',getParameter('from'))
-}    
 
 //-----------------------------------------------------------------------------------------------------------------
 
