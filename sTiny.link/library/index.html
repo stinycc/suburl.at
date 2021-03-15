@@ -140,7 +140,11 @@
   })
   id('sTinyTest').addEventListener("click", function() {
     sTinyCreate()
-    window.open('http://' + id('result').value)
+    try {
+      window.open('http://' + id('result').value)
+    }catch{
+      alert('Not working')
+    }
   })
   function sTinyCreate(){
     if(id('sTinyLinkInput').value){
