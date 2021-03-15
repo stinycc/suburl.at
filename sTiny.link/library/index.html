@@ -176,7 +176,7 @@
       if (twitterCheck == ''){
         twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A')
       }else{
-        if (window.confirm("😢 Sadly Twitter does not allow non-English characters to be hyperlinked. So, we've added you an additional SubLink that does work on twitter. OR you can rename your link.")){
+        if (window.confirm("😢 Sadly Twitter does not allow non-English characters to be hyperlinked. We can add you an additional SubLink that does work on twitter OR you can rename your link. Proceed to Twitter?")){
           twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
         }
       }
