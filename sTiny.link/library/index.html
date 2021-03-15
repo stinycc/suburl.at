@@ -76,6 +76,35 @@
   </div>
 </div>
     
+    <div id='overlayFrame' R='height:h(100);' style='display:none; position:absolute; z-index:15; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
+    </div>
+    <div id='subUrlHelpPopup' R='width:s(90); height:s(90); max-width:h(45); max-height:h(45); border-radius:s(4);' style='display:none; position:absolute; z-index:20; background:rgba(255,255,255,0.9);'>
+      <div R='height:h(100*7/10);'>
+        <div R='width:w(85); font-size:h(6.5);'>
+          <span id='subUrlHelpText' R='padding-top:h(3);'>
+            😢 Sadly Twitter does not allow non-English characters to be hyperlinked. We can add you an additional SubLink that does work on twitter OR you can rename your link. Proceed to Twitter?
+          </span>
+        </div>
+      </div>
+      <div class='topCenterAlign' R='height:h(100*1/10);'>
+        <b id='subUrlAskText' R='font-size:h(60)'>
+          서브링크를 함께 발급해드릴까요?
+        </b>
+      </div>
+      <div R='height:h(100*2/10);' style='color:white;'>
+        <div id='subUrlOkButton' class='button' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d;'>
+          <b id='subUrlOkButtonText' R='font-size:h(30)'>
+            네
+          </b>
+        </div>
+        <div id='subUrlNoButton' class='button' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d;'>
+          <b id='subUrlNoButtonText' R='font-size:h(30)'>
+            아니오
+          </b>
+        </div>
+      </div>
+    </div>
+    
 <script>
   resizeResponsiveElements()
   window.addEventListener("resize", function() {
@@ -176,9 +205,8 @@
       if (twitterCheck == ''){
         twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A')
       }else{
-        if (window.confirm("😢 Sadly Twitter does not allow non-English characters to be hyperlinked. We can add you an additional SubLink that does work on twitter OR you can rename your link. Proceed to Twitter?")){
-          twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
-        }
+        elementFadeIn('overlayFrame')
+        elementFadeIn('subUrlHelpPopup')
       }
       function twitterGenerate(twt){
         if(mobileCheck()){
