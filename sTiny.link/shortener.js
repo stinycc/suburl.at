@@ -249,7 +249,11 @@ function simpleShortenSuccess(shortCode) {
 }
 
 function uniqueShortenSuccess(shortCode) {
-    location.href = './library?shortCode=' + shortCode
+    if(getParameter('from')){
+        location.href = './library?from=' + getParameter('from') + '&shortCode=' + shortCode
+    }else{
+        location.href = './library?shortCode=' + shortCode
+    }
 }
 
 function instantShortenSuccess(shortCode) {
