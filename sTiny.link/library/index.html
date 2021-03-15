@@ -143,7 +143,7 @@
     try {
       window.open('http://' + id('result').value)
     }catch{
-      alert('Not working')
+      alert('The link contains a/some character(s) that cannot be used')
     }
   })
   function sTinyCreate(){
@@ -169,7 +169,11 @@
   })
   id('othersTest').addEventListener("click", function() {
     othersCreate()
-    window.open('http://' + id('result').value)
+    try {
+      window.open('http://' + id('result').value)
+    }catch{
+      alert('The link contains a/some character(s) that cannot be used')
+    }
   })
   function othersCreate(){
     if(id('othersInput').value){
