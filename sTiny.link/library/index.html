@@ -174,7 +174,7 @@
           twitterTextAnimation()
           function twitterTextAnimation(){
             twitterTimer = setTimeout(function(){
-              if(twitterCount >= 0){
+              if(twitterCount > 0){
                 twitterCount -= 1
                 id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
                 twitterTextAnimation()
