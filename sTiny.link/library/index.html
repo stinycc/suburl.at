@@ -113,7 +113,9 @@
   window.addEventListener("resize", function() {
     resizeResponsiveElements()
   })
-  id('result').value = 'ㅁ.sTiny.link/vRa7U'
+  id('sTinyLinkButton').addEventListener("click", function() {
+    id('result').value = 'ㅁ.sTiny.link/vRa7U'
+  })
   /*var domains = ['littl.cc']
   var optionPreset = '<option value="placeNumb1">.placeNumb2</option>'
   for (i in domains){
@@ -128,7 +130,7 @@
     alert("There is no record of the link to be shortened. we'll move you to the main page!")
     location.href = '/sTiny.link'
   }
-  /*id('othersInput').addEventListener("input", function() {
+  id('othersInput').addEventListener("input", function() {
     id('othersInput').value = id('othersInput').value.replaceAll(' ','.')
     id('othersInput').value = id('othersInput').value.replaceAll('..','.')
   })
