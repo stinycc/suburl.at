@@ -87,7 +87,7 @@ function ifNoApp(msg){
         }
     }
     heartbeat = setInterval(intervalHeartbeat, 50);
-    var deLay = 750;
+    var deLay = 1000;
     timer = setTimeout(function() {
         msg()
     }, deLay);
