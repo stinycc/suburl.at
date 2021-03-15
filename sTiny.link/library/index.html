@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html>
+  <head><?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html>
   <head>
     <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico">
     <title>sTiny.link - Library</title>
@@ -120,6 +123,7 @@
   }
   if(getParameter('shortCode')){
     shortCode = getParameter('shortCode')
+    addSubUrl = ' (subURL.at/#' + shortCode + ')'
   }else{
     alert("There is no record of the link to be shortened. we'll move you to the main page!")
     location.href = '/sTiny.link'
@@ -163,7 +167,7 @@
   }
   id('onlyMain').addEventListener("click", function() {
     if(id('result').value){
-      id('result').value = id('result').value
+      id('result').value = id('result').value.replaceAll(addSubUrl,'')
       id('result').select()
       document.execCommand("copy");
       id('result').blur()
@@ -178,25 +182,41 @@
       },2000)
     }
   })
+  /*id('withSub').addEventListener("click", function() {
+    if(id('result').value){
+      id('result').value = id('result').value.replaceAll(addSubUrl,'')
+      id('result').value += addSubUrl
+      id('result').select()
+      document.execCommand("copy");
+      id('result').blur()
+      alert('Copied to Clipboard!')
+    }else{
+      alert('No link to be Copied. Create one first!')
+    }
+  })*/
   id('tweet').addEventListener("click", function() {
     var twitterAllowed, twitterCheck
     if(id('result').value){
+      id('result').select()
+      document.execCommand("copy");
+      id('result').blur()
+      
       twitterAllowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890./:'
       twitterCheck = id('result').value
       for (i in twitterAllowed){
         twitterCheck = twitterCheck.replaceAll(twitterAllowed[i],'')
       }
       if (twitterCheck == ''){
-        twitterGenerate('%F0%9F%94%97 ' + id('result').value + '%0A')
+        twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A')
       }else{
         elementFadeIn('overlayFrame')
         elementFadeIn('subUrlHelpPopup')
         id('subUrlOkButton').addEventListener("click", function() {
-          twitterGenerate('%F0%9F%94%97 ' + id('result').value + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
+          twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
           setTimeout(function(){
             elementFadeOut('overlayFrame')
             elementFadeOut('subUrlHelpPopup')
-          },750)
+          },1500)
         })
         id('subUrlNoButton').addEventListener("click", function() {
           elementFadeOut('overlayFrame')
@@ -204,9 +224,6 @@
         })
       }
       function twitterGenerate(twt){
-        id('result').select()
-        document.execCommand("copy");
-        id('result').blur()
         if(mobileCheck()){
           twitterCount = 3
           id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
