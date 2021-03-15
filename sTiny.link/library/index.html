@@ -120,14 +120,14 @@
   }
   if(getParameter('from')){
     id('othersSelect').value = getParameter('from')
-  }
+  }*/
   if(getParameter('shortCode')){
     shortCode = getParameter('shortCode')
   }else{
     alert("There is no record of the link to be shortened. we'll move you to the main page!")
     location.href = '/sTiny.link'
   }
-  id('othersInput').addEventListener("input", function() {
+  /*id('othersInput').addEventListener("input", function() {
     id('othersInput').value = id('othersInput').value.replaceAll(' ','.')
     id('othersInput').value = id('othersInput').value.replaceAll('..','.')
   })
