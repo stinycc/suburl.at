@@ -206,27 +206,9 @@
         id('result').select()
         document.execCommand("copy");
         id('result').blur()
-        if(mobileCheck()){
-          twitterCount = 3
-          id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
-          twitterTextAnimation()
-          function twitterTextAnimation(){
-            twitterTimer = setTimeout(function(){
-              if(twitterCount > 0){
-                twitterCount -= 1
-                id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
-                twitterTextAnimation()
-              }else{
-                id('tweet').innerHTML = 'Copy it to Twitter'
-              }
-            },1000)
-          }
-          try{
-            location.href = 'twitter://post?message=' + twt
-          } catch {
-            window.open('https://twitter.com/intent/tweet?text=' + twt)
-          }
-        }else{
+        try{
+          location.href = 'twitter://post?message=' + twt
+        } catch {
           window.open('https://twitter.com/intent/tweet?text=' + twt)
         }
       }
