@@ -61,7 +61,7 @@
       <img src='https://suburl.at/resources/images/result.png' R='width:w(70)'>
     </div>
     <div R='height:h(20)'>
-      <input id='result' type='text' value='ㅁ.sTiny.link/vRa7U' autocomplete='off' R='width:w(90); height:h(75); border-radius:w(3); font-size:h(25);' style='border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4); text-align:center;'>
+      <input id='result' type='text' placeholder='John.Doe.sTiny.link/3x4mP1e' autocomplete='off' R='width:w(90); height:h(75); border-radius:w(3); font-size:h(25);' style='border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4); text-align:center;'>
     </div>
     <div R='height:h(20)'>
       <div id='onlyMain' class='button' R='width:w(90); height:h(75); border-radius:w(3); font-size:h(30);' style='background:rgba(0,0,0,0.7);'>
@@ -113,6 +113,7 @@
   window.addEventListener("resize", function() {
     resizeResponsiveElements()
   })
+  id('result').value = 'ㅁ.sTiny.link/vRa7U'
   /*var domains = ['littl.cc']
   var optionPreset = '<option value="placeNumb1">.placeNumb2</option>'
   for (i in domains){
@@ -120,7 +121,7 @@
   }
   if(getParameter('from')){
     id('othersSelect').value = getParameter('from')
-  }*/
+  }
   if(getParameter('shortCode')){
     shortCode = getParameter('shortCode')
   }else{
@@ -134,7 +135,7 @@
   id('sTinyLinkInput').addEventListener("input", function() {
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(' ','.')
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll('..','.')
-  })*/
+  })
   id('sTinyLinkButton').addEventListener("click", function() {
     sTinyCreate()
   })
@@ -151,7 +152,7 @@
       id('result').value = resultValue
     }
   }
-  /*
+  
   id('othersButton').addEventListener("click", function() {
     othersCreate()
   })
