@@ -113,7 +113,7 @@
   window.addEventListener("resize", function() {
     resizeResponsiveElements()
   })
-  var domains = ['littl.cc']
+  /*var domains = ['littl.cc']
   var optionPreset = '<option value="placeNumb1">.placeNumb2</option>'
   for (i in domains){
     id('othersSelect').innerHTML += optionPreset.replace('placeNumb1',domains[i]).replace('placeNumb2',domains[i])
@@ -134,7 +134,7 @@
   id('sTinyLinkInput').addEventListener("input", function() {
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(' ','.')
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll('..','.')
-  })
+  })*/
   id('sTinyLinkButton').addEventListener("click", function() {
     sTinyCreate()
   })
@@ -151,7 +151,7 @@
       id('result').value = resultValue
     }
   }
-  
+  /*
   id('othersButton').addEventListener("click", function() {
     othersCreate()
   })
@@ -168,7 +168,7 @@
       id('result').value = resultValue
     }
   }
-  /*id('onlyMain').addEventListener("click", function() {
+  id('onlyMain').addEventListener("click", function() {
     if(id('result').value){
       id('result').select()
       document.execCommand("copy");
