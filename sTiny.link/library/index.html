@@ -176,17 +176,9 @@
       if (twitterCheck == ''){
         twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A')
       }else{
-        new Promise(function(resolve, reject) {
-          if (window.confirm("😢 Sadly Twitter does not allow non-English characters to be hyperlinked. We can add you an additional SubLink that does work on twitter OR you can rename your link. Proceed to Twitter?")){
-            resolve(true)
-          }else{
-            reject()
-          }
-        }).then(function(){
-          setTimeout(function(){
-            twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
-          },3000)
-        })
+        if (window.confirm("😢 Sadly Twitter does not allow non-English characters to be hyperlinked. We can add you an additional SubLink that does work on twitter OR you can rename your link. Proceed to Twitter?")){
+          twitterGenerate('%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
+        }
       }
       function twitterGenerate(twt){
         if(mobileCheck()){
@@ -204,7 +196,7 @@
               }
             },1000)
           }
-          appCheck('twitter://post?message=' + twt,3000).then(function(result){
+          appCheck('twitter://post?message=' + twt, 3000).then(function(result){
             if(result){
               clearTimeout(twitterTimer)
               id('tweet').innerHTML = 'Copy it to Twitter'
