@@ -168,7 +168,15 @@
         twitterCheck = twitterCheck.replaceAll(twitterAllowed[i],'')
       }
       if (twitterCheck == ''){
-        window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A')
+        if(mobileCheck()){
+          appCheck('twitter://post?message=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A',3000).then(function(result){
+            if(result == false){
+               alert('fail')
+            }
+          })
+        }else{
+          window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A')
+        }
       }else{
         alert("😢 Sadly Twitter does not allow non-English characters to be hyperlinked. So we've added you an additional SubLink that works on twitter!")
         window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
