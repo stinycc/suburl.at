@@ -199,34 +199,6 @@
         elementFadeIn('overlayFrame')
         elementFadeIn('subUrlHelpPopup')
       }
-      function twitterGenerate(twt){
-        if(mobileCheck()){
-          twitterCount = 3
-          id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
-          twitterTextAnimation()
-          function twitterTextAnimation(){
-            twitterTimer = setTimeout(function(){
-              if(twitterCount > 0){
-                twitterCount -= 1
-                id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
-                twitterTextAnimation()
-              }else{
-                id('tweet').innerHTML = 'Copy it to Twitter'
-              }
-            },1000)
-          }
-          appCheck('twitter://post?message=' + twt, 3000).then(function(result){
-            if(result){
-              clearTimeout(twitterTimer)
-              id('tweet').innerHTML = 'Copy it to Twitter'
-            }else{
-              window.open('https://twitter.com/intent/tweet?text=' + twt)
-            }
-          })
-        }else{
-          window.open('https://twitter.com/intent/tweet?text=' + twt)
-        }
-      }
     }else{
       id('tweet').innerHTML = 'No link yet. Create one first!'
       setTimeout(function(){
@@ -245,6 +217,34 @@
     elementFadeOut('overlayFrame')
     elementFadeOut('subUrlHelpPopup')
   })
+  function twitterGenerate(twt){
+    if(mobileCheck()){
+      twitterCount = 3
+      id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
+      twitterTextAnimation()
+      function twitterTextAnimation(){
+        twitterTimer = setTimeout(function(){
+          if(twitterCount > 0){
+            twitterCount -= 1
+            id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
+            twitterTextAnimation()
+          }else{
+            id('tweet').innerHTML = 'Copy it to Twitter'
+          }
+        },1000)
+      }
+      appCheck('twitter://post?message=' + twt, 3000).then(function(result){
+        if(result){
+          clearTimeout(twitterTimer)
+          id('tweet').innerHTML = 'Copy it to Twitter'
+        }else{
+          window.open('https://twitter.com/intent/tweet?text=' + twt)
+        }
+      })
+    }else{
+      window.open('https://twitter.com/intent/tweet?text=' + twt)
+    }
+  }
 </script>
 
   </body>
