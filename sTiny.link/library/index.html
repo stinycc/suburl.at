@@ -169,13 +169,25 @@
       }
       if (twitterCheck == ''){
         if(mobileCheck()){
-          id('tweet').innerHTML = 'Loading Twitter...'
+          twitterCount = 3
+          id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
+          twitterTextAnimation()
+          function twitterTextAnimation(){
+            twitterTimer = setTimeout(function(){
+              if(twitterCount >= 0){
+                twitterCount -= 1
+                id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
+              }else{
+                id('tweet').innerHTML = 'Copy it to Twitter'
+              }
+            },1000)
+          }
           appCheck('twitter://post?message=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A',3000).then(function(result){
             if(result){
+              clearTimeout(twitterTimer)
               id('tweet').innerHTML = 'Copy it to Twitter'
             }else{
               window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A')
-              id('tweet').innerHTML = 'Copy it to Twitter'
             }
           })
         }else{
