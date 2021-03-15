@@ -58,7 +58,7 @@
   </div>
   <div R='height:h(35)'>
     <div class='bottomCenterAlign' R='height:h(20)'>
-      <input id='result' type='text' value='John.Doe.sTiny.link/3x4mP1e' autocomplete='off' R='width:w(90); height:h(75); border-radius:w(70); font-size:h(25);' style='color:white; background:rgba(0,0,0,0); border:none; text-align:center;'>
+      <input id='result' type='text' value='John.Doe.sTiny.link/3x4mP1e' autocomplete='off' R='width:w(90); height:h(75); border-radius:w(70); font-size:h(30);' style='color:white; background:rgba(0,0,0,0); border:none; text-align:center;'>
     </div>
     <div R='height:h(15)'>
       <img src='https://suburl.at/resources/images/result.png' R='width:w(70)'>
@@ -209,11 +209,14 @@
       },2000)
     }
   })
+  savePopupHTML = id('subUrlHelpPopup').innerHTML
   id('subUrlOkButton').addEventListener("click", function() {
     twitterGenerate('%F0%9F%94%97 ' + id('result').value + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
+    id('subUrlHelpPopup').innerHTML = "<b R='font-size:h(20);'>Loading Twitter...</b>"
     setTimeout(function(){
       elementFadeOut('overlayFrame')
       elementFadeOut('subUrlHelpPopup')
+      id('subUrlHelpPopup').innerHTML = savePopupHTML
     },500)
   })
   id('subUrlNoButton').addEventListener("click", function() {
