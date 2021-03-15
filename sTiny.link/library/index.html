@@ -169,13 +169,13 @@
       }
       if (twitterCheck == ''){
         if(mobileCheck()){
+          id('tweet').innerHTML = 'Loading Twitter...'
           appCheck('twitter://post?message=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A',3000).then(function(result){
-            if(result == false){
-              appCheck('googlechrome://www.google.com/',3000).then(function(result){
-                if(result == false){
-                  window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A')
-                }
-              })
+            if(result){
+              id('tweet').innerHTML = 'Copy it to Twitter'
+            }else{
+              window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A')
+              id('tweet').innerHTML = 'Copy it to Twitter'
             }
           })
         }else{
@@ -186,7 +186,7 @@
         window.open('https://twitter.com/intent/tweet?text=%F0%9F%94%97 ' + id('result').value.replaceAll(addSubUrl,'') + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
       }
     }else{
-      alert('Create a link first!')
+      alert('No link to be Copied. Create one first!')
     }
   })
 </script>
