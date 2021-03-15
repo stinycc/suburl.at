@@ -115,7 +115,7 @@
   })
   id('sTinyLinkButton').addEventListener("click", function() {
     shortCode = getParameter('shortCode')
-    id('result').value = (id('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.')
+    id('result').value = (id('sTinyLinkInput').value + '.sTiny.link/' + shortCode)
   })
   /*var domains = ['littl.cc']
   var optionPreset = '<option value="placeNumb1">.placeNumb2</option>'
