@@ -143,7 +143,7 @@
   id('sTinyTest').addEventListener("click", function() {
     sTinyCreate()
     try {
-      id('testIframe').src = 'http://' + id('result').value
+      id('testIframe').src = '//' + id('result').value
     }catch{
       alert('The link contains a/some character(s) that cannot be used')
     }
@@ -172,7 +172,7 @@
   id('othersTest').addEventListener("click", function() {
     othersCreate()
     try {
-      window.open('http://' + id('result').value)
+      window.open('//' + id('result').value)
     }catch{
       alert('The link contains a/some character(s) that cannot be used')
     }
