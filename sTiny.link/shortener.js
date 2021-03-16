@@ -312,7 +312,7 @@ function validCheck(url) {
         return
     }
     //valid characters?
-    unvalidCharacter = ['+', '=', '<', '>', '&', '^', '%', '!', '~', '*', '(', ')', '"', ';', ',', '{', '}', '[', ']', '$', '#', '@', '?', '|', "'"]
+    unvalidCharacter = ['+', '=', '<', '>', '＆', '&', '^', '%', '!', '~', '＊', '*', '(', ')', '"', ';', ',', '{', '}', '[', ']', '$', '＃', '#', '＠', '@', '?', '|', '`', "'"]
     for (var i = 0; i < unvalidCharacter.length; i++) {
         if (urlHostname.indexOf(unvalidCharacter[i]) != -1) {
             errorAnimation()
