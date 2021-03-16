@@ -150,7 +150,7 @@
   })
   id('othersInput').addEventListener("keydown", function() {
     if(event.keyCode==13){
-      if (touchscreen == 1){
+      if (touchscreen){
         id('othersInput').blur()
       }else{
         id('othersButton').click()
