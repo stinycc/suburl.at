@@ -192,6 +192,9 @@
       },2000)
     }
   })
+  id('testIframe').addEventListener('load',function(){
+    alert('d')
+  })
   window.addEventListener('message',function(e){
     if(e.data=='success'){
       if(id('sTinyLinkButton').innerHTML.indexOf('Testing link') != -1){
