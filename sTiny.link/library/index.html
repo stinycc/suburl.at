@@ -171,7 +171,7 @@
       id('othersButton').innerHTML = 'Testing link... ' + othersCount
       othersTextAnimation()
       function othersTextAnimation(){
-        try { clearTimeout(othersTimer) }
+        try{clearTimeout(othersTimer)}catch{}
         othersTimer = setTimeout(function(){
           if(othersCount > 0){
             othersCount -= 1
