@@ -223,11 +223,11 @@
   })
   iframeLoaded = 0
   id('testIframe').addEventListener('load',function(){
-    if(iframeLoaded = 0){
+    if(iframeLoaded == 0){
       iframeLoaded = 1
     }else{
       setTimeout(function(){
-        alert('Link created :' + resultValue + ' (Sorry for the delay. The link you generated earlier has finally passed the test!. Click the buttons at the bottom of the page to copy the link)')
+        alert('Link created: ' + resultValue + ' (Sorry for the delay. The link you generated earlier has finally passed the test!. Click the buttons at the bottom of the page to copy the link)')
         iframeLoaded = 0
       },500)
     }
