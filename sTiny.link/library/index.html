@@ -142,11 +142,10 @@
   })
   id('sTinyTest').addEventListener("click", function() {
     sTinyCreate()
-    try {
-      id('testIframe').src = '//' + id('result').value
-    }catch{
-      alert('The link contains a/some character(s) that cannot be used')
-    }
+    id('testIframe').src = '//' + id('result').value
+    id('testIframe').addEventListener("load", function() {
+      alert('d')
+    })
   })
   function sTinyCreate(){
     if(id('sTinyLinkInput').value){
@@ -171,11 +170,7 @@
   })
   id('othersTest').addEventListener("click", function() {
     othersCreate()
-    try {
-      window.open('//' + id('result').value)
-    }catch{
-      alert('The link contains a/some character(s) that cannot be used')
-    }
+    window.open('//' + id('result').value)
   })
   function othersCreate(){
     if(id('othersInput').value){
