@@ -175,7 +175,7 @@
               iframeLoaded = -1
             }
             arabicCharacter = /[\u0600-\u06FF]/;
-            if(arabicCharacter.test(testLinkSave)){
+            if(arabicCharacter.test(testLinkSave) || testLinkSave.indexOf('ﻌ') != -1){
               alert('Arabic alphabet detected! Arabic alphabets are not allowed to be used with most of the non-arabic characters.')
             }
           }
@@ -217,10 +217,8 @@
               id('othersButton').innerHTML = 'Create link'
               iframeLoaded = -1
             }
-            arabicCharacter1 = /[\u0600-\u06FF]/g;
-            arabicCharacter2 = /[\uFB50–\uFDFF]/g;
-            arabicCharacter3 = /[\uFE70–\uFEFF]/g;
-            if(arabicCharacter1.test(testLinkSave) || arabicCharacter2.test(testLinkSave) || arabicCharacter3.test(testLinkSave) || testLinkSave.indexOf('ﻌ') != -1){
+            arabicCharacter = /[\u0600-\u06FF]/;
+            if(arabicCharacter.test(testLinkSave) || testLinkSave.indexOf('ﻌ') != -1){
               alert('Arabic alphabet detected! Arabic alphabets are not allowed to be used with most of the non-arabic characters.')
             }
           }
