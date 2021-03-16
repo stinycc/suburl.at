@@ -154,7 +154,7 @@
     if(id('sTinyLinkInput').value){
       iframeLoaded = 0
       id('testIframe').src = '//' + id('sTinyLinkInput').value.replaceAll('.','') + '.sTiny.link/' + shortCode + '?test=true'
-      sTinyLinkCount = 3
+      sTinyLinkCount = 5
       id('sTinyLinkButton').innerHTML = 'Testing link... ' + sTinyLinkCount
       sTinyLinkTextAnimation()
       function sTinyLinkTextAnimation(){
@@ -192,7 +192,7 @@
     if(id('othersInput').value){
       iframeLoaded = 0
       id('testIframe').src = '//' + id('othersInput').value.replaceAll('.','') + '.' + id('othersSelect').value + '/' + shortCode + '?test=true'
-      othersCount = 3
+      othersCount = 5
       id('othersButton').innerHTML = 'Testing link... ' + othersCount
       othersTextAnimation()
       function othersTextAnimation(){
