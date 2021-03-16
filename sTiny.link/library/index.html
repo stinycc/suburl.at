@@ -123,13 +123,20 @@
     alert("There is no record of the link to be shortened. we'll move you to the main page!")
     location.href = '/sTiny.link'
   }
-  id('othersInput').addEventListener("input", function() {
-    id('othersInput').value = id('othersInput').value.replaceAll(' ','.')
-    id('othersInput').value = id('othersInput').value.replaceAll('..','.')
-  })
+  unvalidCharacter = ['+', '=', '<', '>', '&', '^', '%', '!', '~', '*', '(', ')', '"', ';', ',', '{', '}', '[', ']', '$', '#', '@', '?', '|', "'"]
   id('sTinyLinkInput').addEventListener("input", function() {
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(' ','.')
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll('..','.')
+    for (i in unvalidCharacter){
+      id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(unvalidCharacter[i],'')
+    }
+  })
+  id('othersInput').addEventListener("input", function() {
+    id('othersInput').value = id('othersInput').value.replaceAll(' ','.')
+    id('othersInput').value = id('othersInput').value.replaceAll('..','.')
+    for (i in unvalidCharacter){
+      id('othersInput').value = id('othersInput').value.replaceAll(unvalidCharacter[i],'')
+    }
   })
   resultValue = ''
   id('result').addEventListener("input", function() {
