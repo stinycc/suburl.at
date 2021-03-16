@@ -167,6 +167,10 @@
               alert('Link test failed. Your link contains unusable character(s).')
               id('sTinyLinkButton').innerHTML = 'Create link'
               iframeLoaded = 0
+            }else{
+              alert('Link test failed. Your link contains unusable character(s) or your internet connection is too slow. In case of slow connection you might get the result later on.')
+              id('sTinyLinkButton').innerHTML = 'Create link'
+              iframeLoaded = -1
             }
           }
         },1000)
@@ -200,6 +204,10 @@
               alert('Link test failed. Your link contains unusable character(s).')
               id('othersButton').innerHTML = 'Create link'
               iframeLoaded = 0
+            }else{
+              alert('Link test failed. Your link contains unusable character(s) or your internet connection is too slow. In case of slow connection you might get the result later on.')
+              id('othersButton').innerHTML = 'Create link'
+              iframeLoaded = -1
             }
           }
         },1000)
@@ -213,8 +221,14 @@
       },2000)
     }
   })
+  iframeLoaded = 0
   id('testIframe').addEventListener('load',function(){
-    iframeLoaded = 1
+    if(iframeLoaded = 0){
+      iframeLoaded = 1
+    }else{
+      alert('Link created :' + resultValue + ' (Sorry for the delay. The link you generated earlier has finally passed the test! Copy your link via the buttons below.)')
+      iframeLoaded = 0
+    }
   })
   window.addEventListener('message',function(e){
     if(e.data=='success'){
