@@ -135,6 +135,27 @@
       id('othersInput').value = id('othersInput').value.replaceAll(unvalidCharacter[i],'')
     }
   })
+  window.addEventListener("touch",function(){
+    touchscreen = 1
+  }
+  id('sTinyLinkInput').addEventListener("keydown", function() {
+    if(event.keyCode==13){
+      if (touchscreen == 1){
+        id('sTinyLinkInput').blur()
+      }else{
+        id('sTinyLinkButton').click()
+      }
+    }
+  }
+  id('othersInput').addEventListener("keydown", function() {
+    if(event.keyCode==13){
+      if (touchscreen == 1){
+        id('othersInput').blur()
+      }else{
+        id('othersButton').click()
+      }
+    }
+  }
   resultValue = ''
   id('result').addEventListener("input", function() {
     id('result').value = resultValue
