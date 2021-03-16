@@ -167,3 +167,394 @@
     }
   </style>
 </html>
+
+            
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html style='min-height:500px;'>
+  <head>
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico">
+    <title>sTiny.link - Library</title>
+    <meta name='theme-color' content='#151515'>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0'> 
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <link href='/resources/master.css' rel='stylesheet' type='text/css'>
+    <script src='/resources/master.js'></script>
+  </head>
+  <body style='color:white; font-family:GmarketSansLight;'>
+    
+<div style='position:absolute; background:linear-gradient(135deg,#39a86c,#3284bf);'>
+</div>
+<div R='height:h(100); width:h(100/2)' style='position:absolute;'>
+  <div class='bottomCenterAlign' R='height:h(20); font-size:h(5);' style='font-family:GmarketSansBold; text-shadow:2px 2px 4px rgba(0,0,0,0.4);'>
+    <span class='button' onclick="location.href = '../'">sTiny.link</span>
+    <img src='https://suburl.at/resources/images/libraryDescription.png' R='width:w(90)'>
+  </div>
+  <div class='bottomCenterAlign' R='height:h(20)'>
+    <div R='width:w(90); height:h(80); border:white w(1) solid; border-radius:w(7.5);'>
+      <div R='height:h(45)'>
+        <input id='sTinyLinkInput' type='text' placeholder='John.Doe' autocomplete='off' R='width:w(65); height:h(75); padding:0 w(2) 0 0; border-radius:w(7.5); font-size:h(25);' style='border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4); text-align:right;'>
+        <div R='width:w(27.5); height:h(75); font-size:h(25);'>
+          .sTiny.link
+        </div>
+      </div>
+      <div R='height:h(45)'>
+        <div id='sTinyLinkButton' class='button' R='width:w(94); height:h(75); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
+          Create link
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='bottomCenterAlign' R='height:h(20)'>
+    <div R='width:w(90); height:h(80); border:white w(1) solid; border-radius:w(7.5);'>
+      <div R='height:h(45)'>
+        <input id='othersInput' type='text' placeholder='John.Doe' autocomplete='off' R='width:w(65); height:h(75); padding:0 w(2) 0 0; border-radius:w(7.5); font-size:h(25);' style='border:none; box-shadow:inset 4px 4px 4px rgba(0,0,0,0.4); text-align:right;'>
+        <select id='othersSelect' R='width:w(26); height:h(75); margin:0 0 0 w(1.5); border:white w(0.5) solid; border-radius:w(7.5); font-size:h(25);' style='color:white; background:rgba(0,0,0,0.1)'></select>
+      </div>
+      <div R='height:h(45)'>
+        <div id='othersButton' class='button' R='width:w(94); height:h(75); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
+          링크 생성
+        </div>
+      </div>
+    </div>
+  </div>
+  <div R='height:h(35)'>
+    <div class='bottomCenterAlign' R='height:h(12.5)'>
+      <input id='result' type='text' autocomplete='off' R='width:w(90); height:h(50); border-radius:w(70); font-size:h(50);' style='color:white; background:rgba(0,0,0,0); border:none; text-align:center;'>
+    </div>
+    <div R='height:h(15)'>
+      <img src='https://suburl.at/resources/images/result.png' R='width:w(70)'>
+    </div>
+    <div R='height:h(20)'>
+      <div id='onlyMain' class='button' R='width:w(90); height:h(75); border-radius:w(3); font-size:h(30);' style='background:rgba(0,0,0,0.7);'>
+        링크 복사
+      </div>
+    </div>
+    <div R='height:h(20)'>
+      <div id='tweet' class='button' R='width:w(90); height:h(75); border-radius:w(3); font-size:h(30);' style='background:rgba(29,161,242,0.7);'>
+        트위터로 복사
+      </div>
+    </div>
+    <div R='height:h(32.5); font-size:h(5.5);'>
+      <b class='button' onclick="location.href = '../'">← Go Back</b>
+    </div>
+  </div>
+</div>
+    
+    <iframe id='testIframe' src='' style='z-index:-5'></iframe>
+    
+    <div id='overlayFrame' R='height:h(100);' style='display:none; position:absolute; z-index:15; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
+    </div>
+    <div id='subUrlHelpPopup' R='width:s(90); height:s(70); max-width:h(45); max-height:h(35); border-radius:s(4);' style='display:none; position:absolute; z-index:20; color:black; background:rgba(255,255,255,0.9);'>
+      <div R='height:h(100*6/10);'>
+        <div R='width:w(85); font-size:h(9);'>
+          <span R='padding-top:h(3);'>
+            😢 슬프게도 트위터는 알파벳 이외 문자의 링크를 하이퍼링크로 사용할 수 없게 설정해놓았어요. 트위터에서도 사용이 가능한 서브링크를 함께 첨부해드릴께요. 또는 영어로 링크를 다시 만드셔도 좋아요.
+          </span>
+        </div>
+      </div>
+      <div class='topCenterAlign' R='height:h(100*1.5/10);'>
+        <b R='font-size:h(45)'>
+          트위터로 진행할까요?
+        </b>
+      </div>
+      <div R='height:h(100*2.5/10);' style='color:white;'>
+        <div onclick='subUrlOkButton()' class='button' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d;'>
+          <b R='font-size:h(30)'>
+            네
+          </b>
+        </div>
+        <div onclick='subUrlNoButton()' class='button' R='width:w(45); height:h(70); margin:w(2.4); border-radius:w(7);' style='background:#2d2d2d;'>
+          <b R='font-size:h(30)'>
+            No
+          </b>
+        </div>
+      </div>
+    </div>
+    
+<script>
+  resizeResponsiveElements()
+  window.addEventListener("resize", function() {
+    resizeResponsiveElements()
+  })
+  var domains = ['littl.cc']
+  var optionPreset = '<option value="placeNumb1">.placeNumb2</option>'
+  for (i in domains){
+    id('othersSelect').innerHTML += optionPreset.replace('placeNumb1',domains[i]).replace('placeNumb2',domains[i])
+  }
+  if(getParameter('from')){
+    id('othersSelect').value = getParameter('from')
+  }
+  if(getParameter('shortCode')){
+    shortCode = getParameter('shortCode')
+  }else{
+    alert("There is no record of the link to be shortened. we'll move you to the main page!")
+    location.href = '/sTiny.link'
+  }
+  unvalidCharacter = ['+', '=', '<', '>', '＆', '&', '^', '%', '!', '~', '＊', '*', '(', ')', '"', ';', ',', '{', '}', '[', ']', '$', '＃', '#', '＠', '@', '?', '|', ':', '/', '`', "'", ' ', '（', '）', '⁽', '⁾', '₍', '₎', '˙', '｡', '＼']
+  id('sTinyLinkInput').addEventListener("input", function() {
+    id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(' ','.')
+    id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll('..','.')
+    for (i in unvalidCharacter){
+      id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(unvalidCharacter[i],'')
+    }
+  })
+  id('othersInput').addEventListener("input", function() {
+    id('othersInput').value = id('othersInput').value.replaceAll(' ','.')
+    id('othersInput').value = id('othersInput').value.replaceAll('..','.')
+    for (i in unvalidCharacter){
+      id('othersInput').value = id('othersInput').value.replaceAll(unvalidCharacter[i],'')
+    }
+  })
+  touchscreen = false
+  window.addEventListener("touchstart",function(){
+    touchscreen = true
+  })
+  id('sTinyLinkInput').addEventListener("keydown", function() {
+    if(event.keyCode==13){
+      if (touchscreen){
+        id('sTinyLinkInput').blur()
+      }else{
+        id('sTinyLinkButton').click()
+      }
+    }
+  })
+  id('othersInput').addEventListener("keydown", function() {
+    if(event.keyCode==13){
+      if (touchscreen){
+        id('othersInput').blur()
+      }else{
+        id('othersButton').click()
+      }
+    }
+  })
+  resultValue = ''
+  id('result').addEventListener("input", function() {
+    id('result').value = resultValue
+  })
+  id('result').addEventListener("focus", function() {
+    if(id('result').value == ''){
+      id('result').blur()
+    }
+  })
+  id('sTinyLinkButton').addEventListener("click", function() {
+    try{clearTimeout(sTinyLinkTimer1)}catch{}
+    try{clearTimeout(sTinyLinkTimer2)}catch{}
+    try{clearTimeout(sTinyLinkTimer3)}catch{}
+    if(id('sTinyLinkInput').value){
+      iframeLoaded = 0
+      testLinkSave = (id('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.')
+      id('testIframe').src = '//' + id('sTinyLinkInput').value.replaceAll('.','') + '.sTiny.link/' + shortCode + '?test=true'
+      sTinyLinkCount = 5
+      id('sTinyLinkButton').innerHTML = '링크 테스트중... ' + sTinyLinkCount
+      sTinyLinkTextAnimation()
+      function sTinyLinkTextAnimation(){
+        sTinyLinkTimer1 = setTimeout(function(){
+          if(sTinyLinkCount > 0){
+            sTinyLinkCount -= 1
+            id('sTinyLinkButton').innerHTML = '링크 테스트중... ' + sTinyLinkCount
+            sTinyLinkTextAnimation()
+          }else{
+            if(iframeLoaded = 1){
+              alert('링크가 테스트를 통과하지 못했습니다. 링크에 사용할 수 없는 문자가 포함된것 같아요.')
+              id('sTinyLinkButton').innerHTML = '링크 생성'
+              iframeLoaded = 0
+            }else{
+              alert('링크가 테스트를 통과하지 못했습니다. 링크에 사용할 수 없는 문자가 포함되거나 인터넷 연결이 매우 느립니다. 인터넷 연결이 느린경우 조금만 기다려보세요. 결과가 뒤늦게 도착할 수 있습니다.')
+              id('sTinyLinkButton').innerHTML = '링크 생성'
+              iframeLoaded = -1
+            }
+            arabicCharacter = /[\u0600-\u06FF]/;
+            if(arabicCharacter.test(testLinkSave) || testLinkSave.indexOf('ﻌ') != -1){
+              alert('아랍문자가 감지되었습니다! 아랍문자는 숫자를 제외한 대부분의 비아랍문자와 함께 사용하실 수 없습니다.')
+            }
+          }
+        },1000)
+      }
+    }else{
+      resultValue = 'sTiny.link/' + shortCode
+      id('result').value = resultValue
+      id('sTinyLinkButton').innerHTML = '성공: ' +: ' + resultValue
+      sTinyLinkTimer2 = setTimeout(function(){
+        id('sTinyLinkButton').innerHTML = 'Create link'
+      },2000)
+    }
+  })
+  id('othersButton').addEventListener("click", function() {
+    try{clearTimeout(othersTimer1)}catch{}
+    try{clearTimeout(othersTimer2)}catch{}
+    try{clearTimeout(othersTimer3)}catch{}
+    if(id('othersInput').value){
+      iframeLoaded = 0
+      testLinkSave = (id('othersInput').value + '.' + id('othersSelect').value + '/' + shortCode).replaceAll('..','.')
+      id('testIframe').src = '//' + id('othersInput').value.replaceAll('.','') + '.' + id('othersSelect').value + '/' + shortCode + '?test=true'
+      othersCount = 5
+      id('othersButton').innerHTML = '링크 테스트중... ' + othersCount
+      othersTextAnimation()
+      function othersTextAnimation(){
+        othersTimer1 = setTimeout(function(){
+          if(othersCount > 0){
+            othersCount -= 1
+            id('othersButton').innerHTML = '링크 테스트중... ' + othersCount
+            othersTextAnimation()
+          }else{
+            if(iframeLoaded = 1){
+              alert('링크가 테스트를 통과하지 못했습니다. 링크에 사용할 수 없는 문자가 포함된것 같아요.')
+              id('othersButton').innerHTML = '링크 생성'
+              iframeLoaded = 0
+            }else{
+              alert('링크가 테스트를 통과하지 못했습니다. 링크에 사용할 수 없는 문자가 포함되거나 인터넷 연결이 매우 느립니다. 인터넷 연결이 느린경우 조금만 기다려보세요. 결과가 뒤늦게 도착할 수 있습니다.')
+              id('othersButton').innerHTML = '링크 생성'
+              iframeLoaded = -1
+            }
+            arabicCharacter = /[\u0600-\u06FF]/;
+            if(arabicCharacter.test(testLinkSave) || testLinkSave.indexOf('ﻌ') != -1){
+              alert('아랍문자가 감지되었습니다! 아랍문자는 숫자를 제외한 대부분의 비아랍문자와 함께 사용하실 수 없습니다.')
+            }
+          }
+        },1000)
+      }
+    }else{
+      resultValue = id('othersSelect').value + '/' + shortCode
+      id('result').value = resultValue
+      id('othersButton').innerHTML = '성공: ' + resultValue
+      othersTimer2 = setTimeout(function(){
+        id('othersButton').innerHTML = '링크 생성'
+      },2000)
+    }
+  })
+  id('testIframe').addEventListener('load',function(){
+    if(iframeLoaded == 0){
+      iframeLoaded = 1
+    }else{
+      setTimeout(function(){
+        alert('링크 생성됨: ' + resultValue + ' (생성 지연에 대해 사과드립니다. 이전에 생성하셨던 링크가 드디어 테스트를 통과하였습니다! 페이지 하단의 버튼들을 이용하여 링크를 복사해 가실 수 있습니다.)')
+        iframeLoaded = 0
+      },500)
+    }
+  })
+  window.addEventListener('message',function(e){
+    if(e.data=='success'){
+      if(id('sTinyLinkButton').innerHTML.indexOf('Testing link') != -1){
+        clearTimeout(sTinyLinkTimer1)
+        resultValue = testLinkSave
+        id('result').value = resultValue
+        id('sTinyLinkButton').innerHTML = '성공!'
+        sTinyLinkTimer3 = setTimeout(function(){
+          id('sTinyLinkButton').innerHTML = '링크 생성'
+        },2000)
+      }else{
+        clearTimeout(othersTimer1)
+        resultValue = testLinkSave
+        id('result').value = resultValue
+        id('othersButton').innerHTML = '성공!'
+        othersTimer3 = setTimeout(function(){
+          id('othersButton').innerHTML = '링크 생성'
+        },2000)
+      }
+      id('testIframe').src = ''
+    }
+  })
+  id('onlyMain').addEventListener("click", function() {
+    if(id('result').value){
+      id('result').select()
+      document.execCommand("copy");
+      id('result').blur()
+      id('onlyMain').innerHTML = 'Copied to Clipboard!'
+      setTimeout(function(){
+        id('onlyMain').innerHTML = '링크 복사'
+      },2000)
+    }else{
+      id('onlyMain').innerHTML = '복사할 링크가 없습니다.'
+      setTimeout(function(){
+        id('onlyMain').innerHTML = '링크 복사'
+      },2000)
+    }
+  })
+  id('tweet').addEventListener("click", function() {
+    var twitterAllowed, twitterCheck
+    if(id('result').value){
+      twitterAllowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890./:'
+      twitterCheck = id('result').value
+      for (i in twitterAllowed){
+        twitterCheck = twitterCheck.replaceAll(twitterAllowed[i],'')
+      }
+      if (twitterCheck == ''){
+        twitterGenerate('%F0%9F%94%97 ' + id('result').value + '%0A')
+      }else{
+        elementFadeIn('overlayFrame')
+        elementFadeIn('subUrlHelpPopup')
+      }
+    }else{
+      id('tweet').innerHTML = '복사할 링크가 없습니다.'
+      setTimeout(function(){
+        id('tweet').innerHTML = '트위터로 복사'
+      },2000)
+    }
+  })
+  savePopupHTML = id('subUrlHelpPopup').innerHTML
+  function subUrlOkButton() {
+    twitterGenerate('%F0%9F%94%97 ' + id('result').value + '%0A' + '%F0%9F%A5%88 subURL.at/%23' + shortCode)
+    id('subUrlHelpPopup').innerHTML = "<b R='font-size:h(20);'>트위터 로드중...</b>"
+    setTimeout(function(){
+      elementFadeOut('overlayFrame')
+      elementFadeOut('subUrlHelpPopup')
+      id('subUrlHelpPopup').innerHTML = savePopupHTML
+    },2250)
+  }
+  function subUrlNoButton() {
+    elementFadeOut('overlayFrame')
+    elementFadeOut('subUrlHelpPopup')
+  }
+  function twitterGenerate(twt){
+    id('result').select()
+    document.execCommand("copy");
+    id('result').blur()
+    if(mobileCheck()){
+      twitterCount = 3
+      id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
+      twitterTextAnimation()
+      function twitterTextAnimation(){
+        twitterTimer = setTimeout(function(){
+          if(twitterCount > 0){
+            twitterCount -= 1
+            id('tweet').innerHTML = '트위터 로드중...' + twitterCount
+            twitterTextAnimation()
+          }else{
+            id('tweet').innerHTML = 'Copy it to Twitter'
+          }
+        },1000)
+      }
+      appCheck('twitter://post?message=' + twt, 3000).then(function(result){
+        if(result){
+          clearTimeout(twitterTimer)
+          id('tweet').innerHTML = '트위터로 복사'
+        }else{
+          window.open('https://twitter.com/intent/tweet?text=' + twt)
+        }
+      })
+    }else{
+      window.open('https://twitter.com/intent/tweet?text=' + twt)
+    }
+  }
+</script>
+
+  </body>
+  <footer>
+  </footer>
+  <style>
+    @font-face {
+      font-family: 'GmarketSansLight';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      transform: translateY(100%);
+    }
+    @font-face {
+      font-family: 'GmarketSansBold';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+</html>
