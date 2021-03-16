@@ -225,7 +225,7 @@
         },1000)
       }
     }else{
-      resultValue = testLinkSave
+      resultValue = id('othersSelect').value + '/' + shortCode
       id('result').value = resultValue
       id('othersButton').innerHTML = 'Success: ' + resultValue
       othersTimer2 = setTimeout(function(){
