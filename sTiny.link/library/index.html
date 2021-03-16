@@ -143,10 +143,10 @@
   id('sTinyTest').addEventListener("click", function() {
     sTinyCreate()
     id('testIframe').src = '//' + id('result').value
+  })
     id('testIframe').addEventListener("load", function() {
       alert('d')
     })
-  })
   function sTinyCreate(){
     if(id('sTinyLinkInput').value){
       resultValue = (id('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.')
