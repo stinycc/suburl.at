@@ -134,6 +134,15 @@
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(' ','.')
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll('..','.')
   })
+  resultValue = ''
+  id('result').addEventListener("input", function() {
+    id('result').value = resultValue
+  })
+  id('result').addEventListener("focus", function() {
+    if(id('result').value == ''){
+      id('result').blur()
+    }
+  })
   id('sTinyLinkButton').addEventListener("click", function() {
     if(id('sTinyLinkInput').value){
       id('testIframe').src = ('//' + id('sTinyLinkInput').value + '.sTiny.link/' + shortCode + '?test=true').replaceAll('..','.')
@@ -151,41 +160,40 @@
       },2000)
     }
   })
-  resultValue = ''
-  id('result').addEventListener("input", function() {
-    id('result').value = resultValue
-  })
-  id('result').addEventListener("focus", function() {
-    if(id('result').value == ''){
-      id('result').blur()
-    }
-  })
   id('othersButton').addEventListener("click", function() {
-    othersCreate()
-  })
-  id('othersTest').addEventListener("click", function() {
-    othersCreate()
-    window.open('//' + id('result').value)
-  })
-  function othersCreate(){
     if(id('othersInput').value){
-      resultValue = (id('othersInput').value + '.' + id('othersSelect').value + '/' + shortCode).replaceAll('..','.')
-      id('result').value = resultValue
+      id('testIframe').src = ('//' + id('othersInput').value + '.' + id('othersSelect').value + '/' + shortCode).replaceAll('..','.')
+      id('othersButton').innerHTML = 'Testing link... Might take a while.'
+      othersTimeout = setTimeout(function(){
+        alert('Link test failed. You either have created a link that contains unusuable character(s) or really slow internet connection.')
+        id('othersButton').innerHTML = 'Create link'
+      },10000)
     }else{
-      resultValue = id('othersSelect').value + '/' + shortCode
+      id('othersSelect').value + '/' + shortCode
       id('result').value = resultValue
+      id('othersButton').innerHTML = 'Success!'
+      setTimeout(function(){
+        id('othersButton').innerHTML = 'Create link'
+      },2000)
     }
-  }
+  })
   window.addEventListener('message',function(e){
     if(e.data=='success'){
       clearTimeout(sTinyTimeout)
       resultValue = (id('testIframe').src.replace('?test=true','').split('//'))[1]
       id('result').value = resultValue
       id('testIframe').src = ''
-      id('sTinyLinkButton').innerHTML = 'Success!'
-      setTimeout(function(){
-        id('sTinyLinkButton').innerHTML = 'Create link'
-      },2000)
+      if(id('sTinyLinkButton').innerHTML.indexOf('Testing link') != -1){
+        id('sTinyLinkButton').innerHTML = 'Success!'
+        setTimeout(function(){
+          id('sTinyLinkButton').innerHTML = 'Create link'
+        },2000)
+      }else{
+        id('othersButton').innerHTML = 'Success!'
+        setTimeout(function(){
+          id('othersButton').innerHTML = 'Create link'
+        },2000)
+      }
     }
   })
   id('onlyMain').addEventListener("click", function() {
