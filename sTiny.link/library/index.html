@@ -159,7 +159,7 @@
   })
   id('othersButton').addEventListener("click", function() {
     if(id('othersInput').value){
-      id('testIframe').src = ('//' + id('othersInput').value + '.' + id('othersSelect').value + '/' + shortCode).replaceAll('..','.')
+      id('testIframe').src = ('//' + id('othersInput').value + '.' + id('othersSelect').value + '/' + shortCode + '?test=true').replaceAll('..','.')
       id('othersButton').innerHTML = 'Testing link... Might take a while.'
       othersTimeout = setTimeout(function(){
         alert('Link test failed. You either have created a link that contains unusuable character(s) or really slow internet connection.')
@@ -177,15 +177,17 @@
   window.addEventListener('message',function(e){
     if(e.data=='success'){
       clearTimeout(sTinyTimeout)
-      resultValue = (id('testIframe').src.replace('?test=true','').split('//'))[1]
-      id('result').value = resultValue
       id('testIframe').src = ''
       if(id('sTinyLinkButton').innerHTML.indexOf('Testing link') != -1){
+        resultValue = (id('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.')
+        id('result').value = resultValue
         id('sTinyLinkButton').innerHTML = 'Success!'
         setTimeout(function(){
           id('sTinyLinkButton').innerHTML = 'Create link'
         },2000)
       }else{
+        resultValue = (id('othersInput').value + '.' + id('othersSelect').value + '/' + shortCode).replaceAll('..','.')
+        id('result').value = resultValue
         id('othersButton').innerHTML = 'Success!'
         setTimeout(function(){
           id('othersButton').innerHTML = 'Create link'
