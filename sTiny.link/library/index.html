@@ -135,13 +135,13 @@
       id('othersInput').value = id('othersInput').value.replaceAll(unvalidCharacter[i],'')
     }
   })
-  touchscreen = 0
-  window.addEventListener("touch",function(){
-    touchscreen = 1
+  touchscreen = false
+  window.addEventListener("touchstart",function(){
+    touchscreen = true
   })
   id('sTinyLinkInput').addEventListener("keydown", function() {
     if(event.keyCode==13){
-      if (touchscreen == 1){
+      if (touchscreen){
         id('sTinyLinkInput').blur()
       }else{
         id('sTinyLinkButton').click()
