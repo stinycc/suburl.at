@@ -123,7 +123,7 @@
     alert("There is no record of the link to be shortened. we'll move you to the main page!")
     location.href = '/sTiny.link'
   }
-  unvalidCharacter = ['+', '=', '<', '>', '＆', '&', '^', '%', '!', '~', '＊', '*', '(', ')', '"', ';', ',', '{', '}', '[', ']', '$', '＃', '#', '＠', '@', '?', '|', ':', '/', '`', "'", ' ', '⁽', '⁾', '₍', '₎', '˙']
+  unvalidCharacter = ['+', '=', '<', '>', '＆', '&', '^', '%', '!', '~', '＊', '*', '(', ')', '"', ';', ',', '{', '}', '[', ']', '$', '＃', '#', '＠', '@', '?', '|', ':', '/', '`', "'", ' ', '⁽', '⁾', '₍', '₎', '˙', '｡']
   id('sTinyLinkInput').addEventListener("input", function() {
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(' ','.')
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll('..','.')
