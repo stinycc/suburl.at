@@ -168,7 +168,7 @@
               id('sTinyLinkButton').innerHTML = 'Create link'
               iframeLoaded = 0
             }else{
-              alert('Link test failed. Your link contains unusable character(s) or your internet connection is too slow. In case of slow connection you might get the result later on.')
+              alert('Link test failed. Your link contains unusable character(s) or your internet connection is too slow. In case of slow connection please wait, because you might get the result later on.')
               id('sTinyLinkButton').innerHTML = 'Create link'
               iframeLoaded = -1
             }
@@ -205,7 +205,7 @@
               id('othersButton').innerHTML = 'Create link'
               iframeLoaded = 0
             }else{
-              alert('Link test failed. Your link contains unusable character(s) or your internet connection is too slow. In case of slow connection you might get the result later on.')
+              alert('Link test failed. Your link contains unusable character(s) or your internet connection is too slow. In case of slow connection please wait, because you might get the result later on.')
               id('othersButton').innerHTML = 'Create link'
               iframeLoaded = -1
             }
@@ -226,8 +226,10 @@
     if(iframeLoaded = 0){
       iframeLoaded = 1
     }else{
-      alert('Link created :' + resultValue + ' (Sorry for the delay. The link you generated earlier has finally passed the test! Copy your link via the buttons below.)')
-      iframeLoaded = 0
+      setTimeout(function(){
+        alert('Link created :' + resultValue + ' (Sorry for the delay. The link you generated earlier has finally passed the test!. Click the buttons at the bottom of the page to copy the link)')
+        iframeLoaded = 0
+      },500)
     }
   })
   window.addEventListener('message',function(e){
