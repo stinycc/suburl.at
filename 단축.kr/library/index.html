@@ -264,7 +264,7 @@
   })
   window.addEventListener('message',function(e){
     if(e.data=='success'){
-      if(id('sTinyLinkButton').innerHTML.indexOf('Testing link') != -1){
+      if(id('sTinyLinkButton').innerHTML.indexOf('링크 테스트중') != -1){
         clearTimeout(sTinyLinkTimer1)
         resultValue = testLinkSave
         id('result').value = resultValue
@@ -341,13 +341,13 @@
     id('result').blur()
     if(mobileCheck()){
       twitterCount = 3
-      id('tweet').innerHTML = 'Loading Twitter in ' + twitterCount
+      id('tweet').innerHTML = '트위터 로드중... ' + twitterCount
       twitterTextAnimation()
       function twitterTextAnimation(){
         twitterTimer = setTimeout(function(){
           if(twitterCount > 0){
             twitterCount -= 1
-            id('tweet').innerHTML = '트위터 로드중...' + twitterCount
+            id('tweet').innerHTML = '트위터 로드중... ' + twitterCount
             twitterTextAnimation()
           }else{
             id('tweet').innerHTML = 'Copy it to Twitter'
