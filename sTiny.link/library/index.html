@@ -220,7 +220,7 @@
             arabicCharacter1 = /[\u0600-\u06FF]/;
             arabicCharacter2 = /[\uFB50–\uFDFF]/;
             arabicCharacter3 = /[\uFE70–\uFEFF]/;
-            if(arabicCharacter1.test(testLinkSave) || arabicCharacter2.test(testLinkSave) || arabicCharacter3.test(testLinkSave)){
+            if(arabicCharacter1.test(testLinkSave) || arabicCharacter2.test(testLinkSave) || arabicCharacter3.test(testLinkSave) || testLinkSave.indexOf('ﻌ') != -1){
               alert('Arabic alphabet detected! Arabic alphabets are not allowed to be used with most of the non-arabic characters.')
             }
           }
