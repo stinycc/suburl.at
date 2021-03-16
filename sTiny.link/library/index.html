@@ -32,7 +32,7 @@
       </div>
       <div R='height:h(45)'>
         <div id='sTinyLinkButton' class='button' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
-          Create Link
+          Create link
         </div>
         <div id='sTinyTest' class='button' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
           Test it
@@ -48,7 +48,7 @@
       </div>
       <div R='height:h(45)'>
         <div id='othersButton' class='button' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
-          Create Link
+          Create link
         </div>
         <div id='othersTest' class='button' R='width:w(45); height:h(75); margin:w(2); border-radius:w(3); font-size:h(25);' style='color:black; background:rgba(255,255,255,0.7);'>
           Test it
@@ -138,24 +138,18 @@
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll('..','.')
   })
   id('sTinyLinkButton').addEventListener("click", function() {
-    sTinyCreate()
-  })
-  id('sTinyTest').addEventListener("click", function() {
-    sTinyCreate()
-    id('testIframe').src = '//' + id('result').value + '?test=true'
-  })
-  id('testIframe').addEventListener("load", function() {
-    alert('d')
-  })
-  function sTinyCreate(){
     if(id('sTinyLinkInput').value){
-      resultValue = (id('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.')
-      id('result').value = resultValue
+      id('testIframe').src = (id('sTinyLinkInput').value + '.sTiny.link/' + shortCode + '?test=true').replaceAll('..','.')
+      id('sTinyLinkButton').innerHTML = 'Testing link... Might take a while.'
+      sTinyTimeout = setTimeout(function(){
+        alert('Link test failed. You either have created a link that contains unusuable character(s) or really slow internet connection.')
+        id('sTinyLinkButton').innerHTML = 'Create link'
+      },10000)
     }else{
       resultValue = 'sTiny.link/' + shortCode
       id('result').value = resultValue
     }
-  }
+  })
   resultValue = ''
   id('result').addEventListener("input", function() {
     id('result').value = resultValue
@@ -181,6 +175,14 @@
       id('result').value = resultValue
     }
   }
+  window.addEventListener('message',function(e){
+    if(e.data=='success'){
+      clearTimeout(sTinyTimeout)
+      id('sTinyLinkButton').innerHTML = 'Create link'
+      resultValue = id('testIframe').src.replace('?test=true','')
+      id('result').value = resultValue
+    }
+  })
   id('onlyMain').addEventListener("click", function() {
     if(id('result').value){
       id('result').select()
