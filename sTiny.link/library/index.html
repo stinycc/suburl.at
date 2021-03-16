@@ -137,7 +137,7 @@
   })
   window.addEventListener("touch",function(){
     touchscreen = 1
-  }
+  }c
   id('sTinyLinkInput').addEventListener("keydown", function() {
     if(event.keyCode==13){
       if (touchscreen == 1){
@@ -146,7 +146,7 @@
         id('sTinyLinkButton').click()
       }
     }
-  }
+  })
   id('othersInput').addEventListener("keydown", function() {
     if(event.keyCode==13){
       if (touchscreen == 1){
@@ -155,7 +155,7 @@
         id('othersButton').click()
       }
     }
-  }
+  })
   resultValue = ''
   id('result').addEventListener("input", function() {
     id('result').value = resultValue
