@@ -131,11 +131,7 @@
     for (i in unvalidCharacter){
       id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(unvalidCharacter[i],'')
     }
-    for (i in id('sTinyLinkInput').value.replaceAll('.','')){
-      if(arabicCharacter.test(id('sTinyLinkInput').value.replaceAll('.','')[i])){
-        alert('1')
-      }
-    }
+    id('sTinyLinkInput').value.replaceAll('.', '').replaceAll(arabicCharacter, '')
   })
   id('othersInput').addEventListener("input", function() {
     id('othersInput').value = id('othersInput').value.replaceAll(' ','.')
