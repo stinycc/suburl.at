@@ -1,6 +1,8 @@
 urlAnchor = (location.href.split('#'))[1]
 if (urlAnchor) {
-    if ((urlAnchor.split('b:'))[0] == '') {
+    if(urlAnchor.indexOf('?test=true') != -1){
+        window.parent.postMessage('success', '*')
+    }else if ((urlAnchor.split('b:'))[0] == '') {
         longLink = 'https://' + urlAnchor.replace('b:', 'bit.ly/')
         location.href = longLink
         //window.open(longLink)
