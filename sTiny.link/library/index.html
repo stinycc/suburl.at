@@ -153,7 +153,8 @@
     try{clearTimeout(sTinyLinkTimer3)}catch{}
     if(id('sTinyLinkInput').value){
       iframeLoaded = 0
-      id('testIframe').src = '//' + id('sTinyLinkInput').value.replaceAll('.','') + '.sTiny.link/' + shortCode + '?test=true'
+      testLinkSave = id('sTinyLinkInput').value.replaceAll('.','') + '.sTiny.link/' + shortCode
+      id('testIframe').src = '//' + testLinkSave + '?test=true'
       sTinyLinkCount = 5
       id('sTinyLinkButton').innerHTML = 'Testing link... ' + sTinyLinkCount
       sTinyLinkTextAnimation()
@@ -191,7 +192,8 @@
     try{clearTimeout(othersTimer3)}catch{}
     if(id('othersInput').value){
       iframeLoaded = 0
-      id('testIframe').src = '//' + id('othersInput').value.replaceAll('.','') + '.' + id('othersSelect').value + '/' + shortCode + '?test=true'
+      testLinkSave = id('othersInput').value.replaceAll('.','') + '.' + id('othersSelect').value + '/' + shortCode
+      id('testIframe').src = '//' + testLinkSave + '?test=true'
       othersCount = 5
       id('othersButton').innerHTML = 'Testing link... ' + othersCount
       othersTextAnimation()
@@ -204,7 +206,7 @@
           }else{
             if(iframeLoaded = 1){
               arabicCharacter = /[\u0600-\u06FF]/;
-              if(arabicCharacter.test(id('othersInput').value)){
+              if(arabicCharacter.test(testLinkSave.value)){
                 alert('arab')
               }
               alert('Link test failed. Your link contains unusable character(s).')
@@ -219,7 +221,7 @@
         },1000)
       }
     }else{
-      resultValue = id('othersSelect').value + '/' + shortCode
+      resultValue = testLinkSave
       id('result').value = resultValue
       id('othersButton').innerHTML = 'Success: ' + resultValue
       othersTimer2 = setTimeout(function(){
@@ -241,7 +243,7 @@
     if(e.data=='success'){
       if(id('sTinyLinkButton').innerHTML.indexOf('Testing link') != -1){
         clearTimeout(sTinyLinkTimer1)
-        resultValue = (id('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.')
+        resultValue = testLinkSave
         id('result').value = resultValue
         id('sTinyLinkButton').innerHTML = 'Success!'
         sTinyLinkTimer3 = setTimeout(function(){
@@ -249,7 +251,7 @@
         },2000)
       }else{
         clearTimeout(othersTimer1)
-        resultValue = (id('othersInput').value + '.' + id('othersSelect').value + '/' + shortCode).replaceAll('..','.')
+        resultValue = testLinkSave
         id('result').value = resultValue
         id('othersButton').innerHTML = 'Success!'
         othersTimer3 = setTimeout(function(){
