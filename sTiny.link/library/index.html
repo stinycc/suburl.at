@@ -167,11 +167,21 @@
   id('othersButton').addEventListener("click", function() {
     if(id('othersInput').value){
       id('testIframe').src = ('//' + id('othersInput').value + '.' + id('othersSelect').value + '/' + shortCode + '?test=true').replaceAll('..','.')
-      id('othersButton').innerHTML = 'Testing link... Might take a while.'
-      othersTimeout = setTimeout(function(){
-        alert('Link test failed. You either have created a link that contains unusuable character(s) or really slow internet connection.')
-        id('othersButton').innerHTML = 'Create link'
-      },10000)
+      othersCount = 10
+      id('othersButton').innerHTML = 'Testing link... ' + othersCount
+      othersTextAnimation()
+      function othersTextAnimation(){
+        othersTimer = setTimeout(function(){
+          if(othersCount > 0){
+            othersCount -= 1
+            id('othersButton').innerHTML = 'Testing link... ' + othersCount
+            twitterTextAnimation()
+          }else{
+            alert('Link test failed. You either have created a link that contains unusuable character(s) or really slow internet connection.')
+            id('othersButton').innerHTML = 'Create link'
+          }
+        },1000)
+      }
     }else{
       resultValue = id('othersSelect').value + '/' + shortCode
       id('result').value = resultValue
@@ -192,7 +202,7 @@
           id('sTinyLinkButton').innerHTML = 'Create link'
         },2000)
       }else{
-        clearTimeout(othersTimeout)
+        clearTimeout(othersTimer)
         resultValue = (id('othersInput').value + '.' + id('othersSelect').value + '/' + shortCode).replaceAll('..','.')
         id('result').value = resultValue
         id('othersButton').innerHTML = 'Success!'
