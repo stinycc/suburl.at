@@ -79,6 +79,8 @@
   </div>
 </div>
     
+    <iframe id='testIframe' style='z-index=-5'></iframe>
+    
     <div id='overlayFrame' R='height:h(100);' style='display:none; position:absolute; z-index:15; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
     </div>
     <div id='subUrlHelpPopup' R='width:s(90); height:s(70); max-width:h(45); max-height:h(35); border-radius:s(4);' style='display:none; position:absolute; z-index:20; color:black; background:rgba(255,255,255,0.9);'>
@@ -141,7 +143,7 @@
   id('sTinyTest').addEventListener("click", function() {
     sTinyCreate()
     try {
-      window.open('http://' + id('result').value)
+      id('testIframe').src = 'http://' + id('result').value
     }catch{
       alert('The link contains a/some character(s) that cannot be used')
     }
