@@ -197,6 +197,9 @@
             if(arabicCharacter.test(testLinkSave) || testLinkSave.indexOf('ﻌ') != -1){
               alert('아랍문자가 감지되었습니다! 아랍문자는 숫자를 제외한 대부분의 비아랍문자와 함께 사용하실 수 없습니다.')
             }
+            if(testLinkSave.length > 50){
+              alert('링크의 길이가 50자 이상입니다. 오류의 원인일 수 있습니다')
+            }
           }
         },1000)
       }
@@ -239,6 +242,9 @@
             arabicCharacter = /[\u0600-\u06FF]/;
             if(arabicCharacter.test(testLinkSave) || testLinkSave.indexOf('ﻌ') != -1){
               alert('아랍문자가 감지되었습니다! 아랍문자는 숫자를 제외한 대부분의 비아랍문자와 함께 사용하실 수 없습니다.')
+            }
+            if(testLinkSave.length > 50){
+              alert('링크의 길이가 50자 이상입니다. 오류의 원인일 수 있습니다')
             }
           }
         },1000)
