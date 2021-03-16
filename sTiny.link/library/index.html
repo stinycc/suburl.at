@@ -193,7 +193,12 @@
     }
   })
   id('testIframe').addEventListener('load',function(){
-    alert('d')
+    try{clearTimeout(othersTimer)}catch{}
+    try{clearTimeout(sTinyLinkTimer)}catch{}
+    clearTimeout(othersTimer)
+    alert('Link test failed. You either have created a link that contains unusuable character(s) or really slow internet connection.')
+    id('othersButton').innerHTML = 'Create link'
+    id('sTinyLinkButton').innerHTML = 'Create link'
   })
   window.addEventListener('message',function(e){
     if(e.data=='success'){
