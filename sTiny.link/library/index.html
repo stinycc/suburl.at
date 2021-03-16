@@ -148,10 +148,10 @@
     }
   })
   id('sTinyLinkButton').addEventListener("click", function() {
+    try{clearTimeout(sTinyLinkTimer1)}catch(err){console.log(err)}
+    try{clearTimeout(sTinyLinkTimer2)}catch(err){console.log(err)}
+    try{clearTimeout(sTinyLinkTimer3)}catch(err){console.log(err)}
     if(id('sTinyLinkInput').value){
-      try{clearTimeout(sTinyLinkTimer1)}catch(err){console.log(err)}
-      try{clearTimeout(sTinyLinkTimer2)}catch(err){console.log(err)}
-      try{clearTimeout(sTinyLinkTimer3)}catch(err){console.log(err)}
       id('testIframe').src = '//' + id('sTinyLinkInput').value.replaceAll('.','') + '.sTiny.link/' + shortCode + '?test=true'
       sTinyLinkCount = 3
       id('sTinyLinkButton').innerHTML = 'Testing link... ' + sTinyLinkCount
@@ -181,10 +181,10 @@
     }
   })
   id('othersButton').addEventListener("click", function() {
+    try{clearTimeout(othersTimer1)}catch{}
+    try{clearTimeout(othersTimer2)}catch{}
+    try{clearTimeout(othersTimer3)}catch{}
     if(id('othersInput').value){
-      try{clearTimeout(othersTimer1)}catch{}
-      try{clearTimeout(othersTimer2)}catch{}
-      try{clearTimeout(othersTimer3)}catch{}
       id('testIframe').src = '//' + id('othersInput').value.replaceAll('.','') + '.' + id('othersSelect').value + '/' + shortCode + '?test=true'
       othersCount = 3
       id('othersButton').innerHTML = 'Testing link... ' + othersCount
