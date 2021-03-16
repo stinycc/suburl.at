@@ -176,9 +176,8 @@
   })
   window.addEventListener('message',function(e){
     if(e.data=='success'){
-      clearTimeout(sTinyTimeout)
-      id('testIframe').src = ''
       if(id('sTinyLinkButton').innerHTML.indexOf('Testing link') != -1){
+        clearTimeout(sTinyTimeout)
         resultValue = (id('sTinyLinkInput').value + '.sTiny.link/' + shortCode).replaceAll('..','.')
         id('result').value = resultValue
         id('sTinyLinkButton').innerHTML = 'Success!'
@@ -186,6 +185,7 @@
           id('sTinyLinkButton').innerHTML = 'Create link'
         },2000)
       }else{
+        clearTimeout(othersTimeout)
         resultValue = (id('othersInput').value + '.' + id('othersSelect').value + '/' + shortCode).replaceAll('..','.')
         id('result').value = resultValue
         id('othersButton').innerHTML = 'Success!'
@@ -193,6 +193,7 @@
           id('othersButton').innerHTML = 'Create link'
         },2000)
       }
+      id('testIframe').src = ''
     }
   })
   id('onlyMain').addEventListener("click", function() {
