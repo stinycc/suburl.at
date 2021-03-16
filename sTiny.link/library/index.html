@@ -139,7 +139,7 @@
   })
   id('sTinyLinkButton').addEventListener("click", function() {
     if(id('sTinyLinkInput').value){
-      id('testIframe').src = (id('sTinyLinkInput').value + '.sTiny.link/' + shortCode + '?test=true').replaceAll('..','.')
+      id('testIframe').src = ('//' + id('sTinyLinkInput').value + '.sTiny.link/' + shortCode + '?test=true').replaceAll('..','.')
       id('sTinyLinkButton').innerHTML = 'Testing link... Might take a while.'
       sTinyTimeout = setTimeout(function(){
         alert('Link test failed. You either have created a link that contains unusuable character(s) or really slow internet connection.')
@@ -179,7 +179,7 @@
     if(e.data=='success'){
       clearTimeout(sTinyTimeout)
       id('sTinyLinkButton').innerHTML = 'Create link'
-      resultValue = id('testIframe').src.replace('?test=true','')
+      resultValue = (id('testIframe').src.replace('?test=true','').split('//'))[1]
       id('result').value = resultValue
     }
   })
