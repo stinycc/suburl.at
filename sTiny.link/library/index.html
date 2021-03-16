@@ -123,7 +123,6 @@
     alert("There is no record of the link to be shortened. we'll move you to the main page!")
     location.href = '/sTiny.link'
   }
-  arabicCharacter = /[\u0600-\u06FF]/;
   unvalidCharacter = ['+', '=', '<', '>', '＆', '&', '^', '%', '!', '~', '＊', '*', '(', ')', '"', ';', ',', '{', '}', '[', ']', '$', '＃', '#', '＠', '@', '?', '|', ':', '/', '`', "'", ' ', '⁽', '⁾', '₍', '₎', '˙']
   id('sTinyLinkInput').addEventListener("input", function() {
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(' ','.')
@@ -131,7 +130,6 @@
     for (i in unvalidCharacter){
       id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(unvalidCharacter[i],'')
     }
-    id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll('.', '').replaceAll(arabicCharacter, '')
   })
   id('othersInput').addEventListener("input", function() {
     id('othersInput').value = id('othersInput').value.replaceAll(' ','.')
@@ -205,6 +203,10 @@
             othersTextAnimation()
           }else{
             if(iframeLoaded = 1){
+              arabicCharacter = /[\u0600-\u06FF]/;
+              if(id('othersInput').value.indexOf(arabicCharacter) != -1){
+                alert('arab')
+              }
               alert('Link test failed. Your link contains unusable character(s).')
               id('othersButton').innerHTML = 'Create link'
               iframeLoaded = 0
