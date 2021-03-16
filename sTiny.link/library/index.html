@@ -149,9 +149,9 @@
   })
   id('sTinyLinkButton').addEventListener("click", function() {
     if(id('sTinyLinkInput').value){
-      try{clearTimeout(sTinyLinkTimer1)}catch{}
-      try{clearTimeout(sTinyLinkTimer2)}catch{}
-      try{clearTimeout(sTinyLinkTimer3)}catch{}
+      try{clearTimeout(sTinyLinkTimer1)}catch(err){console.log(err)}
+      try{clearTimeout(sTinyLinkTimer2)}catch(err){console.log(err)}
+      try{clearTimeout(sTinyLinkTimer3)}catch(err){console.log(err)}
       id('testIframe').src = '//' + id('sTinyLinkInput').value.replaceAll('.','') + '.sTiny.link/' + shortCode + '?test=true'
       sTinyLinkCount = 3
       id('sTinyLinkButton').innerHTML = 'Testing link... ' + sTinyLinkCount
