@@ -123,12 +123,18 @@
     alert("There is no record of the link to be shortened. we'll move you to the main page!")
     location.href = '/sTiny.link'
   }
+  arabicCharacter = /[\u0600-\u06FF]/;
   unvalidCharacter = ['+', '=', '<', '>', '＆', '&', '^', '%', '!', '~', '＊', '*', '(', ')', '"', ';', ',', '{', '}', '[', ']', '$', '＃', '#', '＠', '@', '?', '|', ':', '/', '`', "'", ' ', '⁽', '⁾', '₍', '₎', '˙']
   id('sTinyLinkInput').addEventListener("input", function() {
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(' ','.')
     id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll('..','.')
     for (i in unvalidCharacter){
       id('sTinyLinkInput').value = id('sTinyLinkInput').value.replaceAll(unvalidCharacter[i],'')
+    }
+    for (i in id('sTinyLinkInput').value.replaceAll('.','')){
+      if(arabicCharacter.test(id('sTinyLinkInput').value.replaceAll('.','')[i])){
+        alert('1')
+      }
     }
   })
   id('othersInput').addEventListener("input", function() {
