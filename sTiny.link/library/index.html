@@ -148,6 +148,10 @@
     }else{
       resultValue = 'sTiny.link/' + shortCode
       id('result').value = resultValue
+      id('sTinyLinkButton').innerHTML = 'Success!'
+      setTimeout(function(){
+        id('sTinyLinkButton').innerHTML = 'Create link'
+      },2000)
     }
   })
   resultValue = ''
@@ -178,9 +182,13 @@
   window.addEventListener('message',function(e){
     if(e.data=='success'){
       clearTimeout(sTinyTimeout)
-      id('sTinyLinkButton').innerHTML = 'Create link'
       resultValue = (id('testIframe').src.replace('?test=true','').split('//'))[1]
       id('result').value = resultValue
+      id('testIframe').src = ''
+      id('sTinyLinkButton').innerHTML = 'Success!'
+      setTimeout(function(){
+        id('sTinyLinkButton').innerHTML = 'Create link'
+      },2000)
     }
   })
   id('onlyMain').addEventListener("click", function() {
