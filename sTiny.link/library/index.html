@@ -167,7 +167,7 @@
   id('othersButton').addEventListener("click", function() {
     if(id('othersInput').value){
       id('testIframe').src = '//' + id('othersInput').value.replaceAll('.','') + '.' + id('othersSelect').value + '/' + shortCode + '?test=true'
-      othersCount = 10
+      othersCount = 3
       id('othersButton').innerHTML = 'Testing link... ' + othersCount
       othersTextAnimation()
       function othersTextAnimation(){
@@ -178,8 +178,11 @@
             id('othersButton').innerHTML = 'Testing link... ' + othersCount
             othersTextAnimation()
           }else{
-            alert('Link test failed. You either have created a link that contains unusuable character(s) or really slow internet connection.')
-            id('othersButton').innerHTML = 'Create link'
+            if(iframeLoaded = 1){
+              alert('Link test failed. Your link contains unusable character(s).')
+              id('othersButton').innerHTML = 'Create link'
+              iframeLoaded = 0
+            }
           }
         },1000)
       }
@@ -193,12 +196,7 @@
     }
   })
   id('testIframe').addEventListener('load',function(){
-    try{clearTimeout(othersTimer)}catch{}
-    try{clearTimeout(sTinyLinkTimer)}catch{}
-    clearTimeout(othersTimer)
-    alert('Link test failed. You either have created a link that contains unusuable character(s) or really slow internet connection.')
-    id('othersButton').innerHTML = 'Create link'
-    id('sTinyLinkButton').innerHTML = 'Create link'
+    iframeLoaded = 1
   })
   window.addEventListener('message',function(e){
     if(e.data=='success'){
