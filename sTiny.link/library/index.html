@@ -151,7 +151,7 @@
     }else{
       resultValue = 'sTiny.link/' + shortCode
       id('result').value = resultValue
-      id('sTinyLinkButton').innerHTML = 'Created as ' + resultValue
+      id('sTinyLinkButton').innerHTML = 'Success: ' + resultValue
       setTimeout(function(){
         id('sTinyLinkButton').innerHTML = 'Create link'
       },2000)
@@ -168,7 +168,7 @@
     }else{
       id('othersSelect').value + '/' + shortCode
       id('result').value = resultValue
-      id('othersButton').innerHTML = 'Success!'
+      id('othersButton').innerHTML = 'Success: ' + resultValue
       setTimeout(function(){
         id('othersButton').innerHTML = 'Create link'
       },2000)
