@@ -164,7 +164,6 @@
       },2000)
     }
   })
-  var othersTimer
   id('othersButton').addEventListener("click", function() {
     if(id('othersInput').value){
       id('testIframe').src = ('//' + id('othersInput').value + '.' + id('othersSelect').value + '/' + shortCode + '?test=true').replaceAll('..','.')
@@ -172,7 +171,7 @@
       id('othersButton').innerHTML = 'Testing link... ' + othersCount
       othersTextAnimation()
       function othersTextAnimation(){
-        clearTimeout(othersTimer)
+        try { clearTimeout(othersTimer) }
         othersTimer = setTimeout(function(){
           if(othersCount > 0){
             othersCount -= 1
