@@ -126,11 +126,18 @@ function elementFadeIn(elementId, time) {
     resizeResponsiveElements()
 }
 
-function elementFadeOut(elementId) {
-    animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) reverse both')
-    setTimeout(function(){
-        id(elementId).style.display = 'none'
-    },500)
+function elementFadeOut(elementId, time) {
+    if(time){
+        animation(elementId, 'fadeIn ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) reverse both')
+        setTimeout(function(){
+            id(elementId).style.display = 'none'
+        },time)
+    }else{
+        animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) reverse both')
+        setTimeout(function(){
+            id(elementId).style.display = 'none'
+        },500)
+    }
 }
 
 elementFadeIOAnimation = `
