@@ -118,7 +118,7 @@ String.prototype.replaceAll = function replaceAlltext(search, replace) { return 
 
 function elementFadeIn(elementId, time) {
     if(time){
-        animation(elementId, 'fadeIn ' + time + 'cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
+        animation(elementId, 'fadeIn ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
     }else{
         animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
     }
