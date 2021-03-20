@@ -116,8 +116,12 @@ function pickRandom(array) {
 //For browsers that doesn't support replaceAll function
 String.prototype.replaceAll = function replaceAlltext(search, replace) { return this.split(search).join(replace); }
 
-function elementFadeIn(elementId) {
-    animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
+function elementFadeIn(elementId, time) {
+    if(time){
+        animation(elementId, 'fadeIn ' + time + 'cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
+    }else{
+        animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
+    }
     id(elementId).style.display = 'flex'
     resizeResponsiveElements()
 }
