@@ -144,6 +144,7 @@ function elementFadeOut(elementId, time) {
         setTimeout(function(){
             if(cancelFadeOut.indexOf(elementId) == -1){
                 id(elementId).style.display = 'none'
+                id(elementId).style.opacity = 0
             }else{
                 cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)
             }
@@ -153,6 +154,7 @@ function elementFadeOut(elementId, time) {
         setTimeout(function(){
             if(cancelFadeOut.indexOf(elementId) == -1){
                 id(elementId).style.display = 'none'
+                id(elementId).style.opacity = 0
             }else{
                 cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)
             }
