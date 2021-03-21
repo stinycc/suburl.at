@@ -1,5 +1,5 @@
 function resizeResponsiveElements(){
-    var everyElementOnPage,elementBeingChecked,responsiveStyle,parentWidth,parentHeight,parentShort,parentLong,viewportWidth,viewportHeight
+    var everyElementOnPage,elementBeingChecked,responsiveStyle,parentWidth,parentHeight,parentShort,parentLong/*,viewportWidth,viewportHeight*/
     everyElementOnPage = document.getElementsByTagName('*')
     for (i=0; i < everyElementOnPage.length; i++ ){
         elementBeingChecked = everyElementOnPage[i]
@@ -113,7 +113,7 @@ function pickRandom(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
-//.offset('style')
+//function for ".offset('style')"
 HTMLElement.prototype.offset = function offsetFunction(style){ return window.getComputedStyle(this).getPropertyValue(style)}
 
 //For browsers that doesn't support replaceAll function
