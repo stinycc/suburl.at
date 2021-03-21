@@ -9,8 +9,8 @@ function resizeResponsiveElements(){
             parentHeight = elementBeingChecked.parentElement.offsetHeight / 100
             if(parentWidth < parentHeight){parentShort = parentWidth}else{parentShort = parentHeight}
             if(parentWidth > parentHeight){parentLong = parentWidth}else{parentLong = parentHeight}
-            viewportWidth = document.documentElement.offsetWidth
-            viewportHeight = document.documentElement.offsetHeight
+            viewportWidth = document.documentElement.offsetWidth / 100
+            viewportHeight = document.documentElement.offsetHeight / 100
             responsiveStyle = ';' + responsiveStyle + ';'
             elementBeingChecked.style = elementBeingChecked.style.cssText + responsiveStyle.replaceAll('vw(', 'calc(' + viewportWidth + 'px*').replaceAll('vh(', 'calc(' + viewportHeight + 'px*').replaceAll('w(', 'calc(' + parentWidth + 'px*').replaceAll('h(', 'calc(' + parentHeight + 'px*').replaceAll('s(', 'calc(' + parentShort + 'px*').replaceAll('l(', 'calc(' + parentLong + 'px*')
         }
