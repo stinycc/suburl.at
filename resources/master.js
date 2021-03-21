@@ -120,6 +120,7 @@ String.prototype.replaceAll = function replaceAllFunction(search, replace) { ret
 opacityFadeIn = []
 function elementFadeIn(elementId, time) {
     if(opacityFadeIn.indexOf(elementId) == -1){
+        opacityFadeIn.push(elementId)
         id(elementId).style.opacity = 0
     }else{
         id(elementId).style.opacity = id(elementId).offset('opacity')
