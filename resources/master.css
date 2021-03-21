@@ -1,12 +1,4 @@
-html{
-  width:100%;
-  height:100%;
-  margin:0;
-  padding:0;
-  border:none;
-  background:rgba(0,0,0,0);
-}
-body, div{
+html, body, div{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
