@@ -119,9 +119,11 @@ String.prototype.replaceAll = function replaceAllFunction(search, replace) { ret
 
 opacityFadeIn = []
 cancelFadeOut = []
-function elementFadeIn(elementId, time) {
+function elementFadeIn(elementId, time, reset) {
     if(opacityFadeIn.indexOf(elementId) == -1){
         opacityFadeIn.push(elementId)
+        id(elementId).style.opacity = 0
+    }else if(time === true || reset === true){
         id(elementId).style.opacity = 0
     }else{
         id(elementId).style.opacity = id(elementId).offset('opacity')
@@ -137,7 +139,11 @@ function elementFadeIn(elementId, time) {
 }
 
 function elementFadeOut(elementId, time) {
-    id(elementId).style.opacity = id(elementId).offset('opacity')
+    if(time === true || reset === true){
+        id(elementId).style.opacity = 0
+    }else{
+        id(elementId).style.opacity = id(elementId).offset('opacity')
+    }
     try{cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)}catch{}
     if(time){
         animation(elementId, 'fadeOut ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
