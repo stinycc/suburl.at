@@ -124,6 +124,7 @@ function elementFadeIn(elementId, time) {
         id(elementId).style.opacity = 0
     }else{
         id(elementId).style.opacity = id(elementId).offset('opacity')
+        alert('dd')
     }
     if(time){
         animation(elementId, 'fadeIn ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
