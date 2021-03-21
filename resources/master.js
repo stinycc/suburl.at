@@ -111,8 +111,11 @@ function pickRandom(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
+//.offset('style')
+Object.prototype.offset = function offsetFunction(style){ return window.getComputedStyle(this).getPropertyValue(style)}
+
 //For browsers that doesn't support replaceAll function
-String.prototype.replaceAll = function replaceAlltext(search, replace) { return this.split(search).join(replace); }
+String.prototype.replaceAll = function replaceAllFunction(search, replace) { return this.split(search).join(replace); }
 
 opacityFadeIn = []
 function elementFadeIn(elementId, time) {
