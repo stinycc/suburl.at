@@ -118,7 +118,7 @@ HTMLElement.prototype.offset = function offsetFunction(style){ return window.get
 String.prototype.replaceAll = function replaceAllFunction(search, replace) { return this.split(search).join(replace); }
 
 opacityFadeIn = []
-cancelFadeOut = []
+cancelList = []
 function elementFadeIn(elementId, time, state) {
     if(time == 'reset'){
         time = 0
@@ -132,8 +132,8 @@ function elementFadeIn(elementId, time, state) {
     }else{
         id(elementId).style.opacity = id(elementId).offset('opacity')
     }
-    if(cancelFadeOut.indexOf(elementId) == -1){
-        cancelFadeOut.push(elementId)
+    if(cancelList.indexOf(elementId) == -1){
+        cancelList.push(elementId)
     }
     if(time){
         animation(elementId, 'fadeIn ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
@@ -154,25 +154,25 @@ function elementFadeOut(elementId, time, state) {
     }else{
         id(elementId).style.opacity = id(elementId).offset('opacity')
     }
-    try{cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)}catch{}
+    try{cancelList.splice(cancelList.indexOf(elementId),1)}catch{}
     if(time){
         animation(elementId, 'fadeOut ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
         setTimeout(function(){
-            if(cancelFadeOut.indexOf(elementId) == -1){
+            if(cancelList.indexOf(elementId) == -1){
                 id(elementId).style.display = 'none'
                 id(elementId).style.opacity = 0
             }else{
-                cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)
+                cancelList.splice(cancelList.indexOf(elementId),1)
             }
         },time)
     }else{
         animation(elementId, 'fadeOut .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
         setTimeout(function(){
-            if(cancelFadeOut.indexOf(elementId) == -1){
+            if(cancelList.indexOf(elementId) == -1){
                 id(elementId).style.display = 'none'
                 id(elementId).style.opacity = 0
             }else{
-                cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)
+                cancelList.splice(cancelList.indexOf(elementId),1)
             }
         },500)
     }
@@ -183,8 +183,8 @@ function cancelFadeIn(elementId){
     id(elementId).style.display = 'none'
 }
 function cancelFadeOut(elementId){
-    if(cancelFadeOut.indexOf(elementId) == -1){
-        cancelFadeOut.push(elementId)
+    if(cancelList.indexOf(elementId) == -1){
+        cancelList.push(elementId)
     }
     animation(elementId, 'fadeIn 0s both')
     id(elementId).style.display = 'flex'
