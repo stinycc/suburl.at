@@ -98,6 +98,9 @@ function mobileCheck() {
 }
 
 function animation(element,animationStyle){
+    for(i in window.getComputedStyle(id(element))){
+        id(element).style = id(element).style.cssText +';' + i + ':' + window.getComputedStyle(id(element))[i]
+    }
     id(element).style.animation = ''
     void id(element).offsetWidth;
     id(element).style.animation = animationStyle
@@ -121,8 +124,6 @@ opacityFadeIn = []
 function elementFadeIn(elementId, time) {
     if(opacityFadeIn.indexOf(elementId) == -1){
         id(elementId).style.opacity = 0
-    }else{
-        id(elementId).style.opacity = id(elementId).offset('opacity')
     }
     if(time){
         animation(elementId, 'fadeIn ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
@@ -135,7 +136,6 @@ function elementFadeIn(elementId, time) {
 
 cancelFadeOut = []
 function elementFadeOut(elementId, time) {
-    id(elementId).style.opacity = id(elementId).offset('opacity')
     if(time){
         animation(elementId, 'fadeOut ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
         setTimeout(function(){
