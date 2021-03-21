@@ -1,5 +1,5 @@
 function resizeResponsiveElements(){
-    var everyElementOnPage,elementBeingChecked,responsiveStyle,parentWidth,parentHeight,parentShort,parentLong,body
+    var everyElementOnPage,elementBeingChecked,responsiveStyle,parentWidth,parentHeight,parentShort,parentLong,viewportWidth,viewportHeight
     everyElementOnPage = document.getElementsByTagName('*')
     for (i=0; i < everyElementOnPage.length; i++ ){
         elementBeingChecked = everyElementOnPage[i]
@@ -9,8 +9,10 @@ function resizeResponsiveElements(){
             parentHeight = elementBeingChecked.parentElement.offsetHeight / 100
             if(parentWidth < parentHeight){parentShort = parentWidth}else{parentShort = parentHeight}
             if(parentWidth > parentHeight){parentLong = parentWidth}else{parentLong = parentHeight}
+            viewportWidth = document.documentElement.offsetWidth
+            viewportHeight = document.documentElement.offsetHeight
             responsiveStyle = ';' + responsiveStyle + ';'
-            elementBeingChecked.style = elementBeingChecked.style.cssText + responsiveStyle.replaceAll('w(', 'calc(' + parentWidth + 'px*').replaceAll('h(', 'calc(' + parentHeight + 'px*').replaceAll('s(', 'calc(' + parentShort + 'px*').replaceAll('l(', 'calc(' + parentLong + 'px*')
+            elementBeingChecked.style = elementBeingChecked.style.cssText + responsiveStyle.replaceAll('w(', 'calc(' + parentWidth + 'px*').replaceAll('h(', 'calc(' + parentHeight + 'px*').replaceAll('s(', 'calc(' + parentShort + 'px*').replaceAll('l(', 'calc(' + parentLong + 'px*').replaceAll('vw(', 'calc(' + viewportWidth + 'px*').replaceAll('vh(', 'calc(' + viewportHeight + 'px*')
         }
     }
 }
