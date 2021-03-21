@@ -126,18 +126,37 @@ function elementFadeIn(elementId, time) {
     resizeResponsiveElements()
 }
 
+cancelFadeOut = []
 function elementFadeOut(elementId, time) {
     if(time){
         animation(elementId, 'fadeIn ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) reverse both')
         setTimeout(function(){
-            id(elementId).style.display = 'none'
+            if(cancelFadeOut.indexOf(elementId) == -1){
+                id(elementId).style.display = 'none'
+            }else{
+                cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)
+            }
         },time)
     }else{
         animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) reverse both')
         setTimeout(function(){
-            id(elementId).style.display = 'none'
+            if(cancelFadeOut.indexOf(elementId) == -1){
+                id(elementId).style.display = 'none'
+            }else{
+                cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)
+            }
         },500)
     }
+}
+
+function cancelFadeIn(elementId){
+    animation(elementId, 'fadeIn 0s reverse both')
+    id(elementId).style.display = 'none'
+}
+function cancelFadeOut(elementId){
+    cancelFadeOut.push(elementId)
+    animation(elementId, 'fadeIn 0s both')
+    id(elementId).style.display = 'flex'
 }
 
 elementFadeIOAnimation = `
