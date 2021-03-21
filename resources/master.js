@@ -112,7 +112,7 @@ function pickRandom(array) {
 }
 
 //.offset('style')
-Object.prototype.offset = function offsetFunction(style){ return window.getComputedStyle(this).getPropertyValue(style)}
+HTMLElement.prototype.offset = function offsetFunction(style){ return window.getComputedStyle(this).getPropertyValue(style)}
 
 //For browsers that doesn't support replaceAll function
 String.prototype.replaceAll = function replaceAllFunction(search, replace) { return this.split(search).join(replace); }
