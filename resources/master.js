@@ -118,6 +118,7 @@ HTMLElement.prototype.offset = function offsetFunction(style){ return window.get
 String.prototype.replaceAll = function replaceAllFunction(search, replace) { return this.split(search).join(replace); }
 
 opacityFadeIn = []
+cancelFadeOut = []
 function elementFadeIn(elementId, time) {
     if(opacityFadeIn.indexOf(elementId) == -1){
         opacityFadeIn.push(elementId)
@@ -125,6 +126,7 @@ function elementFadeIn(elementId, time) {
     }else{
         id(elementId).style.opacity = id(elementId).offset('opacity')
     }
+    cancelFadeOut.push(elementId)
     if(time){
         animation(elementId, 'fadeIn ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
     }else{
@@ -134,9 +136,9 @@ function elementFadeIn(elementId, time) {
     resizeResponsiveElements()
 }
 
-cancelFadeOut = []
 function elementFadeOut(elementId, time) {
     id(elementId).style.opacity = id(elementId).offset('opacity')
+    try{cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)}catch{}
     if(time){
         animation(elementId, 'fadeOut ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
         setTimeout(function(){
