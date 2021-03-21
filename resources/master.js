@@ -101,6 +101,7 @@ function animation(element,animationStyle){
     for(i in window.getComputedStyle(id(element))){
         id(element).style = id(element).style.cssText +';' + i + ':' + window.getComputedStyle(id(element))[i]
     }
+    resizeResponsiveElements()
     id(element).style.animation = ''
     void id(element).offsetWidth;
     id(element).style.animation = animationStyle
