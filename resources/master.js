@@ -30,8 +30,7 @@ function setTranslations(){
 }
 
 function importHTML(frameId,htmlSource) {
-    var xhr;
-    xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4) {
             id(frameId).style.display = 'flex'
@@ -49,8 +48,7 @@ function importHTML(frameId,htmlSource) {
 }
 
 function importJS(scriptSource) {
-    var scriptTag
-    scriptTag = document.createElement('script');
+    var scriptTag = document.createElement('script');
     scriptTag.setAttribute('src', scriptSource);
     document.body.appendChild(scriptTag);
 }
@@ -69,9 +67,10 @@ function getJSONP(url, success) {
 }
 
 function getParameter(name) {
+    var regex, results
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
+    regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
@@ -99,10 +98,9 @@ function mobileCheck() {
 }
 
 function animation(element,animationStyle){
-    targetElement = id(element)
-    targetElement.style.animation = ''
-    void targetElement.offsetWidth;
-    targetElement.style.animation = animationStyle
+    id(element).style.animation = ''
+    void id(element).offsetWidth;
+    id(element).style.animation = animationStyle
 }
 
 function id(elementId){
