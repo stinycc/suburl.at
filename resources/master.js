@@ -128,8 +128,10 @@ function elementFadeIn(elementId, time, state) {
     }else{
         id(elementId).style.opacity = id(elementId).offset('opacity')
     }
-    cancelFadeOut.push(elementId)
-    if(time && time != 'reset'){
+    if(cancelFadeOut.indexOf(elementId) == -1){
+        cancelFadeOut.push(elementId)
+    }
+    if(time != '' && time != 'reset'){
         animation(elementId, 'fadeIn ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
     }else{
         animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
@@ -145,7 +147,7 @@ function elementFadeOut(elementId, time, state) {
         id(elementId).style.opacity = id(elementId).offset('opacity')
     }
     try{cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)}catch{}
-    if(time && time != 'reset'){
+    if(time != '' && time != 'reset'){
         animation(elementId, 'fadeOut ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
         setTimeout(function(){
             if(cancelFadeOut.indexOf(elementId) == -1){
@@ -173,7 +175,9 @@ function cancelFadeIn(elementId){
     id(elementId).style.display = 'none'
 }
 function cancelFadeOut(elementId){
-    cancelFadeOut.push(elementId)
+    if(cancelFadeOut.indexOf(elementId) == -1){
+        cancelFadeOut.push(elementId)
+    }
     animation(elementId, 'fadeIn 0s both')
     id(elementId).style.display = 'flex'
 }
