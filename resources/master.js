@@ -114,7 +114,11 @@ function pickRandom(array) {
 //For browsers that doesn't support replaceAll function
 String.prototype.replaceAll = function replaceAlltext(search, replace) { return this.split(search).join(replace); }
 
+opacityFadeIn = []
 function elementFadeIn(elementId, time) {
+    if(opacityFadeIn.indexOf(elementId) == -1){
+        id(elementId).style.opacity = 0
+    }
     if(time){
         animation(elementId, 'fadeIn ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
     }else{
@@ -128,22 +132,22 @@ cancelFadeOut = []
 function elementFadeOut(elementId, time) {
     if(time){
         animation(elementId, 'fadeOut ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
-        /*setTimeout(function(){
+        setTimeout(function(){
             if(cancelFadeOut.indexOf(elementId) == -1){
                 id(elementId).style.display = 'none'
             }else{
                 cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)
             }
-        },time)*/
+        },time)
     }else{
         animation(elementId, 'fadeOut .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
-        /*setTimeout(function(){
+        setTimeout(function(){
             if(cancelFadeOut.indexOf(elementId) == -1){
                 id(elementId).style.display = 'none'
             }else{
                 cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)
             }
-        },500)*/
+        },500)
     }
 }
 
@@ -160,17 +164,11 @@ function cancelFadeOut(elementId){
 elementFadeIOAnimation = `
 <style>
   @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
     100% {
       opacity: 1;
     }
   }
   @keyframes fadeOut {
-    100% {
-      opacity: 1;
-    }
     100% {
       opacity: 0;
     }
