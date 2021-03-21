@@ -120,10 +120,14 @@ String.prototype.replaceAll = function replaceAllFunction(search, replace) { ret
 opacityFadeIn = []
 cancelFadeOut = []
 function elementFadeIn(elementId, time, state) {
+    if(time == 'reset'){
+        time = 0
+        state = 'reset'
+    }
     if(opacityFadeIn.indexOf(elementId) == -1){
         opacityFadeIn.push(elementId)
         id(elementId).style.opacity = 0
-    }else if(time == 'reset' || state == 'reset'){
+    }else if(state == 'reset'){
         id(elementId).style.opacity = 0
     }else{
         id(elementId).style.opacity = id(elementId).offset('opacity')
@@ -131,7 +135,7 @@ function elementFadeIn(elementId, time, state) {
     if(cancelFadeOut.indexOf(elementId) == -1){
         cancelFadeOut.push(elementId)
     }
-    if(time != '' && time != 'reset'){
+    if(time){
         animation(elementId, 'fadeIn ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
     }else{
         animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
@@ -141,13 +145,17 @@ function elementFadeIn(elementId, time, state) {
 }
 
 function elementFadeOut(elementId, time, state) {
-    if(time == 'reset' || state == 'reset'){
+    if(time == 'reset'){
+        time = 0
+        state = 'reset'
+    }
+    if(state == 'reset'){
         id(elementId).style.opacity = 1
     }else{
         id(elementId).style.opacity = id(elementId).offset('opacity')
     }
     try{cancelFadeOut.splice(cancelFadeOut.indexOf(elementId),1)}catch{}
-    if(time != '' && time != 'reset'){
+    if(time){
         animation(elementId, 'fadeOut ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
         setTimeout(function(){
             if(cancelFadeOut.indexOf(elementId) == -1){
