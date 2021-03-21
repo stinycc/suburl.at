@@ -127,7 +127,7 @@ function elementFadeIn(elementId, time) {
 cancelFadeOut = []
 function elementFadeOut(elementId, time) {
     if(time){
-        animation(elementId, 'fadeIn ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) reverse both')
+        animation(elementId, 'fadeOut ' + time/1000 + 's cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
         setTimeout(function(){
             if(cancelFadeOut.indexOf(elementId) == -1){
                 id(elementId).style.display = 'none'
@@ -136,7 +136,7 @@ function elementFadeOut(elementId, time) {
             }
         },time)
     }else{
-        animation(elementId, 'fadeIn .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) reverse both')
+        animation(elementId, 'fadeOut .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both')
         setTimeout(function(){
             if(cancelFadeOut.indexOf(elementId) == -1){
                 id(elementId).style.display = 'none'
@@ -148,7 +148,7 @@ function elementFadeOut(elementId, time) {
 }
 
 function cancelFadeIn(elementId){
-    animation(elementId, 'fadeIn 0s reverse both')
+    animation(elementId, 'fadeOut 0s both')
     id(elementId).style.display = 'none'
 }
 function cancelFadeOut(elementId){
@@ -160,11 +160,13 @@ function cancelFadeOut(elementId){
 elementFadeIOAnimation = `
 <style>
   @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
     100% {
       opacity: 1;
+    }
+  }
+  @keyframes fadeOut {
+    100% {
+      opacity: 0;
     }
   }
 </style>
