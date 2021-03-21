@@ -190,6 +190,37 @@ function cancelFadeOut(elementId){
     id(elementId).style.display = 'flex'
 }
 
+function customAlert(message, time) {
+    if (id('alertFrame').style.display == 'none') {
+        elementFadeIn('alertFrame')
+        id('alertText').innerHTML = message
+        if (time) {
+            customAlertTimeout = setTimeout(function() {
+                elementFadeOut('alertFrame')
+            }, time)
+        }
+    } else {
+        try {
+            clearTimeout(customAlertTimeout)
+        } catch {}
+        cancelFadeOut('alertFrame')
+        if (time) {
+            customAlertTimeout = setTimeout(function() {
+                elementFadeOut('alertFrame')
+            }, time)
+        }
+    }
+}
+
+alertFrameHTML = `
+<div id='alertFrame' style='display:none; position:absolute; z-index:100; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
+  <div R='width:w(90); height:h(60); max-width:300px; max-height:200px; border-radius:s(5);' style='position:absolute; background:white;'>
+    <b id='alertText' R='font-size:w(5);' style='color:black;'></b>
+  </div>
+</div>
+`
+document.body.innerHTML += alertFrameHTML
+
 elementFadeIOAnimation = `
 <style>
   @keyframes fadeIn {
