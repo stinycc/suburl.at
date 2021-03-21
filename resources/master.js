@@ -1,5 +1,5 @@
 function resizeResponsiveElements(){
-    var everyElementOnPage,elementBeingChecked,responsiveStyle,parentWidth,parentHeight,parentShort,parentLong
+    var everyElementOnPage,elementBeingChecked,responsiveStyle,parentWidth,parentHeight,parentShort,parentLong,body
     everyElementOnPage = document.getElementsByTagName('*')
     for (i=0; i < everyElementOnPage.length; i++ ){
         elementBeingChecked = everyElementOnPage[i]
@@ -213,7 +213,7 @@ function customAlert(message, time) {
 }
 
 alertFrameHTML = `
-<div id='alertFrame' R='width:100vw; height:100vh;' style='display:none; position:absolute; z-index:100; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
+<div id='alertFrame' R='width:100vw; height:100vh;' style='display:none; position:absolute; z-index:999999999; background:rgba(0,0,0,0.25); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);'>
   <div R='width:w(90); height:h(60); max-width:300px; max-height:200px; border-radius:s(5);' style='position:absolute; background:white;'>
     <b id='alertText' R='font-size:w(5);' style='color:black;'></b>
   </div>
